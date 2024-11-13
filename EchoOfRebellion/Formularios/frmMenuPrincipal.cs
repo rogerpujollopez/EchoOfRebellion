@@ -1,4 +1,5 @@
-﻿using MisControles;
+﻿using EchoOfRebellion.Clases.Utils;
+using MisControles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EchoOfRebellion
 {
-    public partial class frmMenuPrincipal : Form
+    public partial class frmMenuPrincipal : frmBase
     {
         public frmMenuPrincipal()
         {
@@ -20,6 +21,8 @@ namespace EchoOfRebellion
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
+            Titulo("Menú principal");
+            
             DibuixarMenu();
         }
 
@@ -56,6 +59,24 @@ namespace EchoOfRebellion
                 _y += _h + offset;  
                 
                 this.Controls.Add(btn);
+            }
+        }
+
+        private void frmMenuPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Cerrar();
+                    break;
+            }
+        }
+
+        private void Cerrar()
+        {
+            if (Missatgeria.Sortir())
+            {
+                this.Close();
             }
         }
     }

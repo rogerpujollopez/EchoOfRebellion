@@ -1,4 +1,5 @@
 ﻿using EchoOfRebellion.Clases.BIZ;
+using EchoOfRebellion.Clases.Utils;
 using MisControles;
 using System;
 using System.Collections.Generic;
@@ -95,10 +96,13 @@ namespace EchoOfRebellion
 
         private void Salir()
         {
-            if (MessageBox.Show("Desitges sortir, Padawan?", "Vigila el costat fosc !!!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (Missatgeria.Sortir())
             {
                 Cerrar();
             }
+            //if (MessageBox.Show("Desitges sortir, Padawan?", "Vigila el costat fosc !!!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //{
+            //}
         }
 
         private void lblSubmit_Click(object sender, EventArgs e)

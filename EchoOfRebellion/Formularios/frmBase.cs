@@ -1,0 +1,84 @@
+﻿using MisControles;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using UsuariActiuNameSpace;
+
+namespace EchoOfRebellion
+{
+    public partial class frmBase : Form
+    {
+        System.Windows.Forms.Timer timer;
+
+        public frmBase()
+        {
+            InitializeComponent();
+
+            this.KeyPreview = true;
+
+            if (UsuariActiu.usuari != null)
+            {
+                Usuario(UsuariActiu.usuari.UserName);
+            }
+
+            ActualizarHora();
+
+            timer = new System.Windows.Forms.Timer()
+            {
+                Interval = 1000,
+                Enabled = false
+            };
+            timer.Tick += new EventHandler(OnTimerTick);
+            timer.Start();
+        }
+
+
+
+        private void frmBase_Load(object sender, EventArgs e)
+        {
+        }
+
+        public void Titulo(string titulo)
+        {
+            lblTitulo.Text = titulo;
+            AjustarLinea();
+        }
+
+        private void AjustarLinea()
+        {
+            lineTitulo.Width = Math.Max(lblTitulo.Width, lblUsuario.Width);
+        }
+
+        public void Usuario(string usuario)
+        {
+            lblUsuario.Text = usuario;
+            AjustarLinea();
+        }
+
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            ActualizarHora();
+        }
+
+        private void ActualizarHora()
+        {
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void frmBase_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+                timer = null;
+            }
+        }
+    }
+}
