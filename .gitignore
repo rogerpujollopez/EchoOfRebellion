@@ -1,0 +1,53 @@
+App.config
+*.config
+
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de paquetes de NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+packages/
+
+# Archivos de usuario y de configuración local
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Configuración de Visual Studio, VS Code y Rider
+.vscode/
+.idea/
+*.vs/
+
+# Archivos de lock y de caché
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.pidb
+*.mdb
+*.opendb
+
+# Archivos de depuración y de símbolos
+*.pdb
+
+# Otros archivos generados por el IDE o herramientas
+_ReSharper*/
+*.csproj.user
+*.swp
+*.log
+
+# Archivos de configuración de docker o de CI/CD (opcional)
+**/Dockerfile
+**/docker-compose*
+**/*.yml
+
+# Archivos de entorno
+.env
+.env.*
+
+# Archivos de log (opcional)
+logs/
+*.log
