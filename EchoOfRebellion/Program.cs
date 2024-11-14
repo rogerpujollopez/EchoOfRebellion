@@ -25,7 +25,7 @@ namespace EchoOfRebellion
 
         private static void ShowSplashThenLogin()
         {
-            Comunicacio.EnviarMail("Mauro", "mauro.lopez@sarria.salesians.cat", "Envío desde Echo Of Rebellion","Test envío mail");
+            //Comunicacio.EnviarMail("Mauro", "mauro.lopez@sarria.salesians.cat", "Envío desde Echo Of Rebellion","Test envío mail");
 
             using (var splash = new frmSplash())
             {
@@ -39,6 +39,12 @@ namespace EchoOfRebellion
 
             if (UsuariActiu.usuari != null)
             {
+                using (var frmsplashusu = new frmSplashUsuario())
+                {
+                    frmsplashusu.ShowDialog();
+                }
+
+
                 using (var frmain = new frmMenuPrincipal())
                 {
                     frmain.ShowDialog();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Configuracio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,21 +30,21 @@ namespace MisControles
             //this.MouseDown += (s, e) => { OnButtonPressed(s,e); };
             //this.MouseUp += (s, e) => { OnButtonReleased(s,e); };
 
-            this.BackColor = Color.Black;
+            this.BackColor = Config.Colores.Formularios.BackColor;
 
             _fontSize = 14f; // Tamaño de fuente por defecto
             _font = new Font("Agency FB", _fontSize, FontStyle.Bold);
-            _colorFuente = Brushes.White;
+            _colorFuente = Config.Colores.Botones.FontColor;
         }
 
-        private Color colorFondoBoton = Color.FromArgb(29, 17, 67);
-        private Color colorPerfilInteriorBoton = Color.FromArgb(85, 84, 128);
-        private Color colorPerfilExteriorBoton = Color.FromArgb(126, 157, 201);
+        //private Color colorFondoBoton = Color.FromArgb(29, 17, 67);
+        //private Color colorPerfilInteriorBoton = Color.FromArgb(85, 84, 128);
+        //private Color colorPerfilExteriorBoton = Color.FromArgb(126, 157, 201);
 
         [Browsable(true)]
         [Category("Personalización")]
         [Description("Texto")]
-        public string Texto // Usar `new` en lugar de `override`
+        public string Texto 
         {
             get => _texto;
             set
@@ -55,42 +56,19 @@ namespace MisControles
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            // Lógica personalizada antes de llamar al método base
             isPressed = true;
             Invalidate(); // Redibuja el control para reflejar el cambio
 
-            // Llamar al método base para asegurar el funcionamiento predeterminado
             base.OnMouseDown(e);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            // Lógica personalizada antes de llamar al método base
             isPressed = false;
             Invalidate(); // Redibuja el control para reflejar el cambio
 
-            // Llamar al método base para asegurar el funcionamiento predeterminado
             base.OnMouseUp(e);
         }
-
-
-
-        //[Browsable(true)]
-        //[Category("Personalización")]
-        //[Description("Mouse Up")]
-        //public event EventHandler MouseUp;
-
-        //public void OnButtonReleased(object sender, EventArgs e)
-        //{
-        //    isPressed = false;
-        //    Invalidate(); // Redibuja el control
-
-        //    if (this.MouseUp != null)
-        //    {
-        //        this.MouseUp(sender, e);
-        //    }
-        //}
-
 
         #region "Eventos no disponibles"
 
@@ -103,8 +81,6 @@ namespace MisControles
         }
 
         #endregion
-
-
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -140,8 +116,7 @@ namespace MisControles
                 new Point((int)((start_x + 532 + padding + 36 + 92) * scale + offsetX), (int)((30 + 36 + 120) * scale + offsetY)),
             };
 
-            // Dibujar el borde del polígono
-            using (Pen borderPen = new Pen(colorPerfilInteriorBoton, brush_size))
+            using (Pen borderPen = new Pen(Config.Colores.Botones.ColorLineaInterior, brush_size))
             {
                 g.DrawLines(borderPen, perfilPoints);
             }
@@ -160,8 +135,7 @@ namespace MisControles
                 new Point((int)((start_x + padding + 532 + 36 + 92) * scale + offsetX), (int)((30 + 36 + 180 + padding - 30) * scale + offsetY)),
             };
 
-            // Dibujar el borde del polígono
-            using (Pen borderPen = new Pen(colorPerfilInteriorBoton, brush_size))
+            using (Pen borderPen = new Pen(Config.Colores.Botones.ColorLineaInterior, brush_size))
             {
                 g.DrawLines(borderPen, perfilInferiorPoints);
             }
@@ -176,8 +150,7 @@ namespace MisControles
                 new Point((int)((start_x + 532 + padding) * scale + offsetX + (brush_size / 2)), (int)((30 - (padding * 2)) * scale + offsetY)),
             };
 
-            // Dibujar el borde del polígono
-            using (Pen borderPen = new Pen(colorPerfilExteriorBoton, brush_size))
+            using (Pen borderPen = new Pen(Config.Colores.Botones.ColorLineaExterior, brush_size))
             {
                 g.DrawLines(borderPen, perfilExteriorSuperiorPoints);
             }
@@ -192,8 +165,7 @@ namespace MisControles
                 new Point((int)((start_x + padding + 532 + 36 + 92) * scale + offsetX + (brush_size / 2)), (int)((30 + 36 + 180 + (padding * 2)) * scale + offsetY)),
             };
 
-            // Dibujar el borde del polígono
-            using (Pen borderPen = new Pen(colorPerfilExteriorBoton, brush_size))
+            using (Pen borderPen = new Pen(Config.Colores.Botones.ColorLineaExterior, brush_size))
             {
                 g.DrawLines(borderPen, perfilExteriorInferiorPoints);
             }
@@ -215,7 +187,7 @@ namespace MisControles
             };
 
 
-            Color colorFondo = isPressed ? colorPerfilInteriorBoton : colorFondoBoton;
+            Color colorFondo = isPressed ? Config.Colores.Botones.ColorLineaInterior : Config.Colores.Botones.BackColor;
 
             // Crear el pincel para rellenar el polígono principal
             using (Brush brush = new SolidBrush(colorFondo))
@@ -229,8 +201,8 @@ namespace MisControles
             //    g.DrawPolygon(pen, polygonPoints);
             //}
 
-            Color colorInicioDegradado = isPressed ? colorPerfilInteriorBoton : colorPerfilExteriorBoton;
-            Color colorFinalDegradado = isPressed ? colorPerfilExteriorBoton : colorPerfilInteriorBoton;
+            Color colorInicioDegradado = isPressed ? Config.Colores.Botones.ColorLineaInterior : Config.Colores.Botones.ColorLineaExterior;
+            Color colorFinalDegradado = isPressed ? Config.Colores.Botones.ColorLineaExterior : Config.Colores.Botones.ColorLineaInterior;
 
             #region "Rectangulo con degradado inferior"
 
@@ -249,7 +221,6 @@ namespace MisControles
                 new Point((int)((start_x - padding + 24) * scale + offsetX), (int)((30 + 36 + 180 - 36 + 24 + (padding*3)) * scale + offsetY)),
             };
 
-
             // Crear el rectángulo de límite para el degradado
             Rectangle gradientBounds = new Rectangle(x_ini, y_ini, x_fin - x_ini, y_fin - y_ini);
 
@@ -259,7 +230,6 @@ namespace MisControles
                 // Dibujar el rombo relleno con el degradado
                 g.FillPolygon(brush, diamondPoints);
             }
-
 
             #endregion
 

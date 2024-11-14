@@ -8,7 +8,7 @@ using UsuariActiuNameSpace;
 
 namespace EchoOfRebellion.Clases.Utils
 {
-    internal class Missatgeria
+    internal static class Missatgeria
     {
         private static string _titol = "Vigila el costat fosc !!!";
 

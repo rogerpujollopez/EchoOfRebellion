@@ -15,12 +15,18 @@ namespace EchoOfRebellion
         public frmUsuarioCambioPassword()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Normal;
         }
 
         private void frmUsuarioCambioPassword_Load(object sender, EventArgs e)
         {
-            Titulo("Módulo de mantenimiento");
-            Usuario("Supermega nombre del usuario como no puede ser otro");
+            Titulo("Establecer una contraseña");
+        }
+
+        private void btnVerificar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

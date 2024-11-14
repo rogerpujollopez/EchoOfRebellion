@@ -38,17 +38,16 @@
             // 
             // PanelTop
             // 
-            this.PanelTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
             this.PanelTop.Controls.Add(this.lineTitulo);
             this.PanelTop.Controls.Add(this.lblUsuario);
             this.PanelTop.Controls.Add(this.lblHora);
             this.PanelTop.Controls.Add(this.lblTitulo);
-            this.PanelTop.Location = new System.Drawing.Point(1, 1);
+            this.PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelTop.Location = new System.Drawing.Point(0, 0);
             this.PanelTop.Margin = new System.Windows.Forms.Padding(2);
             this.PanelTop.Name = "PanelTop";
-            this.PanelTop.Size = new System.Drawing.Size(740, 64);
+            this.PanelTop.Size = new System.Drawing.Size(741, 64);
             this.PanelTop.TabIndex = 0;
             // 
             // lblUsuario
@@ -68,7 +67,7 @@
             this.lblHora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.Color.White;
-            this.lblHora.Location = new System.Drawing.Point(582, 12);
+            this.lblHora.Location = new System.Drawing.Point(583, 12);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(141, 25);
             this.lblHora.TabIndex = 1;

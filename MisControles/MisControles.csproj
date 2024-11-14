@@ -89,5 +89,11 @@
       <DependentUpon>SWLabelWithTimer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Configuracio\Configuracio.csproj">
+      <Project>{5a1ca935-053e-490d-a9eb-3eea151ab007}</Project>
+      <Name>Configuracio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using EchoOfRebellion.Clases.BIZ;
+﻿using Configuracio;
+using EchoOfRebellion.Clases.BIZ;
 using EchoOfRebellion.Clases.Utils;
 using MisControles;
 using System;
@@ -100,9 +101,6 @@ namespace EchoOfRebellion
             {
                 Cerrar();
             }
-            //if (MessageBox.Show("Desitges sortir, Padawan?", "Vigila el costat fosc !!!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //{
-            //}
         }
 
         private void lblSubmit_Click(object sender, EventArgs e)
@@ -213,11 +211,13 @@ namespace EchoOfRebellion
             {
                 case 1: // OK
                     OcultarContador();
-                    //txtUsuario.Text = UsuariActiu.usuari.UserName;
                     Cerrar();
                     break;
                 case 2: // OK + new pass
                     OcultarContador();
+                    frmUsuarioCambioPassword frm = new frmUsuarioCambioPassword();
+                    frm.ShowDialog();
+                    Cerrar();
                     break;
                 default:
                     if (!verCuentaAtras)
@@ -261,5 +261,9 @@ namespace EchoOfRebellion
             timerParpadeo.Enabled = true;
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            BackColor = Config.Colores.Formularios.BackColor;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MisControles;
+﻿using Configuracio;
+using MisControles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,23 @@ namespace EchoOfRebellion
             {
                 Usuario(UsuariActiu.usuari.UserName);
             }
+        }
+
+        private void frmBase_Load(object sender, EventArgs e)
+        {
+            BackColor = Config.Colores.Formularios.BackColor;
+
+            PanelTop.BackColor = Config.Colores.Cabecera.BackColor;
+
+            var labels = PanelTop.Controls.OfType<Label>();
+
+            foreach (Label label in labels)
+            {
+                label.BackColor = Config.Colores.Cabecera.BackColor;
+                label.ForeColor = Config.Colores.Cabecera.ForeColor;
+            }
+
+            lineTitulo.BackColor = Config.Colores.Cabecera.ForeColor;
 
             ActualizarHora();
 
@@ -36,12 +54,6 @@ namespace EchoOfRebellion
             };
             timer.Tick += new EventHandler(OnTimerTick);
             timer.Start();
-        }
-
-
-
-        private void frmBase_Load(object sender, EventArgs e)
-        {
         }
 
         public void Titulo(string titulo)
