@@ -1,7 +1,7 @@
 App.config
 *.config
 
-App/
+App/*
 
 # Archivos de compilación
 bin/
