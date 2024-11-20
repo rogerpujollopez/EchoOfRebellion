@@ -173,6 +173,9 @@
   <ItemGroup>
     <Content Include="frmLogin\conQueueUserWorkItem.txt" />
     <Content Include="frmLogin\conThreadCreate.txt" />
+    <Content Include="Resources\EfectoSplashUsuario.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
