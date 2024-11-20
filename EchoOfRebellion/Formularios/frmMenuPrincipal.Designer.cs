@@ -32,11 +32,12 @@
             // 
             // frmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(881, 555);
+            this.ClientSize = new System.Drawing.Size(1615, 1025);
             this.Location = new System.Drawing.Point(0, 0);
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "frmMenuPrincipal";
             this.Text = "Menu principal";
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
