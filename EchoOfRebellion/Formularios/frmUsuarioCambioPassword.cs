@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace EchoOfRebellion
 {
-    public partial class frmUsuarioCambioPassword : Form
+    public partial class frmUsuarioCambioPassword : frmBase
     {
         public frmUsuarioCambioPassword()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void frmUsuarioCambioPassword_Load(object sender, EventArgs e)
+        {
+            Titulo("Establecer una contraseña");
+        }
+
+        private void btnVerificar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

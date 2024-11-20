@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace MisControles
 {
@@ -15,14 +16,31 @@ namespace MisControles
         private Timer timerSegundos;
         private int segundos;
         private bool _enabled;
-
         public event EventHandler CuentaFinalizada;
+
+        //private int _offset_h = -20;
+        //private int _width, _height;
 
         public SWCuentaAtras()
         {
             InitializeComponent();
             InicializarTimerSegundos();
+
+            //lbltiempo.Text = "00:00";
+            //_width = lbltiempo.Width;
+            //_width = lbltiempo.Height;
+
+            //this.Size = new Size(_width, _height + _offset_h);
+            //lbltiempo.SizeChanged += LblTiempo_SizeChanged;
+
+            lbltiempo.AutoSize = true;
+
         }
+
+        //private void LblTiempo_SizeChanged(object sender, EventArgs e)
+        //{
+        //    this.Size = new Size(lbltiempo.Width, lbltiempo.Height + _offset_h);
+        //}
 
         public int Segundos
         {

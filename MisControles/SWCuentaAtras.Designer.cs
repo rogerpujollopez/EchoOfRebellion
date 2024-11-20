@@ -33,11 +33,10 @@
             // 
             // lbltiempo
             // 
-            this.lbltiempo.AutoSize = true;
             this.lbltiempo.Font = new System.Drawing.Font("Agency FB", 27.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltiempo.ForeColor = System.Drawing.Color.Red;
-            this.lbltiempo.Location = new System.Drawing.Point(2, 1);
-            this.lbltiempo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbltiempo.Location = new System.Drawing.Point(0, 0);
+            this.lbltiempo.Margin = new System.Windows.Forms.Padding(0);
             this.lbltiempo.Name = "lbltiempo";
             this.lbltiempo.Size = new System.Drawing.Size(91, 46);
             this.lbltiempo.TabIndex = 0;
@@ -49,11 +48,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.lbltiempo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SWCuentaAtras";
-            this.Size = new System.Drawing.Size(83, 46);
+            this.Size = new System.Drawing.Size(91, 46);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

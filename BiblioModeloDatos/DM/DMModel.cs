@@ -12,6 +12,7 @@ namespace BiblioModeloDatos.DM
         {
             public int IdUser { get; set; }
             public bool SiSalt { get; set; }
+            public string Mail { get; set; }
             public string CodeUser { get; set; }
             public string UserName { get; set; }
             public int IdUserRank { get; set; }
