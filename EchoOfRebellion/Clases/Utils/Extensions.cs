@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -54,6 +55,13 @@ namespace EchoOfRebellion.Clases.Utils
             }
         }
 
-
+        public static string Hash256(this string text)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(text));
+                return BitConverter.ToString(hashedBytes);
+            }
+        }
     }
 }

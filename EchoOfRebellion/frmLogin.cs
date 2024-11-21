@@ -1,6 +1,7 @@
 ﻿using Configuracio;
 using EchoOfRebellion.Clases.BIZ;
 using EchoOfRebellion.Clases.Utils;
+using EchoOfRebellion.Formularios;
 using MisControles;
 using System;
 using System.Collections.Generic;

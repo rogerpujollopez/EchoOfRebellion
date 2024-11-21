@@ -1,4 +1,4 @@
-﻿namespace EchoOfRebellion
+﻿namespace EchoOfRebellion.Formularios
 {
     partial class frmBase
     {

@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UsuariActiuNameSpace;
+using System.Security.Cryptography;
 using static BiblioModeloDatos.DM.DMModel;
+using EchoOfRebellion.Clases.Utils;
 
 namespace EchoOfRebellion.Clases.DM
 {
@@ -85,7 +87,7 @@ namespace EchoOfRebellion.Clases.DM
                 }
                 else
                 {
-                    result = 2; 
+                    result = 2;
                 }
             }
 
@@ -101,6 +103,37 @@ namespace EchoOfRebellion.Clases.DM
             // 0 KO
             // 1 OK
             // 2 OK, pero no tiene Salt
+        }
+
+
+        public static bool UsuarioExiste(string usuario)
+        {
+            string consulta;
+            clsModeloDatos m = new clsModeloDatos();
+
+            consulta = "SELECT COUNT(*) FROM Users WHERE Login = @usuario";
+            var parametros = new Dictionary<string, object> { { "@usuario", usuario } };
+            DataSet ds = m.GeneraConsultaCerca(consulta, parametros);
+
+            return ds.Tables[0].Rows[0][0].ToString() != "0";
+        }
+        public static bool ActualizarPasswordConHash(string usuario, string salt, string passwordHasheado, string mail)
+        {
+
+            string consulta = "UPDATE Users SET Password = @password, Salt = @salt, Mail = @mail WHERE Login = @usuario";
+
+            var parametros = new Dictionary<string, object>
+            {
+                { "@password", passwordHasheado },
+                { "@salt", salt },
+                { "@usuario", usuario },
+                { "@usuario", mail },
+            };
+
+            clsModeloDatos m = new clsModeloDatos();
+            int registrosAfectados = m.ExecutaConParametros(consulta, parametros);
+
+            return registrosAfectados > 0;
         }
 
     }

@@ -83,12 +83,19 @@
     <Compile Include="Clases\DM\DMLogin.cs" />
     <Compile Include="Clases\Utils\Comunicacio.cs" />
     <Compile Include="Clases\Utils\Extensions.cs" />
+    <Compile Include="Clases\Utils\Funcions.cs" />
     <Compile Include="Clases\Utils\Missatgeria.cs" />
     <Compile Include="Formularios\frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmVerificacionMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVerificacionMail.designer.cs">
+      <DependentUpon>frmVerificacionMail.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -130,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUsuarioCambioPassword.resx">
       <DependentUpon>frmUsuarioCambioPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmVerificacionMail.resx">
+      <DependentUpon>frmVerificacionMail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -176,6 +186,7 @@
     <Content Include="Resources\EfectoSplashUsuario.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\email_image.jpg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using EchoOfRebellion;
+﻿using EchoOfRebellion.Formularios;
 using EchoOfRebellion.Clases.Utils;
 using System;
 using System.Collections.Generic;

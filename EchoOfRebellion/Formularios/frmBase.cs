@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UsuariActiuNameSpace;
 
-namespace EchoOfRebellion
+namespace EchoOfRebellion.Formularios
 {
     public partial class frmBase : Form
     {
