@@ -1,6 +1,8 @@
 App.config
 *.config
 
+*.dll
+*.exe
 App
 App/*
 

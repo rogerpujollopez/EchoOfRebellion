@@ -32,5 +32,32 @@ namespace EchoOfRebellion.Clases.Utils
             }
         }
 
+        public static string RandomText_Basic(int longitud)
+        {
+            const string alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+            return _Random_Basic(longitud, alphabet);
+        }
+
+        public static string RandomNumber_Basic(int longitud)
+        {
+            const string alphabet = "0123456789";
+
+            return _Random_Basic(longitud, alphabet);
+        }
+
+        private static string _Random_Basic(int longitud, string alphabet)
+        {
+            Random rand = new Random((int)DateTime.Now.Ticks);
+            int RandomNumber;
+            RandomNumber = rand.Next(100000, 999999);
+            string ret = "";
+            for (Int32 t = 0; t < longitud; t++) { ret += alphabet.Substring(rand.Next(0, alphabet.Length - 1), 1); }
+
+            return ret;
+        }
+
+
+
     }
 }
