@@ -40,6 +40,10 @@ namespace EchoOfRebellion.Formularios
             {
                 BIZLogin.RestablecerPassword(usuario, nuevoPassword, mail);
             }
+            else
+            {
+                MessageBox.Show("Código erroneo");
+            }
         }
 
         private void labelReenviar_Click(object sender, EventArgs e)

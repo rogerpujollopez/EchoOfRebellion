@@ -45,10 +45,9 @@ namespace EchoOfRebellion.Formularios
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(51, 26);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitle.Location = new System.Drawing.Point(38, 21);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(294, 31);
+            this.labelTitle.Size = new System.Drawing.Size(240, 25);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Verificación por email";
             // 
@@ -58,10 +57,9 @@ namespace EchoOfRebellion.Formularios
             this.labelTxtVerificacion.BackColor = System.Drawing.Color.Transparent;
             this.labelTxtVerificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTxtVerificacion.ForeColor = System.Drawing.Color.White;
-            this.labelTxtVerificacion.Location = new System.Drawing.Point(36, 153);
-            this.labelTxtVerificacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTxtVerificacion.Location = new System.Drawing.Point(27, 124);
             this.labelTxtVerificacion.Name = "labelTxtVerificacion";
-            this.labelTxtVerificacion.Size = new System.Drawing.Size(346, 60);
+            this.labelTxtVerificacion.Size = new System.Drawing.Size(276, 48);
             this.labelTxtVerificacion.TabIndex = 1;
             this.labelTxtVerificacion.Text = "Hemos enviado un número de verifiación a tu\r\ncorreo.\r\nIntorduce el código en el r" +
     "ecuadro inferior.";
@@ -69,19 +67,17 @@ namespace EchoOfRebellion.Formularios
             // 
             // txtCodeEmail
             // 
-            this.txtCodeEmail.Location = new System.Drawing.Point(123, 230);
-            this.txtCodeEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodeEmail.Location = new System.Drawing.Point(92, 187);
             this.txtCodeEmail.Name = "txtCodeEmail";
-            this.txtCodeEmail.Size = new System.Drawing.Size(184, 22);
+            this.txtCodeEmail.Size = new System.Drawing.Size(139, 20);
             this.txtCodeEmail.TabIndex = 3;
             this.txtCodeEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // bttnEnviarCodigo
             // 
-            this.bttnEnviarCodigo.Location = new System.Drawing.Point(157, 276);
-            this.bttnEnviarCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bttnEnviarCodigo.Location = new System.Drawing.Point(118, 224);
             this.bttnEnviarCodigo.Name = "bttnEnviarCodigo";
-            this.bttnEnviarCodigo.Size = new System.Drawing.Size(116, 36);
+            this.bttnEnviarCodigo.Size = new System.Drawing.Size(87, 29);
             this.bttnEnviarCodigo.TabIndex = 4;
             this.bttnEnviarCodigo.Text = "Enviar código";
             this.bttnEnviarCodigo.UseVisualStyleBackColor = true;
@@ -93,10 +89,9 @@ namespace EchoOfRebellion.Formularios
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(84, 331);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(63, 269);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 17);
+            this.label1.Size = new System.Drawing.Size(139, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "¿No has recibido el código?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,10 +102,9 @@ namespace EchoOfRebellion.Formularios
             this.labelReenviar.BackColor = System.Drawing.Color.Transparent;
             this.labelReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelReenviar.ForeColor = System.Drawing.Color.Blue;
-            this.labelReenviar.Location = new System.Drawing.Point(271, 331);
-            this.labelReenviar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelReenviar.Location = new System.Drawing.Point(203, 269);
             this.labelReenviar.Name = "labelReenviar";
-            this.labelReenviar.Size = new System.Drawing.Size(73, 17);
+            this.labelReenviar.Size = new System.Drawing.Size(58, 13);
             this.labelReenviar.TabIndex = 6;
             this.labelReenviar.Text = "Reenviar";
             this.labelReenviar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,19 +113,18 @@ namespace EchoOfRebellion.Formularios
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EchoOfRebellion.Properties.Resources.email_image;
-            this.pictureBox1.Location = new System.Drawing.Point(179, 72);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(134, 54);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(68, 63);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
             // frmVerificacionMail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(449, 395);
+            this.ClientSize = new System.Drawing.Size(337, 321);
             this.Controls.Add(this.labelReenviar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnEnviarCodigo);
@@ -140,7 +133,6 @@ namespace EchoOfRebellion.Formularios
             this.Controls.Add(this.labelTxtVerificacion);
             this.Controls.Add(this.labelTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmVerificacionMail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVerificacionMail";
