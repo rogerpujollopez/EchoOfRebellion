@@ -14,12 +14,6 @@ namespace EchoOfRebellion.Clases.BIZ
 {
     internal class BIZLogin
     {
-        private readonly DMLogin dmUsuarios;
-
-        public BIZLogin()
-        {
-            dmUsuarios = new DMLogin();
-        }
         public static int BizLogin(string usuari, string password)
         {
             // Revisar Regex usuario
