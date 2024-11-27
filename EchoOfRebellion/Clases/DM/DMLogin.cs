@@ -109,13 +109,6 @@ namespace EchoOfRebellion.Clases.DM
                 }
             }
 
-
-            // Revisar Regex usuario
-
-            // Revisar regex pass
-
-            // Si todo ok, enviamos a la bbdd
-
             return result;
 
             // 0 KO
