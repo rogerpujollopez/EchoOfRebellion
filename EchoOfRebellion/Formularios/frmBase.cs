@@ -56,10 +56,17 @@ namespace EchoOfRebellion.Formularios
             timer.Start();
         }
 
-        public void Titulo(string titulo)
+        //public void TituloBorrar(string titulo)
+        //{
+        //    lblTitulo.Text = titulo;
+        //}
+
+        public string Titulo
         {
-            lblTitulo.Text = titulo;
-            AjustarLinea();
+            set { 
+                lblTitulo.Text = value;
+                AjustarLinea();
+            }
         }
 
         private void AjustarLinea()

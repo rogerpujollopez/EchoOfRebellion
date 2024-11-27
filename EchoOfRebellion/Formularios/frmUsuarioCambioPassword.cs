@@ -23,7 +23,7 @@ namespace EchoOfRebellion.Formularios
 
         private void frmUsuarioCambioPassword_Load(object sender, EventArgs e)
         {
-            Titulo("Establecer una contraseña");
+            Titulo = "Establecer una contraseña";
         }
 
         private void btnVerificar_Click(object sender, EventArgs e)

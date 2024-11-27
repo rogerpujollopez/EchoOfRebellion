@@ -21,7 +21,7 @@ namespace EchoOfRebellion.Formularios
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            Titulo("Menú principal");
+            Titulo = "Menú principal";
             
             DibuixarMenu();
         }
