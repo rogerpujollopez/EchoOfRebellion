@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EchoOfRebellion.Clases.Utils
 {
@@ -56,8 +57,5 @@ namespace EchoOfRebellion.Clases.Utils
 
             return ret;
         }
-
-
-
     }
 }

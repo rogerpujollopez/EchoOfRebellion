@@ -91,6 +91,24 @@
     <Compile Include="Formularios\frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmBaseBBDD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBaseBBDD.Designer.cs">
+      <DependentUpon>frmBaseBBDD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmManteniment_Regions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmManteniment_Regions.Designer.cs">
+      <DependentUpon>frmManteniment_Regions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTemp.Designer.cs">
+      <DependentUpon>frmTemp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmVerificacionMail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,8 +150,17 @@
     <EmbeddedResource Include="Formularios\frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBaseBBDD.resx">
+      <DependentUpon>frmBaseBBDD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmManteniment_Regions.resx">
+      <DependentUpon>frmManteniment_Regions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmSplashUsuario.resx">
       <DependentUpon>frmSplashUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTemp.resx">
+      <DependentUpon>frmTemp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUsuarioCambioPassword.resx">
       <DependentUpon>frmUsuarioCambioPassword.cs</DependentUpon>

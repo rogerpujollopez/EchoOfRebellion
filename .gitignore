@@ -56,3 +56,8 @@ _ReSharper*/
 # Archivos de log (opcional)
 logs/
 *.log
+/App/BiblioModeloDatos.dll
+/App/Configuracio.dll
+/App/EchoOfRebellion.exe
+/App/MisControles.dll
+/App/UsuariActiu.dll
