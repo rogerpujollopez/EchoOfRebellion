@@ -216,9 +216,13 @@ namespace EchoOfRebellion
                     break;
                 case 2: // OK + new pass
                     OcultarContador();
-                    frmUsuarioCambioPassword frm = new frmUsuarioCambioPassword();
+                    frmUsuarioCambioPassword frm = new frmUsuarioCambioPassword(usuari);
                     frm.ShowDialog();
-                    Cerrar();
+                    
+                    txtPass.Clear();
+                    txtUsuario.Clear();
+                    txtUsuario.Focus();
+                    //Cerrar();
                     break;
                 default:
                     if (!verCuentaAtras)

@@ -137,7 +137,7 @@ namespace EchoOfRebellion.Clases.DM
                 { "@password", passwordHasheado },
                 { "@salt", salt },
                 { "@usuario", usuario },
-                { "@usuario", mail },
+                { "@mail", mail },
             };
 
             clsModeloDatos m = new clsModeloDatos();
