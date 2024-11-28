@@ -14,8 +14,6 @@ namespace EchoOfRebellion.Formularios
 {
     public partial class frmManteniment_Regions : frmBaseBBDD
     {
-        private int _offset_left, _offset_top;
-
         public frmManteniment_Regions()
         {
             InitializeComponent();
@@ -24,6 +22,8 @@ namespace EchoOfRebellion.Formularios
         private void frmManteniment_Regions_Load(object sender, EventArgs e)
         {
             InicializarFormulario();
+
+
         }
     }
 }

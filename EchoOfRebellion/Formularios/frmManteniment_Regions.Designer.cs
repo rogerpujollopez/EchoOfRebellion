@@ -33,46 +33,58 @@ namespace EchoOfRebellion.Formularios
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 19);
-            this.textBox1.Name = "textBox1";
+            this.textBox1.Location = new System.Drawing.Point(181, 30);
+            this.textBox1.MaxLength = 12;
+            this.textBox1.Name = "txt1";
             this.textBox1.Size = new System.Drawing.Size(172, 20);
             this.textBox1.TabIndex = 15;
             this.textBox1.Tag = "CodeRegion";
-            this.textBox1.MaxLength = 12;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(181, 45);
-            this.textBox2.Name = "textBox2";
+            this.textBox2.Location = new System.Drawing.Point(181, 80);
+            this.textBox2.MaxLength = 50;
+            this.textBox2.Name = "txt2";
             this.textBox2.Size = new System.Drawing.Size(172, 20);
             this.textBox2.TabIndex = 16;
             this.textBox2.Tag = "DescRegion";
-            this.textBox2.MaxLength = 50;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(476, 19);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(280, 47);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.Tag = "Remarks";
+            this.textBox3.Location = new System.Drawing.Point(500, 30);
             this.textBox3.MaxLength = 2000;
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "txt3";
+            this.textBox3.Size = new System.Drawing.Size(500, 80);
+            this.textBox3.TabIndex = 17;
+            this.textBox3.Tag = "Remarks";
+            this.textBox3.ScrollBars = ScrollBars.Vertical;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(764, 112);
+            this.textBox4.Name = "txt4";
+            this.textBox4.Size = new System.Drawing.Size(145, 29);
+            this.textBox4.TabIndex = 18;
+            this.textBox4.Tag = "idRegion";
             // 
             // frmManteniment_Regions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 475);
+            this.ClientSize = new System.Drawing.Size(1467, 831);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            //this.Margin = new System.Windows.Forms.Padding(13);
             this.Name = "frmManteniment_Regions";
-            this.Text = "frmManteniment_Regions";
+            this.Text = "";
             this.Load += new System.EventHandler(this.frmManteniment_Regions_Load);
             this.ResumeLayout(false);
 
@@ -80,8 +92,9 @@ namespace EchoOfRebellion.Formularios
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
     }
 }

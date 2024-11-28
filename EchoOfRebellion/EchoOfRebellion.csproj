@@ -91,9 +91,7 @@
     <Compile Include="Formularios\frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmBaseBBDD.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Formularios\frmBaseBBDD.cs" />
     <Compile Include="Formularios\frmBaseBBDD.Designer.cs">
       <DependentUpon>frmBaseBBDD.cs</DependentUpon>
     </Compile>

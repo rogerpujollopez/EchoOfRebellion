@@ -63,5 +63,11 @@ namespace EchoOfRebellion.Clases.Utils
                 return BitConverter.ToString(hashedBytes);
             }
         }
+
+        public static string Capitalize(this string texto) // hola mundo -> Hola mundo
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(texto.ToLower());
+        }
+
     }
 }

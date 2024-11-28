@@ -1,4 +1,5 @@
 ﻿using BiblioModeloDatos;
+using EchoOfRebellion.Clases.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,21 @@ using System.Windows.Forms;
 
 namespace EchoOfRebellion.Formularios
 {
+    public enum CasellaAlineacio
+    {
+        Esquerra,
+        Centrat,
+        Dreta
+    }
+
+    public class casella
+    {
+        public string nom { get; set; }
+        public int ample { get; set; }
+        public bool visible { get; set; }
+        public CasellaAlineacio alineacio { get; set; }
+    }
+
     public partial class frmBaseBBDD : frmBase
     {
         private clsModeloDatos md;
@@ -21,7 +37,9 @@ namespace EchoOfRebellion.Formularios
         private bool _esNou = false;
         private string _tabla { get; set; }
         private string _querySelect { get; set; }
+        private string _id { get; set; }
 
+        private List<casella> caselles;
 
         public frmBaseBBDD()
         {
@@ -36,6 +54,15 @@ namespace EchoOfRebellion.Formularios
         public string Query
         {
             set { _querySelect = value; }
+        }
+        public string SetId
+        {
+            set { _id = value; }
+        }
+
+        public List<casella> SetCaselles
+        {
+            set { caselles = value; }
         }
 
         private void FormatoGrid()
@@ -92,6 +119,74 @@ namespace EchoOfRebellion.Formularios
                 _ds = md.PortarPerConsulta(_querySelect); 
             }
             dataGridView1.DataSource = _ds.Tables[0];
+            DibujarGrid();
+        }
+
+        private void DibujarGrid()
+        {
+            if (caselles == null || caselles.Count == 0) 
+            {
+                return;
+            }
+
+            bool NoOrdenable = false;
+
+            int numCols = dataGridView1.ColumnCount;
+            int numInfo = caselles.Count;
+
+            int pos = 0;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (NoOrdenable) column.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+                if (pos < numInfo)
+                {
+                    int _ample = caselles[pos].ample;
+                    bool _visible = caselles[pos].visible;
+                    CasellaAlineacio _alineacio = caselles[pos].alineacio;
+                    string _nom = caselles[pos].nom == null ? column.HeaderText.Capitalize() : caselles[pos].nom;
+
+                    column.Visible = _visible;
+                    column.Width = _ample;
+                    column.HeaderText = _nom;
+
+                    switch (_alineacio)
+                    {
+                        case CasellaAlineacio.Centrat: // center
+                            column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            break;
+                        case CasellaAlineacio.Dreta: // right
+                            column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            break;
+                        default: // CasellaAlineacio.Esquerra
+                            column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                            break;
+                    }
+
+                    Type tipoDeDato = column.ValueType;
+
+                    if (tipoDeDato == typeof(string))
+                    {
+                        // La columna es de tipo string
+                    }
+                    else if (tipoDeDato == typeof(decimal) || tipoDeDato == typeof(double) || tipoDeDato == typeof(float))
+                    {
+                        // La columna es de tipo decimal
+                        column.DefaultCellStyle.Format = "N2";
+                    }
+                    else if (tipoDeDato == typeof(int))
+                    {
+                        // La columna es de tipo entero (int)
+                    }
+
+
+                }
+                pos += 1;
+            }
+
         }
 
 
@@ -182,7 +277,7 @@ namespace EchoOfRebellion.Formularios
                     {
                         if (control is TextBox txt)
                         {
-                            if (txt.Tag.ToString() == columnName)
+                            if (txt.Tag.ToString() == columnName && !txt.ReadOnly)
                             {
                                 int offset = columnName.Length * 8;
 
@@ -232,21 +327,37 @@ namespace EchoOfRebellion.Formularios
             int _offset_top = grupo != null ? grupo.Top : 0;
             int _offset_left = grupo != null ? grupo.Left : 0;
 
+            List<Control> _list = new List<Control>();
+
             foreach (Control control in Controls)
             {
                 if (control is TextBox txt)
                 {
-                    txt.Top += _offset_top;
-                    txt.Left += _offset_left;
-                    txt.BringToFront();
+                    if (txt.Tag.ToString() == _id)
+                    {
+                        txt.Top = 0;
+                        txt.Left = 0;
+                        txt.Enabled = false;
+                    }
+                    else
+                    {
+                        txt.Top += _offset_top;
+                        txt.Left += _offset_left;
+                        _list.Add(control);
+                    }
                 }
                 else if (control is ComboBox cmb)
                 {
                     cmb.Top += _offset_top;
                     cmb.Left += _offset_left;
-                    cmb.BringToFront();
+                    _list.Add(control);
                 }
             }
+
+            foreach (Control control in _list) {
+                control.BringToFront();
+            }
+
         }
 
         public void InicializarFormulario()
@@ -265,7 +376,7 @@ namespace EchoOfRebellion.Formularios
                 {
                     if (control is TextBox txt)
                     {
-                        if (!txt.ReadOnly)
+                        if (txt.Enabled)
                         {
                             row[txt.Tag.ToString()] = txt.Text;
                         }
@@ -314,6 +425,42 @@ namespace EchoOfRebellion.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            int? valor = null;
+
+            // Esto obtiene las filas que no están eliminadas.
+            DataRow[] activeRows = _ds.Tables[0].Select(null, null, DataViewRowState.CurrentRows);
+
+            if (activeRows.Length == 0)
+            {
+                return;
+            }
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox txt)
+                {
+                    if (txt.Tag.ToString() == _id)
+                    {
+                        valor = Convert.ToInt32(txt.Text);
+                        break;
+                    }
+                }
+            }
+
+            if (valor == null)
+            {
+                return;
+            }
+
+            foreach (DataRow row in activeRows) 
+            {
+                int _idTmp = (int)row[_id];
+                if (valor == _idTmp)
+                {
+                    row.Delete();
+                    break;
+                }
+            }
 
         }
     }

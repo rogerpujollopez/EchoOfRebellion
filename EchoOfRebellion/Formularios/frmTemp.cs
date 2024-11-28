@@ -26,6 +26,12 @@ namespace EchoOfRebellion.Formularios
             frm.Tabla = tabla;
             frm.Query = "select idRegion,CodeRegion,DescRegion,Remarks from Regions";
             frm.Titulo = $"Mantenimiento tabla '{tabla}'";
+            frm.SetId = "idRegion";
+            frm.SetCaselles = new List<casella>() {
+                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
+                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
+                new casella() { nom="name2", ample=300, visible = true},
+            };
             //frm.QueryUpdate = "select * from Regions";
 
             //frm.Columnas.Add(new ManualTextBox.Columa()
