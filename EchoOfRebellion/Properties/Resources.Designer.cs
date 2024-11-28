@@ -63,6 +63,16 @@ namespace EchoOfRebellion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_icon {
+            get {
+                object obj = ResourceManager.GetObject("arrow_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap email_image {
             get {
                 object obj = ResourceManager.GetObject("email_image", resourceCulture);
@@ -86,6 +96,16 @@ namespace EchoOfRebellion.Properties {
         internal static System.Drawing.Bitmap LedsRojo_Flojo {
             get {
                 object obj = ResourceManager.GetObject("LedsRojo_Flojo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_password_icon {
+            get {
+                object obj = ResourceManager.GetObject("reset_password_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

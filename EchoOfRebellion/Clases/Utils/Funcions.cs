@@ -27,7 +27,7 @@ namespace EchoOfRebellion.Clases.Utils
 
                 int valor3 = BitConverter.ToInt32(valor, 0);
 
-                valor3 = Math.Abs(valor3);
+                valor3 = Math.Abs(100000 + (valor3 % 900000));
 
                 return valor3;
             }

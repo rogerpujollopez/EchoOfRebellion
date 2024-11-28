@@ -210,6 +210,8 @@
   <ItemGroup>
     <Content Include="frmLogin\conQueueUserWorkItem.txt" />
     <Content Include="frmLogin\conThreadCreate.txt" />
+    <None Include="Resources\reset_password_icon.png" />
+    <None Include="Resources\arrow_icon.png" />
     <Content Include="Resources\EfectoSplashUsuario.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

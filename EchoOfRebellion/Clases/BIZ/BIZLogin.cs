@@ -69,7 +69,7 @@ namespace EchoOfRebellion.Clases.BIZ
         }
         public static int EnviarMail(string usuario, string mail)
         {
-            int code = int.Parse(Funcions.CreateNumRNG().ToString().Substring(3));
+            int code = Funcions.CreateNumRNG();
             Comunicacio.EnviarMail(usuario, mail, "Código de verificacion",
                 $"Codigo de verifiacion: {code}"
                 );

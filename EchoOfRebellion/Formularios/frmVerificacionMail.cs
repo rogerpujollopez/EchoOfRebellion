@@ -26,6 +26,33 @@ namespace EchoOfRebellion.Formularios
             count = 0;
         }
 
+        private void imgArrow_Click(object sender, EventArgs e)
+        {
+            txtCodeEmail.Clear();
+            this.Close();
+        }
+
+        private void bttnAceptar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Form cambioPassForm = Application.OpenForms["frmUsuarioCambioPassword"];
+            if (cambioPassForm != null)
+            {
+                cambioPassForm.Close();
+            }
+
+            Form loginForm = Application.OpenForms["frmLogin"];
+            if (loginForm != null)
+            {
+                loginForm.Show();
+            }
+            else
+            {
+                new frmLogin().Show();
+            }
+        }
+
         public bool Verificado
         {
             get
@@ -39,6 +66,10 @@ namespace EchoOfRebellion.Formularios
             if (txtCodeEmail.Text == code.ToString())
             {
                 BIZLogin.RestablecerPassword(usuario, nuevoPassword, mail);
+                panelSuccess.Visible = true;
+               
+                txtCodeEmail.Enabled = false;
+                bttnEnviarCodigo.Enabled = false;
             }
             else
             {
