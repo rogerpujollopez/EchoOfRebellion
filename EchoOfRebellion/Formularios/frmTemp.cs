@@ -48,7 +48,10 @@ namespace EchoOfRebellion.Formularios
             };
 
             // ds Combo
-
+            frm.SetLlistes = new List<llista>()
+            {
+                new llista() { id="idRegion", query="select idRegion,CodeRegion+' - '+DescRegion as Region from Regions order by Region"}
+            };
 
             //frm.QueryUpdate = "select * from Regions";
 

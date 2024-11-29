@@ -31,6 +31,12 @@ namespace EchoOfRebellion.Formularios
         public CasellaAlineacio alineacio { get; set; }
     }
 
+    public class llista
+    {
+        public string query { get; set; }
+        public string id { get; set; }
+    }
+
     public partial class frmBaseBBDD : frmBase
     {
         private clsModeloDatos md;
@@ -41,6 +47,7 @@ namespace EchoOfRebellion.Formularios
         private string _id { get; set; }
 
         private List<casella> caselles;
+        private List<llista> llistes;
 
         public frmBaseBBDD()
         {
@@ -64,6 +71,11 @@ namespace EchoOfRebellion.Formularios
         public List<casella> SetCaselles
         {
             set { caselles = value; }
+        }
+
+        public List<llista> SetLlistes
+        {
+            set { llistes = value; }
         }
 
         private void FormatoGrid()
@@ -121,7 +133,34 @@ namespace EchoOfRebellion.Formularios
             }
             dataGridView1.DataSource = _ds.Tables[0];
             DibujarGrid();
+
+            OmplirSWCodi();
+
         }
+
+        private void OmplirSWCodi()
+        {
+            if (llistes != null && llistes.Count > 0) {
+                foreach (Control control in this.Controls)
+                {
+                    if (control is SWCodi txt && control.Tag != null)
+                    {
+                        string id = txt.Tag.ToString();
+
+                        foreach (llista lis in llistes)
+                        {
+                            if (lis.id == id)
+                            {
+                                txt.Origen= md.PortarPerConsulta(lis.query);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         private void DibujarGrid()
         {
@@ -247,6 +286,10 @@ namespace EchoOfRebellion.Formularios
             if (sender is TextBox txt)
             {
                 txt.DataBindings[0].BindingManagerBase.EndCurrentEdit();
+            }
+            else if (sender is SWCodi cd)
+            {
+                cd.DataBindings[0].BindingManagerBase.EndCurrentEdit();
             }
             //else if (sender is ComboBox cmb)
             //{

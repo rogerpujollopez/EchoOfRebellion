@@ -56,12 +56,9 @@
             this.swCodi1.Location = new System.Drawing.Point(97, 93);
             this.swCodi1.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi1.Name = "swCodi1";
-            this.swCodi1.NivellDesitjat = MisControles.SWCodi.TipusNivell.GM;
-            this.swCodi1.Requerit = false;
             this.swCodi1.Size = new System.Drawing.Size(342, 21);
             this.swCodi1.TabIndex = 3;
             this.swCodi1.Tag = "idRegion";
-            this.swCodi1.TextLabel = "XXX";
             this.swCodi1.TextValue = "";
             // 
             // textBox4
