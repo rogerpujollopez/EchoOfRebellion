@@ -101,6 +101,12 @@
     <Compile Include="Formularios\frmManteniment_Regions.Designer.cs">
       <DependentUpon>frmManteniment_Regions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmManteniment_Sectors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmManteniment_Sectors.Designer.cs">
+      <DependentUpon>frmManteniment_Sectors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmTemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmManteniment_Regions.resx">
       <DependentUpon>frmManteniment_Regions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmManteniment_Sectors.resx">
+      <DependentUpon>frmManteniment_Sectors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmSplashUsuario.resx">
       <DependentUpon>frmSplashUsuario.cs</DependentUpon>

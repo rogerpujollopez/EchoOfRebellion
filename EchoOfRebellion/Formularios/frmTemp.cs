@@ -20,18 +20,36 @@ namespace EchoOfRebellion.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string tabla = "Regions";
+            //string tabla = "Regions";
 
-            frmManteniment_Regions frm = new frmManteniment_Regions();
+            //frmManteniment_Regions frm = new frmManteniment_Regions();
+            //frm.Tabla = tabla;
+            //frm.Query = "select idRegion,CodeRegion,DescRegion,Remarks from Regions";
+            //frm.Titulo = $"Mantenimiento tabla '{tabla}'";
+            //frm.SetId = "idRegion";
+            //frm.SetCaselles = new List<casella>() {
+            //    new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
+            //    new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
+            //    new casella() { nom="name2", ample=300, visible = true},
+            //};
+
+
+            string tabla = "Sectors";
+
+            frmManteniment_Sectors frm = new frmManteniment_Sectors();
             frm.Tabla = tabla;
-            frm.Query = "select idRegion,CodeRegion,DescRegion,Remarks from Regions";
+            frm.Query = "select idSector,CodeSector,DescSector,Remarks,idRegion from Sectors ";
             frm.Titulo = $"Mantenimiento tabla '{tabla}'";
-            frm.SetId = "idRegion";
+            frm.SetId = "idSector";
             frm.SetCaselles = new List<casella>() {
                 new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
                 new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
                 new casella() { nom="name2", ample=300, visible = true},
             };
+
+            // ds Combo
+
+
             //frm.QueryUpdate = "select * from Regions";
 
             //frm.Columnas.Add(new ManualTextBox.Columa()

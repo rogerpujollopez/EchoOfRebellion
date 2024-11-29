@@ -1,5 +1,6 @@
 ﻿using BiblioModeloDatos;
 using EchoOfRebellion.Clases.Utils;
+using MisControles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -200,12 +201,18 @@ namespace EchoOfRebellion.Formularios
                     txt.DataBindings.Add("Text", _ds.Tables[0], txt.Tag.ToString());
                     txt.Validating += Evento;
                 }
-                //else if (control is ComboBox cmb)
-                //{
-                //    cmb.DataBindings.Clear();
-                //    cmb.DataBindings.Add("SelectedValue", dsSelect.Tables[0], cmb.Tag.ToString());
-                //    cmb.Validating += Evento;
-                //}
+                else if (control is ComboBox cmb)
+                {
+                    cmb.DataBindings.Clear();
+                    cmb.DataBindings.Add("SelectedValue", _ds.Tables[0], cmb.Tag.ToString());
+                    cmb.Validating += Evento;
+                }
+                else if (control is SWCodi cd)
+                {
+                    cd.DataBindings.Clear();
+                    cd.DataBindings.Add("TextValue", _ds.Tables[0], cd.Tag.ToString());
+                    cd.Validating += Evento;
+                }
             }
         }
 
@@ -226,6 +233,11 @@ namespace EchoOfRebellion.Formularios
                 {
                     cmb.DataBindings.Clear();
                     cmb.Validating -= Evento;
+                }
+                else if (control is SWCodi cd)
+                {
+                    cd.DataBindings.Clear();
+                    cd.Validating -= Evento;
                 }
             }
         }
@@ -269,7 +281,7 @@ namespace EchoOfRebellion.Formularios
             {
                 Type dataType = col.DataType;
 
-                if (dataType == typeof(string))
+                if (dataType == typeof(string) || dataType == typeof(int))
                 {
                     string columnName = col.ColumnName;
 
@@ -315,6 +327,26 @@ namespace EchoOfRebellion.Formularios
                                 lbl.BringToFront();
                             }
                         }
+                        else if (control is SWCodi cd)
+                        {
+                            if (cd.Tag.ToString() == columnName)
+                            {
+                                int offset = columnName.Length * 8;
+
+                                Label lbl = new Label()
+                                {
+                                    Name = "lbl" + columnName,
+                                    Text = columnName,
+                                    Location = new Point(cd.Location.X - offset, cd.Location.Y + 2),
+                                    AutoSize = false,
+                                    Width = offset,
+                                    Height = 13,
+                                    ForeColor = Color.White,
+                                };
+                                this.Controls.Add(lbl);
+                                lbl.BringToFront();
+                            }
+                        }
                     }
                 }
             }
@@ -350,6 +382,12 @@ namespace EchoOfRebellion.Formularios
                 {
                     cmb.Top += _offset_top;
                     cmb.Left += _offset_left;
+                    _list.Add(control);
+                }
+                else if (control is SWCodi cd)
+                {
+                    cd.Top += _offset_top;
+                    cd.Left += _offset_left;
                     _list.Add(control);
                 }
             }
