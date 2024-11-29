@@ -16,14 +16,26 @@ namespace EchoOfRebellion.Clases.BIZ
     {
         public static int BizLogin(string usuari, string password)
         {
-            // Revisar Regex usuario
+            int result;
+            bool isValidLogin, isValidPassword;
 
-            // Revisar regex pass
-
-            // Si todo ok, enviamos a la bbdd
-
-
-            int result = DMLogin.DmLogin(usuari, password);
+            isValidLogin = Funcions.ValidacionLogin(usuari); 
+            if (isValidLogin)
+            {
+                isValidPassword = Funcions.ValidacionPassword(password);
+                if (isValidPassword)
+                {
+                    result = DMLogin.DmLogin(usuari, password);
+                }
+                else
+                {
+                    result = 3;
+                }
+            }
+            else
+            {
+                result = 3;
+            }
 
             return result;
         }
@@ -35,25 +47,31 @@ namespace EchoOfRebellion.Clases.BIZ
 
         public static bool RevisarCondicionesRestablecer(string usuario, string nuevoPassword, string confirmarPassword)
         {
+            bool isValidPassword;
+
             if (!DMLogin.UsuarioExiste(usuario))
             {
                 MessageBox.Show("El usuario no existe.");
                 return false;
             }
 
-            else if (nuevoPassword != confirmarPassword)
+            isValidPassword = Funcions.ValidacionPassword(nuevoPassword);
+            if (isValidPassword)
             {
-                MessageBox.Show("Las contraseñas no coinciden.");
-                return false;
+                if (nuevoPassword != confirmarPassword)
+                {
+                    MessageBox.Show("Las contraseñas no coinciden.");
+                    return false;
+                }
+                else if (!BIZLogin.EsPasswordValido(nuevoPassword))
+                {
+                    MessageBox.Show("La contraseñas no es válida.");
+                    return false;
+                }
+                return true;
             }
 
-            else if (!BIZLogin.EsPasswordValido(nuevoPassword))
-            {
-                MessageBox.Show("La contraseñas no es válida.");
-                return false;
-            }
-
-            return true;
+            return false;
         }
 
         public static bool RestablecerPassword(string usuario, string nuevoPassword, string mail)

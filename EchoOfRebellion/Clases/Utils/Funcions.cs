@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace EchoOfRebellion.Clases.Utils
 {
@@ -56,6 +57,22 @@ namespace EchoOfRebellion.Clases.Utils
             for (Int32 t = 0; t < longitud; t++) { ret += alphabet.Substring(rand.Next(0, alphabet.Length - 1), 1); }
 
             return ret;
+        }
+        public static bool ValidacionLogin(string login)
+        {
+            string regexLogin = @"^[a-zA-Z0-9]+$";
+            //MauroLopez31 = true
+            bool esValid = Regex.IsMatch(login, regexLogin);
+
+            return esValid;
+        }
+        public static bool ValidacionPassword(string password)
+        {
+            string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$";
+            //Ml7482hl = true
+
+            bool esValid = Regex.IsMatch(password, regexPassword);
+            return esValid;
         }
     }
 }
