@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.PanelTop = new System.Windows.Forms.Panel();
+            this.lineTitulo = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lineTitulo = new System.Windows.Forms.Panel();
             this.PanelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,15 @@
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.Size = new System.Drawing.Size(741, 64);
             this.PanelTop.TabIndex = 0;
+            // 
+            // lineTitulo
+            // 
+            this.lineTitulo.BackColor = System.Drawing.Color.White;
+            this.lineTitulo.Location = new System.Drawing.Point(24, 37);
+            this.lineTitulo.Margin = new System.Windows.Forms.Padding(0);
+            this.lineTitulo.Name = "lineTitulo";
+            this.lineTitulo.Size = new System.Drawing.Size(50, 1);
+            this.lineTitulo.TabIndex = 1;
             // 
             // lblUsuario
             // 
@@ -85,15 +94,6 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Titulo";
             // 
-            // lineTitulo
-            // 
-            this.lineTitulo.BackColor = System.Drawing.Color.White;
-            this.lineTitulo.Location = new System.Drawing.Point(24, 37);
-            this.lineTitulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lineTitulo.Name = "lineTitulo";
-            this.lineTitulo.Size = new System.Drawing.Size(50, 1);
-            this.lineTitulo.TabIndex = 1;
-            // 
             // frmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -102,12 +102,14 @@
             this.ClientSize = new System.Drawing.Size(741, 327);
             this.Controls.Add(this.PanelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBase_FormClosing);
             this.Load += new System.EventHandler(this.frmBase_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBase_KeyDown);
             this.PanelTop.ResumeLayout(false);
             this.PanelTop.PerformLayout();
             this.ResumeLayout(false);

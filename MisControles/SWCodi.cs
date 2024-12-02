@@ -15,6 +15,7 @@ namespace MisControles
         private DataSet ds = null;
         private Color colorLeave = Color.White;
         private Color colorEnter = Color.Green;
+        private int numCols;
 
         public SWCodi()
         {
@@ -23,7 +24,13 @@ namespace MisControles
 
         public DataSet Origen
         {
-            set { ds = value; }
+            set { 
+                ds = value;
+                numCols = 0;
+                if (ds != null && ds.Tables[0].Rows.Count > 0) {
+                    numCols = ds.Tables[0].Rows.Count;
+                }
+            }
         }
 
         //[Browsable(true)]
@@ -43,6 +50,45 @@ namespace MisControles
 
         [Browsable(true)]
         [Category("Personalizació")]
+        [Description("Text id")]
+        public string TextId
+        {
+            get
+            {
+                return txtId.Text;
+            }
+            set
+            {
+                txtId.Text = value;
+                ActualitzarLabelDesdeTextId();
+            }
+        }
+
+        private void ActualitzarLabelDesdeTextId()
+        {
+            int result = int.TryParse(txtId.Text, out var temp) ? temp : -1;
+
+            if (ds != null && result >= 0)
+            {
+
+                int id;
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    id = (int)row[0];
+
+                    if (id == result)
+                    {
+                        txtcodi.Text = row[1].ToString();
+                        txtLabel.Text = row[2].ToString();
+                        break;
+                    }
+                }
+            }
+        }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
         [Description("Text valor")]
         public string TextValue
         {
@@ -53,27 +99,39 @@ namespace MisControles
             set
             {
                 txtcodi.Text = value;
-                ActualitzarLabel();
+                ActualitzarLabelDesdeTextValue();
             }
         }
 
-        private void ActualitzarLabel()
+        private void ActualitzarLabelDesdeTextValue()
         {
-            int result = int.TryParse(txtcodi.Text, out var temp) ? temp : -1;
+            string _codi = txtcodi.Text;
 
-            if (ds != null && result >= 0) {
+            if (ds != null && _codi != "") {
                 
-                int id;
-
                 foreach (DataRow row in ds.Tables[0].Rows) {
-                    id = (int)row[0];
-
-                    if (id == result) { 
-                        string valor = (string)row[1];
-                        txtLabel.Text = valor;
+                    if (_codi == row[1].ToString()) {
+                        txtId.Text = row[0].ToString();
+                        txtLabel.Text = row[2].ToString();
                         break;
                     }
                 }
+            }
+        }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Text descripció")]
+        public string TextDesc
+        {
+            get
+            {
+                return txtLabel.Text;
+            }
+            set
+            {
+                txtLabel.Text = value;
+                //ActualitzarLabelDesdeTextValue();
             }
         }
 
@@ -85,6 +143,7 @@ namespace MisControles
         private void txtcodi_Enter(object sender, EventArgs e)
         {
             txtcodi.BackColor = colorEnter;
+            txtcodi.Select(0, txtcodi.Text.Length);
         }
 
         private void txtLabel_MouseClick(object sender, MouseEventArgs e)
@@ -133,9 +192,16 @@ namespace MisControles
                 if (listBox.SelectedItem is KeyValuePair<int, string> selectedPair)
                 {
                     int id = selectedPair.Key;
-                    string texto = selectedPair.Value;
-                    txtcodi.Text = id.ToString();
-                    txtLabel.Text = texto;
+                    txtId.Text = id.ToString();
+
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        if (id == (int)row[0])
+                        {
+                            txtcodi.Text = row[1].ToString();
+                            txtLabel.Text=row[2].ToString();   
+                        }
+                    }
                     frm.Close();
                 }
             };
@@ -146,6 +212,40 @@ namespace MisControles
 
             frm.ShowDialog();
 
+        }
+
+        private void txtcodi_Validating(object sender, CancelEventArgs e)
+        {
+            int _id = 0;
+            string _codi = "";
+            string _desc = "";
+
+            if (txtcodi.Text == "")
+            {
+                txtId.Text = _id.ToString();
+                txtcodi.Text = _codi;
+                txtLabel.Text = _desc;
+                return;
+            }
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                if (txtcodi.Text == row[1].ToString())
+                {
+                    _id = (int)row[0];
+                    _codi = row[1].ToString();
+                    _desc = row[2].ToString();
+                }
+            }
+
+            if (_codi == "" && _desc == "" && _id == 0)
+            {
+                e.Cancel = true;
+            }
+
+            txtId.Text = _id.ToString();
+            txtcodi.Text = _codi;
+            txtLabel.Text = _desc;
         }
     }
 }

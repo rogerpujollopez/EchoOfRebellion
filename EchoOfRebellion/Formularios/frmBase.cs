@@ -99,5 +99,21 @@ namespace EchoOfRebellion.Formularios
                 timer = null;
             }
         }
+
+        private void frmBase_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDown(e);
+        }
+
+        protected virtual void HandleKeyDown(KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
     }
 }

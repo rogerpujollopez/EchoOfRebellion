@@ -91,7 +91,9 @@
     <Compile Include="Formularios\frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmBaseBBDD.cs" />
+    <Compile Include="Formularios\frmBaseBBDD.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmBaseBBDD.Designer.cs">
       <DependentUpon>frmBaseBBDD.cs</DependentUpon>
     </Compile>
@@ -107,21 +109,18 @@
     <Compile Include="Formularios\frmManteniment_Sectors.Designer.cs">
       <DependentUpon>frmManteniment_Sectors.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Formularios\frmManteniment_SpaceShipCategories.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmManteniment_SpaceShipCategories.Designer.cs">
       <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Formularios\frmManteniment_UserCategories.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmManteniment_UserCategories.Designer.cs">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>
     </Compile>
-    
     <Compile Include="Formularios\frmTemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,15 +177,12 @@
     <EmbeddedResource Include="Formularios\frmManteniment_Sectors.resx">
       <DependentUpon>frmManteniment_Sectors.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipCategories.resx">
       <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Formularios\frmManteniment_UserCategories.resx">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Formularios\frmSplashUsuario.resx">
       <DependentUpon>frmSplashUsuario.cs</DependentUpon>
     </EmbeddedResource>

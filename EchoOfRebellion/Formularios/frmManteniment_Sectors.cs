@@ -21,5 +21,13 @@ namespace EchoOfRebellion.Formularios
         {
             InicializarFormulario();
         }
+
+        //protected override void HandleKeyDown(KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Escape)
+        //    {
+        //    }
+        //}
+
     }
 }

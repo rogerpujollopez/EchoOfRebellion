@@ -16,27 +16,6 @@ using System.Windows.Forms;
 
 namespace EchoOfRebellion.Formularios
 {
-    public enum CasellaAlineacio
-    {
-        Esquerra,
-        Centrat,
-        Dreta
-    }
-
-    public class casella
-    {
-        public string nom { get; set; }
-        public int ample { get; set; }
-        public bool visible { get; set; }
-        public CasellaAlineacio alineacio { get; set; }
-    }
-
-    public class llista
-    {
-        public string query { get; set; }
-        public string id { get; set; }
-    }
-
     public partial class frmBaseBBDD : frmBase
     {
         private clsModeloDatos md;
@@ -44,6 +23,7 @@ namespace EchoOfRebellion.Formularios
         private bool _esNou = false;
         private string _tabla { get; set; }
         private string _querySelect { get; set; }
+        private string _queryUpdate { get; set; }
         private string _id { get; set; }
 
         private List<casella> caselles;
@@ -62,6 +42,10 @@ namespace EchoOfRebellion.Formularios
         public string Query
         {
             set { _querySelect = value; }
+        }
+        public string QueryUpdate
+        {
+            set { _queryUpdate = value; }
         }
         public string SetId
         {
@@ -249,7 +233,9 @@ namespace EchoOfRebellion.Formularios
                 else if (control is SWCodi cd)
                 {
                     cd.DataBindings.Clear();
-                    cd.DataBindings.Add("TextValue", _ds.Tables[0], cd.Tag.ToString());
+                    cd.DataBindings.Add("TextId", _ds.Tables[0], cd.Tag.ToString());
+                    cd.DataBindings.Add("TextDesc", _ds.Tables[0], "DescRegion");
+                    cd.DataBindings.Add("TextValue", _ds.Tables[0], "CodeSector");
                     cd.Validating += Evento;
                 }
             }
@@ -364,7 +350,7 @@ namespace EchoOfRebellion.Formularios
                                     AutoSize = false,
                                     Width = offset,
                                     Height = 13,
-                                    ForeColor = Color.White,
+                                    ForeColor = Color.Red,
                                 };
                                 this.Controls.Add(lbl);
                                 lbl.BringToFront();
@@ -384,7 +370,7 @@ namespace EchoOfRebellion.Formularios
                                     AutoSize = false,
                                     Width = offset,
                                     Height = 13,
-                                    ForeColor = Color.White,
+                                    ForeColor = Color.Red,
                                 };
                                 this.Controls.Add(lbl);
                                 lbl.BringToFront();
@@ -476,7 +462,7 @@ namespace EchoOfRebellion.Formularios
             int selectedRowIndex = dataGridView1.CurrentCell?.RowIndex ?? -1;
 
 
-            int result = md.Actualitzar(_ds, _querySelect);
+            int result = md.Actualitzar(_ds, _queryUpdate);
 
             CargarDatosBBDD();
 
@@ -545,4 +531,26 @@ namespace EchoOfRebellion.Formularios
 
         }
     }
+
+    public enum CasellaAlineacio
+    {
+        Esquerra,
+        Centrat,
+        Dreta
+    }
+
+    public class casella
+    {
+        public string nom { get; set; }
+        public int ample { get; set; }
+        public bool visible { get; set; }
+        public CasellaAlineacio alineacio { get; set; }
+    }
+
+    public class llista
+    {
+        public string query { get; set; }
+        public string id { get; set; }
+    }
+
 }

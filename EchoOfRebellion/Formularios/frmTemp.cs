@@ -38,7 +38,8 @@ namespace EchoOfRebellion.Formularios
 
             frmManteniment_Sectors frm = new frmManteniment_Sectors();
             frm.Tabla = tabla;
-            frm.Query = "select idSector,CodeSector,DescSector,Remarks,idRegion from Sectors ";
+            frm.Query = "select idSector,s.idRegion,CodeSector,DescSector,s.Remarks,r.DescRegion from Sectors as s left join Regions as r on s.idRegion=r.idRegion ";
+            frm.QueryUpdate = "select idSector,CodeSector,DescSector,Remarks,idRegion from Sectors ";
             frm.Titulo = $"Mantenimiento tabla '{tabla}'";
             frm.SetId = "idSector";
             frm.SetCaselles = new List<casella>() {
@@ -50,7 +51,7 @@ namespace EchoOfRebellion.Formularios
             // ds Combo
             frm.SetLlistes = new List<llista>()
             {
-                new llista() { id="idRegion", query="select idRegion,CodeRegion+' - '+DescRegion as Region from Regions order by Region"}
+                new llista() { id="idRegion", query="select idRegion,CodeRegion,DescRegion as Region from Regions order by Region"}
             };
 
             //frm.QueryUpdate = "select * from Regions";
