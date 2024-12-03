@@ -61,7 +61,7 @@ namespace EchoOfRebellion.Formularios
         //    lblTitulo.Text = titulo;
         //}
 
-        public string Titulo
+        protected string Titulo
         {
             set { 
                 lblTitulo.Text = value;
@@ -69,12 +69,12 @@ namespace EchoOfRebellion.Formularios
             }
         }
 
-        private void AjustarLinea()
+        protected void AjustarLinea()
         {
             lineTitulo.Width = Math.Max(lblTitulo.Width, lblUsuario.Width);
         }
 
-        public void Usuario(string usuario)
+        protected void Usuario(string usuario)
         {
             lblUsuario.Text = usuario;
             AjustarLinea();

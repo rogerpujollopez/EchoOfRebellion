@@ -16,7 +16,7 @@ namespace MisControles
         private Color colorLeave = Color.White;
         private Color colorEnter = Color.Green;
         private int numCols;
-
+        private List<int> _viewDataColumns;
         public SWCodi()
         {
             InitializeComponent();
@@ -30,6 +30,10 @@ namespace MisControles
                 if (ds != null && ds.Tables[0].Rows.Count > 0) {
                     numCols = ds.Tables[0].Rows.Count;
                 }
+            }
+            get
+            {
+                return ds;
             }
         }
 
@@ -50,6 +54,16 @@ namespace MisControles
 
         [Browsable(true)]
         [Category("Personalizació")]
+        [Description("Tag2")]
+        public string Tag2 { get; set; }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Tag3")]
+        public string Tag3 { get; set; }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
         [Description("Text id")]
         public string TextId
         {
@@ -62,6 +76,14 @@ namespace MisControles
                 txtId.Text = value;
                 ActualitzarLabelDesdeTextId();
             }
+        }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Columnes a mostrar")]
+        public List<int> ViewDataColumns
+        {
+            set { _viewDataColumns = value; }
         }
 
         private void ActualitzarLabelDesdeTextId()
@@ -176,7 +198,27 @@ namespace MisControles
             foreach (DataRow row in ds.Tables[0].Rows) 
             {
                 int id = (int)row[0];
-                string texto = row[1].ToString();
+                string texto = "";
+
+                if (_viewDataColumns != null && _viewDataColumns.Count > 0)
+                {
+                    string cadena = "";
+
+                    for (int i = 0; i < _viewDataColumns.Count; i++)
+                    {
+                        if (cadena != "")
+                        {
+                            cadena += " - ";
+                        }
+                        cadena += row[_viewDataColumns[i]].ToString();
+                    }
+                    texto = cadena;
+                }
+                else
+                {
+                    texto = row[1].ToString();
+                }
+
                 listBox.Items.Add(new KeyValuePair<int, string>(id, texto));
             }
             listBox.DisplayMember = "Value";

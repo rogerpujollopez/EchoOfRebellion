@@ -121,6 +121,12 @@
     <Compile Include="Formularios\frmManteniment_UserCategories.Designer.cs">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmManteniment_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmManteniment_Users.Designer.cs">
+      <DependentUpon>frmManteniment_Users.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmTemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmManteniment_UserCategories.resx">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmManteniment_Users.resx">
+      <DependentUpon>frmManteniment_Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmSplashUsuario.resx">
       <DependentUpon>frmSplashUsuario.cs</DependentUpon>

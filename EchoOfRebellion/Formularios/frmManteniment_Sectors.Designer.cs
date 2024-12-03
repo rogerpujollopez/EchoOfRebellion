@@ -59,6 +59,8 @@
             this.swCodi1.Size = new System.Drawing.Size(342, 21);
             this.swCodi1.TabIndex = 3;
             this.swCodi1.Tag = "idRegion";
+            this.swCodi1.Tag2 = "CodeSector";
+            this.swCodi1.Tag3 = "DescRegion";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
             // 

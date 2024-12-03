@@ -18,6 +18,16 @@ namespace EchoOfRebellion.Formularios
 {
     public partial class frmBaseBBDD : frmBase
     {
+        protected class Data
+        {
+            public string taule { get; set; }
+            public string querySelect { get; set; }
+            public string queryUpdate { get; set; }
+            public string id { get; set; }
+            public bool autoLabel { get; set; }
+            public string titol { get; set; }
+        }
+
         private clsModeloDatos md;
         private DataSet _ds;
         private bool _esNou = false;
@@ -25,6 +35,7 @@ namespace EchoOfRebellion.Formularios
         private string _querySelect { get; set; }
         private string _queryUpdate { get; set; }
         private string _id { get; set; }
+        private bool _autoLabel { get; set; }
 
         private List<casella> caselles;
         private List<llista> llistes;
@@ -35,22 +46,37 @@ namespace EchoOfRebellion.Formularios
             dataGridView1.RowHeadersVisible = false;
         }
 
-        public string Tabla
+        protected Data SetData
         {
-            set { _tabla = value; }
+            set
+            {
+                Data data = value;
+
+                _tabla = data.taule;
+                _querySelect = data.querySelect;
+                _queryUpdate = data.queryUpdate;
+                _id = data.id;
+                _autoLabel = data.autoLabel;
+                Titulo = data.titol;
+            }
         }
-        public string Query
-        {
-            set { _querySelect = value; }
-        }
-        public string QueryUpdate
-        {
-            set { _queryUpdate = value; }
-        }
-        public string SetId
-        {
-            set { _id = value; }
-        }
+
+        //public string Tabla
+        //{
+        //    set { _tabla = value; }
+        //}
+        //public string Query
+        //{
+        //    set { _querySelect = value; }
+        //}
+        //public string QueryUpdate
+        //{
+        //    set { _queryUpdate = value; }
+        //}
+        //public string SetId
+        //{
+        //    set { _id = value; }
+        //}
 
         public List<casella> SetCaselles
         {
@@ -136,6 +162,7 @@ namespace EchoOfRebellion.Formularios
                             if (lis.id == id)
                             {
                                 txt.Origen= md.PortarPerConsulta(lis.query);
+                                // Co
                                 break;
                             }
                         }
@@ -234,8 +261,14 @@ namespace EchoOfRebellion.Formularios
                 {
                     cd.DataBindings.Clear();
                     cd.DataBindings.Add("TextId", _ds.Tables[0], cd.Tag.ToString());
-                    cd.DataBindings.Add("TextDesc", _ds.Tables[0], "DescRegion");
-                    cd.DataBindings.Add("TextValue", _ds.Tables[0], "CodeSector");
+                    if (cd.Tag2 != "") 
+                    {
+                        cd.DataBindings.Add("TextValue", _ds.Tables[0], cd.Tag2); // "CodeSector"
+                    }
+                    if (cd.Tag3 != "")
+                    {
+                        cd.DataBindings.Add("TextDesc", _ds.Tables[0], cd.Tag3); // "DescRegion"
+                    }
                     cd.Validating += Evento;
                 }
             }
@@ -381,14 +414,18 @@ namespace EchoOfRebellion.Formularios
             }
         }
 
-        private void _SituarCamposEnFormulario()
+        private void _SituarCamposEnFormulario(int offset_top = 0, int offset_left = 0)
         {
             var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
 
             int _offset_top = grupo != null ? grupo.Top : 0;
             int _offset_left = grupo != null ? grupo.Left : 0;
 
-            List<Control> _list = new List<Control>();
+            _offset_top += offset_top;
+            _offset_left += offset_left;
+
+            List<Control> _listFront = new List<Control>();
+            List<Control> _listBack = new List<Control>();
 
             foreach (Control control in Controls)
             {
@@ -399,38 +436,50 @@ namespace EchoOfRebellion.Formularios
                         txt.Top = 0;
                         txt.Left = 0;
                         txt.Enabled = false;
+                        _listBack.Add(control);
                     }
                     else
                     {
                         txt.Top += _offset_top;
                         txt.Left += _offset_left;
-                        _list.Add(control);
+                        _listFront.Add(control);
                     }
                 }
                 else if (control is ComboBox cmb)
                 {
                     cmb.Top += _offset_top;
                     cmb.Left += _offset_left;
-                    _list.Add(control);
+                    _listFront.Add(control);
                 }
                 else if (control is SWCodi cd)
                 {
                     cd.Top += _offset_top;
                     cd.Left += _offset_left;
-                    _list.Add(control);
+                    _listFront.Add(control);
+                }
+                else if (control is PictureBox pic)
+                {
+                    pic.Top += _offset_top;
+                    pic.Left += _offset_left;
                 }
             }
 
-            foreach (Control control in _list) {
+            foreach (Control control in _listFront) {
                 control.BringToFront();
             }
-
+            foreach (Control control in _listBack)
+            {
+                control.SendToBack();
+            }
         }
 
-        public void InicializarFormulario()
+        public void InicializarFormulario(int offset_top = 0, int offset_left = 0)
         {
-            _SituarCamposEnFormulario();
-            _DibujarLabels();
+            _SituarCamposEnFormulario(offset_top, offset_left);
+            if (_autoLabel)
+            {
+                _DibujarLabels();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
