@@ -22,7 +22,7 @@ namespace FormUsers
 
             Data data = new Data()
             {
-                autoLabel = false,
+                autoLabel = true,
                 taule = tabla,
                 querySelect = @"
                     select idUser,u.idUserRank,u.idUserCategory,u.idPlanet,u.idSpecie,

@@ -61,3 +61,5 @@ logs/
 /App/EchoOfRebellion.exe
 /App/MisControles.dll
 /App/UsuariActiu.dll
+*.dll
+*.exe

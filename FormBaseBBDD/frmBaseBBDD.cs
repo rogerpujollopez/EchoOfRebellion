@@ -35,6 +35,8 @@ namespace FormBaseBBDD
         private string _id { get; set; }
         private bool _autoLabel { get; set; }
 
+        public Color _color { get; set; } = Color.Red;
+
         private List<casella> caselles;
         private List<llista> llistes;
 
@@ -362,7 +364,7 @@ namespace FormBaseBBDD
                                     AutoSize = false,
                                     Width = offset,
                                     Height = 13,
-                                    ForeColor = Color.Red,
+                                    ForeColor = _color,
                                 };
                                 this.Controls.Add(lbl);
                                 lbl.BringToFront();
@@ -382,7 +384,7 @@ namespace FormBaseBBDD
                                     AutoSize = false,
                                     Width = offset,
                                     Height = 13,
-                                    ForeColor = Color.Red,
+                                    ForeColor = _color,
                                 };
                                 this.Controls.Add(lbl);
                                 lbl.BringToFront();
@@ -402,7 +404,39 @@ namespace FormBaseBBDD
                                     AutoSize = false,
                                     Width = offset,
                                     Height = 13,
-                                    ForeColor = Color.Red,
+                                    ForeColor = _color,
+                                };
+                                this.Controls.Add(lbl);
+                                lbl.BringToFront();
+                            }
+                        }
+                        else if (control is PictureBox pic)
+                        {
+                            pic.BorderStyle = BorderStyle.None;
+
+                            pic.Paint += (sender, e) =>
+                            {
+                                using (var pen = new Pen(_color, 2)) 
+                                {
+                                    e.Graphics.DrawRectangle(pen, 0, 0, pic.Width, pic.Height);
+                                }
+                            };
+
+                            pic.Refresh();
+
+                            if (pic.Tag.ToString() == columnName)
+                            {
+                                int offset = columnName.Length * 8;
+
+                                Label lbl = new Label()
+                                {
+                                    Name = "lbl" + columnName,
+                                    Text = columnName,
+                                    Location = new Point(pic.Location.X - offset, pic.Location.Y + 2),
+                                    AutoSize = false,
+                                    Width = offset,
+                                    Height = 13,
+                                    ForeColor = _color,
                                 };
                                 this.Controls.Add(lbl);
                                 lbl.BringToFront();
