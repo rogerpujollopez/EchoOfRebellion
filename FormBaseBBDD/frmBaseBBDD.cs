@@ -1,22 +1,18 @@
 ﻿using BiblioModeloDatos;
-using EchoOfRebellion.Clases.Utils;
 using FormBase;
 using MisControles;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 
-namespace EchoOfRebellion.Formularios
+namespace FormBaseBBDD
 {
     public partial class frmBaseBBDD : frmBase
     {
@@ -123,7 +119,7 @@ namespace EchoOfRebellion.Formularios
         private void frmBaseBBDD_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            
+
             FormatoGrid();
 
             md = new clsModeloDatos();
@@ -141,7 +137,7 @@ namespace EchoOfRebellion.Formularios
             }
             else
             {
-                _ds = md.PortarPerConsulta(_querySelect); 
+                _ds = md.PortarPerConsulta(_querySelect);
             }
             dataGridView1.DataSource = _ds.Tables[0];
             DibujarGrid();
@@ -152,7 +148,8 @@ namespace EchoOfRebellion.Formularios
 
         private void OmplirSWCodi()
         {
-            if (llistes != null && llistes.Count > 0) {
+            if (llistes != null && llistes.Count > 0)
+            {
                 foreach (Control control in this.Controls)
                 {
                     if (control is SWCodi txt && control.Tag != null)
@@ -163,7 +160,7 @@ namespace EchoOfRebellion.Formularios
                         {
                             if (lis.id == id)
                             {
-                                txt.Origen= md.PortarPerConsulta(lis.query);
+                                txt.Origen = md.PortarPerConsulta(lis.query);
                                 // Co
                                 break;
                             }
@@ -177,7 +174,7 @@ namespace EchoOfRebellion.Formularios
 
         private void DibujarGrid()
         {
-            if (caselles == null || caselles.Count == 0) 
+            if (caselles == null || caselles.Count == 0)
             {
                 return;
             }
@@ -247,7 +244,7 @@ namespace EchoOfRebellion.Formularios
         {
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox txt && control.Tag != null)  
+                if (control is TextBox txt && control.Tag != null)
                 {
                     txt.DataBindings.Clear();
                     txt.DataBindings.Add("Text", _ds.Tables[0], txt.Tag.ToString());
@@ -263,7 +260,7 @@ namespace EchoOfRebellion.Formularios
                 {
                     cd.DataBindings.Clear();
                     cd.DataBindings.Add("TextId", _ds.Tables[0], cd.Tag.ToString());
-                    if (cd.Tag2 != "") 
+                    if (cd.Tag2 != "")
                     {
                         cd.DataBindings.Add("TextValue", _ds.Tables[0], cd.Tag2); // "CodeSector"
                     }
@@ -466,7 +463,8 @@ namespace EchoOfRebellion.Formularios
                 }
             }
 
-            foreach (Control control in _listFront) {
+            foreach (Control control in _listFront)
+            {
                 control.BringToFront();
             }
             foreach (Control control in _listBack)
@@ -570,7 +568,7 @@ namespace EchoOfRebellion.Formularios
                 return;
             }
 
-            foreach (DataRow row in activeRows) 
+            foreach (DataRow row in activeRows)
             {
                 int _idTmp = (int)row[_id];
                 if (valor == _idTmp)
@@ -603,5 +601,4 @@ namespace EchoOfRebellion.Formularios
         public string query { get; set; }
         public string id { get; set; }
     }
-
 }

@@ -57,7 +57,6 @@
 
         #endregion
 
-        private SWTextbox swTextbox1;
         private System.Windows.Forms.Label lbltext;
         private System.Windows.Forms.Timer timer1;
     }

@@ -8,6 +8,7 @@ using EchoOfRebellion.Clases.Utils;
 using EchoOfRebellion;
 using static BiblioModeloDatos.DM.DMModel;
 using System.Windows.Forms;
+using Utils;
 
 
 namespace EchoOfRebellion.Clases.BIZ

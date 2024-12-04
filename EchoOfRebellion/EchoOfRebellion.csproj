@@ -82,15 +82,7 @@
     <Compile Include="Clases\BIZ\BIZLogin.cs" />
     <Compile Include="Clases\DM\DMLogin.cs" />
     <Compile Include="Clases\Utils\Comunicacio.cs" />
-    <Compile Include="Clases\Utils\Extensions.cs" />
-    <Compile Include="Clases\Utils\Funcions.cs" />
     <Compile Include="Clases\Utils\Missatgeria.cs" />
-    <Compile Include="Formularios\frmBaseBBDD.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmBaseBBDD.Designer.cs">
-      <DependentUpon>frmBaseBBDD.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmManteniment_Regions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,9 +163,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\frmBaseBBDD.resx">
-      <DependentUpon>frmBaseBBDD.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmManteniment_Regions.resx">
       <DependentUpon>frmManteniment_Regions.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +252,10 @@
       <Project>{5a1ca935-053e-490d-a9eb-3eea151ab007}</Project>
       <Name>Configuracio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormBaseBBDD\FormBaseBBDD.csproj">
+      <Project>{836ae73e-3ee2-4a7c-9aad-54081d82f899}</Project>
+      <Name>FormBaseBBDD</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormBase\FormBase.csproj">
       <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
       <Name>FormBase</Name>
@@ -274,6 +267,10 @@
     <ProjectReference Include="..\UsuariActiu\UsuariActiu.csproj">
       <Project>{e0f60624-4212-414f-b657-9fe98a668871}</Project>
       <Name>UsuariActiu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{abe79258-d83c-4ae1-80ef-6c47cc71d1fc}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
