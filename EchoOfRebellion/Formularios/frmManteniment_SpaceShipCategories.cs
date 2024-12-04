@@ -15,6 +15,25 @@ namespace EchoOfRebellion.Formularios
         public frmManteniment_SpaceShipCategories()
         {
             InitializeComponent();
+
+            string tabla = "SpaceShipCategories";
+
+            Data data = new Data()
+            {
+                autoLabel = true,
+                taule = tabla,
+                querySelect = @"select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories",
+                queryUpdate = @"select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories",
+                id = "idSpaceShipCategory",
+                titol = $"Mantenimiento tabla '{tabla}'"
+            };
+            SetData = data;
+
+            SetCaselles = new List<casella>() {
+                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
+                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
+                new casella() { nom="name2", ample=300, visible = true},
+            };
         }
 
         private void frmManteniment_ShipCategories_Load(object sender, EventArgs e)

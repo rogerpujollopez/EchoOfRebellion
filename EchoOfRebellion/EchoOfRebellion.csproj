@@ -115,6 +115,12 @@
     <Compile Include="Formularios\frmManteniment_SpaceShipCategories.Designer.cs">
       <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmManteniment_SpaceShipTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmManteniment_SpaceShipTypes.Designer.cs">
+      <DependentUpon>frmManteniment_SpaceShipTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmManteniment_UserCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipCategories.resx">
       <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipTypes.resx">
+      <DependentUpon>frmManteniment_SpaceShipTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmManteniment_UserCategories.resx">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>

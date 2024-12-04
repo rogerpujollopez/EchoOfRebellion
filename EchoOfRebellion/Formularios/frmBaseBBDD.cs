@@ -245,7 +245,7 @@ namespace EchoOfRebellion.Formularios
         {
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox txt && control.Tag != null) 
+                if (control is TextBox txt && control.Tag != null)  
                 {
                     txt.DataBindings.Clear();
                     txt.DataBindings.Add("Text", _ds.Tables[0], txt.Tag.ToString());

@@ -35,5 +35,23 @@ namespace EchoOfRebellion.Formularios
             frmManteniment_Regions frm = new frmManteniment_Regions();
             frm.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmManteniment_UserCategories frm = new frmManteniment_UserCategories();
+            frm.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            frmManteniment_SpaceShipCategories frm = new frmManteniment_SpaceShipCategories();
+            frm.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            frmManteniment_SpaceShipTypes frm = new frmManteniment_SpaceShipTypes();
+            frm.ShowDialog();
+        }
     }
 }
