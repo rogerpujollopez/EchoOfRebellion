@@ -5,15 +5,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EchoOfRebellion.Formularios
+namespace FormSectors
 {
     public partial class frmManteniment_Sectors : frmBaseBBDD
     {
-        public frmManteniment_Sectors() 
+        public frmManteniment_Sectors()
         {
             InitializeComponent();
 
@@ -29,7 +30,7 @@ namespace EchoOfRebellion.Formularios
                 titol = $"Mantenimiento tabla '{tabla}'"
             };
             SetData = data;
-            
+
             SetCaselles = new List<casella>() {
                 new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
                 new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},

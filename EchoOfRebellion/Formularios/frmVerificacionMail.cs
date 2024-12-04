@@ -13,7 +13,7 @@ namespace EchoOfRebellion.Formularios
 {
     public partial class frmVerificacionMail : Form
     {
-        private bool verificado;
+        //private bool verificado;
         private int code, count;
         private string usuario, nuevoPassword, mail;
         public frmVerificacionMail(int Code, string Usuario, string NuevoPassword, string Mail)
@@ -53,13 +53,13 @@ namespace EchoOfRebellion.Formularios
             }
         }
 
-        public bool Verificado
-        {
-            get
-            {
-                return verificado;
-            }
-        }
+        //public bool Verificado
+        //{
+        //    get
+        //    {
+        //        return verificado;
+        //    }
+        //}
 
         private void bttnEnviarCodigo_Click(object sender, EventArgs e)
         {

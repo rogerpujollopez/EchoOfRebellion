@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace EchoOfRebellion.Formularios
+namespace FormRegions
 {
     partial class frmManteniment_Regions
     {
@@ -98,3 +98,4 @@ namespace EchoOfRebellion.Formularios
         private TextBox textBox4;
     }
 }
+

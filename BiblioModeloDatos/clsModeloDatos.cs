@@ -13,9 +13,9 @@ namespace BiblioModeloDatos
     {
         private SqlConnectionStringBuilder builder;
         private SqlConnection conn;
-        private string querySelect;
-        private string queryUpdate;
-        private bool soloCombo;
+        //private string querySelect;
+        //private string queryUpdate;
+        //private bool soloCombo;
 
         public clsModeloDatos()
         {
@@ -142,7 +142,7 @@ namespace BiblioModeloDatos
                 sqlTrans.Dispose();
                 da2.Dispose();
             }
-            catch (Exception ex) 
+            catch (Exception) 
             {
                 if (sqlTrans != null && sqlTrans.Connection != null)
                 {
@@ -150,7 +150,7 @@ namespace BiblioModeloDatos
                     {
                         sqlTrans.Rollback();
                     }
-                    catch (Exception rollbackEx)
+                    catch (Exception)
                     {
                     }
                 }

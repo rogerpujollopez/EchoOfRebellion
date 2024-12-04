@@ -1,17 +1,16 @@
-﻿using EchoOfRebellion.Clases.Utils;
-using FormBaseBBDD;
+﻿using FormBaseBBDD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EchoOfRebellion.Formularios
+namespace FormRegions
 {
     public partial class frmManteniment_Regions : frmBaseBBDD
     {

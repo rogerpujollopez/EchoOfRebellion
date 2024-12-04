@@ -12,7 +12,7 @@ namespace EchoOfRebellion
 {
     public partial class frmSplash : Form
     {
-        private int posicion = 0;
+        //private int posicion = 0;
         //private List<int> offset = new List<int>() { 50, 50, 80, 20, 20, 20, 100, 50, 50, 100 };
 
         public frmSplash()
