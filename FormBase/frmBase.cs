@@ -1,5 +1,4 @@
 ﻿using Configuracio;
-using MisControles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UsuariActiuNameSpace;
 
-namespace EchoOfRebellion.Formularios
+namespace FormBase
 {
     public partial class frmBase : Form
     {
@@ -63,7 +62,8 @@ namespace EchoOfRebellion.Formularios
 
         protected string Titulo
         {
-            set { 
+            set
+            {
                 lblTitulo.Text = value;
                 AjustarLinea();
             }

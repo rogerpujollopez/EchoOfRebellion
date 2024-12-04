@@ -45,7 +45,7 @@ namespace EchoOfRebellion
                 }
 
 
-                using (var frmain = new frmMenuPrincipal())
+                using (frmMenuPrincipal frmain = new frmMenuPrincipal())
                 {
                     frmain.ShowDialog();
                 }

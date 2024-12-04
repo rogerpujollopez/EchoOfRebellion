@@ -1,4 +1,4 @@
-﻿namespace EchoOfRebellion.Formularios
+﻿namespace FormBase
 {
     partial class frmBase
     {
@@ -125,3 +125,4 @@
         private System.Windows.Forms.Panel lineTitulo;
     }
 }
+
