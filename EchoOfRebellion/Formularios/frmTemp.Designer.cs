@@ -97,16 +97,6 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(71, 371);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 47);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Users Rangs";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // frmTemp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

@@ -21,7 +21,7 @@ namespace EchoOfRebellion.Formularios
             {
                 autoLabel = true,
                 taule = "SpaceShipTypes",
-                querySelect = @"SELECT sst.idSpaceShipType, sst.idFiliation, sst.idSpaceShipCategory, sst.CodeSpaceShipType, sst.DescSpaceShipType, f.DescFiliations, sc.DescSpaceShipCategory FROM [SecureCoreG1].[dbo].[SpaceShipTypes] AS sst LEFT JOIN [SecureCoreG1].[dbo].[Filiations] AS f ON sst.idFiliation = f.idFiliation LEFT JOIN [SecureCoreG1].[dbo].[SpaceShipCategories] AS sc ON sst.idSpaceShipCategory = sc.idSpaceShipCategory",
+                querySelect = @"SELECT sst.idSpaceShipType, sst.idFiliation, sst.idSpaceShipCategory, sst.CodeSpaceShipType, sst.DescSpaceShipType, f.DescFiliations, sc.DescSpaceShipCategory FROM SpaceShipTypes AS sst LEFT JOIN Filiations AS f ON sst.idFiliation = f.idFiliation LEFT JOIN SpaceShipCategories AS sc ON sst.idSpaceShipCategory = sc.idSpaceShipCategory",
                 queryUpdate = @"select idSpaceShipType,CodeSpaceShipType,DescSpaceShipType,idFiliation,idSpaceShipCategory from SpaceShipTypes ",
                 id = "idSpaceShipType",
                 titol = $"Mantenimiento tabla '{tabla}'"
@@ -38,10 +38,7 @@ namespace EchoOfRebellion.Formularios
             // ds Combo
             SetLlistes = new List<llista>()
                 {
-                    new llista() { id="idSpaceShipCategory", query="select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories order by DescSpaceShipCategory"}
-                };
-            SetLlistes = new List<llista>()
-                {
+                    new llista() { id="idSpaceShipCategory", query="select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories order by DescSpaceShipCategory"},
                     new llista() { id="idFiliation", query="select idFiliation,CodeFiliation,DescFiliations as Filiation from Filiations order by Filiation"}
                 };
 
