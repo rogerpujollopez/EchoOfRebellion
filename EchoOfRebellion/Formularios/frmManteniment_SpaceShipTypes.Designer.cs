@@ -69,7 +69,7 @@ namespace EchoOfRebellion.Formularios
             this.swCodi1.Size = new System.Drawing.Size(342, 21);
             this.swCodi1.TabIndex = 11;
             this.swCodi1.Tag = "idSpaceShipCategory";
-            this.swCodi1.Tag2 = "CodeSpaceShipType";
+            this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescSpaceShipCategory";
             this.swCodi1.TextDesc = "XXX";
             this.swCodi1.TextId = "";
@@ -84,7 +84,7 @@ namespace EchoOfRebellion.Formularios
             this.swCodi2.Size = new System.Drawing.Size(342, 21);
             this.swCodi2.TabIndex = 12;
             this.swCodi2.Tag = "idFiliation";
-            this.swCodi2.Tag2 = "CodeSpaceShipType";
+            this.swCodi2.Tag2 = "";
             this.swCodi2.Tag3 = "DescFiliations";
             this.swCodi2.TextDesc = "XXX";
             this.swCodi2.TextId = "";

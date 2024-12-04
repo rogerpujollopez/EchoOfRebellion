@@ -33,14 +33,12 @@ namespace EchoOfRebellion.Formularios
 
             SetCaselles = new List<casella>() {
                     new casella() { nom = "id", ample = 100 , visible = true, alineacio = CasellaAlineacio.Centrat},
-                    new casella() { nom = "name", ample = 200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                    new casella() { nom = "name2", ample = 300, visible = true},
                 };
 
             // ds Combo
             SetLlistes = new List<llista>()
                 {
-                    new llista() { id="idSpaceShipCategory", query="select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory as SpaceShipCategory from SpaceShipCategories order by SpaceShipCategory"}
+                    new llista() { id="idSpaceShipCategory", query="select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories order by DescSpaceShipCategory"}
                 };
             SetLlistes = new List<llista>()
                 {
