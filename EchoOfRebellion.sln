@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormRegions", "FormRegions\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSectors", "FormSectors\FormSectors.csproj", "{678156B2-1C82-459D-9339-4C31BD28FB18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUsers", "FormUsers\FormUsers.csproj", "{C7F67ECB-6523-4E2D-87DF-8C28687869FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{678156B2-1C82-459D-9339-4C31BD28FB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678156B2-1C82-459D-9339-4C31BD28FB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678156B2-1C82-459D-9339-4C31BD28FB18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

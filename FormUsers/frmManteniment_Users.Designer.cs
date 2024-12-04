@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 
-namespace EchoOfRebellion.Formularios
+namespace FormUsers
 {
     partial class frmManteniment_Users
     {
@@ -210,3 +209,4 @@ namespace EchoOfRebellion.Formularios
         private System.Windows.Forms.TextBox textBox5;
     }
 }
+
