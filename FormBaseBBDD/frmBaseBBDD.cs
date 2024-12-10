@@ -61,23 +61,6 @@ namespace FormBaseBBDD
             }
         }
 
-        //public string Tabla
-        //{
-        //    set { _tabla = value; }
-        //}
-        //public string Query
-        //{
-        //    set { _querySelect = value; }
-        //}
-        //public string QueryUpdate
-        //{
-        //    set { _queryUpdate = value; }
-        //}
-        //public string SetId
-        //{
-        //    set { _id = value; }
-        //}
-
         public List<casella> SetCaselles
         {
             set { caselles = value; }
@@ -90,30 +73,32 @@ namespace FormBaseBBDD
 
         private void FormatoGrid()
         {
-            // Configuración general
-            dataGridView1.Font = new Font("Arial", 10, FontStyle.Regular); // Fuente general
-            dataGridView1.ForeColor = Color.Black; // Color de letra en negro
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Selección por fila completa
-            dataGridView1.RowHeadersVisible = false; // Ocultar selector de la izquierda
-            dataGridView1.AllowUserToAddRows = false; // No permitir añadir filas
-            dataGridView1.AllowUserToDeleteRows = false; // No permitir eliminar filas
-            dataGridView1.ReadOnly = true; // No permitir editar celdas
-            dataGridView1.MultiSelect = false; // No permitir selección múltiple
+            Formats.Grids.FormatoGrid(dataGridView1);
 
-            // Configuración de estilos para la selección
-            DataGridViewCellStyle selectionStyle = new DataGridViewCellStyle
-            {
-                BackColor = Color.Violet, // Fondo violeta para la fila seleccionada
-                ForeColor = Color.White   // Letra blanca para la fila seleccionada
-            };
-            dataGridView1.DefaultCellStyle.SelectionBackColor = selectionStyle.BackColor;
-            dataGridView1.DefaultCellStyle.SelectionForeColor = selectionStyle.ForeColor;
+            //// Configuración general
+            //dataGridView1.Font = new Font("Arial", 10, FontStyle.Regular); // Fuente general
+            //dataGridView1.ForeColor = Color.Black; // Color de letra en negro
+            //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Selección por fila completa
+            //dataGridView1.RowHeadersVisible = false; // Ocultar selector de la izquierda
+            //dataGridView1.AllowUserToAddRows = false; // No permitir añadir filas
+            //dataGridView1.AllowUserToDeleteRows = false; // No permitir eliminar filas
+            //dataGridView1.ReadOnly = true; // No permitir editar celdas
+            //dataGridView1.MultiSelect = false; // No permitir selección múltiple
 
-            // Configuración adicional para mejorar estética (opcional)
-            dataGridView1.DefaultCellStyle.BackColor = Color.White; // Fondo blanco para las celdas no seleccionadas
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // Texto negro para celdas no seleccionadas
-            dataGridView1.GridColor = Color.LightGray; // Color de las líneas del grid
-            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Encabezados centrados
+            //// Configuración de estilos para la selección
+            //DataGridViewCellStyle selectionStyle = new DataGridViewCellStyle
+            //{
+            //    BackColor = Color.Violet, // Fondo violeta para la fila seleccionada
+            //    ForeColor = Color.White   // Letra blanca para la fila seleccionada
+            //};
+            //dataGridView1.DefaultCellStyle.SelectionBackColor = selectionStyle.BackColor;
+            //dataGridView1.DefaultCellStyle.SelectionForeColor = selectionStyle.ForeColor;
+
+            //// Configuración adicional para mejorar estética (opcional)
+            //dataGridView1.DefaultCellStyle.BackColor = Color.White; // Fondo blanco para las celdas no seleccionadas
+            //dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // Texto negro para celdas no seleccionadas
+            //dataGridView1.GridColor = Color.LightGray; // Color de las líneas del grid
+            //dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Encabezados centrados
         }
 
 
@@ -338,8 +323,6 @@ namespace FormBaseBBDD
 
         private void _DibujarLabels()
         {
-            DataColumn[] primaryKeyColumns = _ds.Tables[0].PrimaryKey;
-
             foreach (DataColumn col in _ds.Tables[0].Columns)
             {
                 Type dataType = col.DataType;

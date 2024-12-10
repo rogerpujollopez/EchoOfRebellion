@@ -102,6 +102,26 @@ namespace BiblioModeloDatos
             return ds;
         }
 
+        public DataSet PortarPerConsulta(string consulta, List<SqlParameter> parametres = null)
+        {
+            Conectar();
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(consulta, conn);
+            if (parametres != null)
+            {
+                foreach (var parametro in parametres)
+                {
+                    da.SelectCommand.Parameters.Add(parametro);
+                }
+            }
+            da.Fill(ds);
+
+            Desconectar();
+
+            return ds;
+        }
+
         private void OnRowUpdated(object sender, SqlRowUpdatedEventArgs e)
         {
             if (e.Status == UpdateStatus.ErrorsOccurred)

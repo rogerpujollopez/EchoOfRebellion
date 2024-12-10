@@ -55,9 +55,18 @@
     <Compile Include="frmManteniment_Sectors.Designer.cs">
       <DependentUpon>frmManteniment_Sectors.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelector_Sectors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelector_Sectors.Designer.cs">
+      <DependentUpon>frmSelector_Sectors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmManteniment_Sectors.resx">
       <DependentUpon>frmManteniment_Sectors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelector_Sectors.resx">
+      <DependentUpon>frmSelector_Sectors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
