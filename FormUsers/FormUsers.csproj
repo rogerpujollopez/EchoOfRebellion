@@ -55,6 +55,12 @@
     <Compile Include="frmManteniment_UserCategories.Designer.cs">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManteniment_UserRangs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManteniment_UserRangs.Designer.cs">
+      <DependentUpon>frmManteniment_UserRangs.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManteniment_Users.cs">
       <SubType>Form</SubType>
     </Compile>

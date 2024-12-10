@@ -57,5 +57,10 @@ namespace EchoOfRebellion.Formularios
             frm.ShowDialog();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            frmManteniment_UserRangs frm = new frmManteniment_UserRangs();
+            frm.ShowDialog();
+        }
     }
 }
