@@ -43,7 +43,11 @@ namespace EchoOfRebellion.Clases.Utils
 
                     client.Disconnect(true);
                 }
+<<<<<<< HEAD
                 catch (Exception ex)
+=======
+                catch (Exception)
+>>>>>>> dev
                 {
                     //Console.WriteLine($"Error al enviar el correo: {ex.Message}");
                 }

@@ -1,4 +1,8 @@
 ﻿using EchoOfRebellion.Clases.Utils;
+<<<<<<< HEAD
+=======
+using FormBase;
+>>>>>>> dev
 using MisControles;
 using System;
 using System.Collections.Generic;
@@ -10,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EchoOfRebellion
+namespace EchoOfRebellion.Formularios
 {
     public partial class frmMenuPrincipal : frmBase
     {
@@ -21,7 +25,11 @@ namespace EchoOfRebellion
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Titulo("Menú principal");
+=======
+            Titulo = "Menú principal";
+>>>>>>> dev
             
             DibuixarMenu();
         }

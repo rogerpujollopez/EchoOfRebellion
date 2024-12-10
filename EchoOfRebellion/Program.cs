@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using EchoOfRebellion;
+=======
+﻿using EchoOfRebellion.Formularios;
+>>>>>>> dev
 using EchoOfRebellion.Clases.Utils;
 using System;
 using System.Collections.Generic;
@@ -19,8 +23,13 @@ namespace EchoOfRebellion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             ShowSplashThenLogin();
             //Application.Run(new frmMenuPrincipal());
+=======
+            //ShowSplashThenLogin();
+            Application.Run(new frmTemp());
+>>>>>>> dev
         }
 
         private static void ShowSplashThenLogin()
@@ -45,7 +54,11 @@ namespace EchoOfRebellion
                 }
 
 
+<<<<<<< HEAD
                 using (var frmain = new frmMenuPrincipal())
+=======
+                using (frmMenuPrincipal frmain = new frmMenuPrincipal())
+>>>>>>> dev
                 {
                     frmain.ShowDialog();
                 }

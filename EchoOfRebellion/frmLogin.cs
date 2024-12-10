@@ -1,6 +1,10 @@
 ﻿using Configuracio;
 using EchoOfRebellion.Clases.BIZ;
 using EchoOfRebellion.Clases.Utils;
+<<<<<<< HEAD
+=======
+using EchoOfRebellion.Formularios;
+>>>>>>> dev
 using MisControles;
 using System;
 using System.Collections.Generic;
@@ -215,9 +219,19 @@ namespace EchoOfRebellion
                     break;
                 case 2: // OK + new pass
                     OcultarContador();
+<<<<<<< HEAD
                     frmUsuarioCambioPassword frm = new frmUsuarioCambioPassword();
                     frm.ShowDialog();
                     Cerrar();
+=======
+                    frmUsuarioCambioPassword frm = new frmUsuarioCambioPassword(usuari);
+                    frm.ShowDialog();
+                    
+                    txtPass.Clear();
+                    txtUsuario.Clear();
+                    txtUsuario.Focus();
+                    //Cerrar();
+>>>>>>> dev
                     break;
                 default:
                     if (!verCuentaAtras)

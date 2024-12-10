@@ -1,4 +1,4 @@
-﻿namespace EchoOfRebellion
+﻿namespace EchoOfRebellion.Formularios
 {
     partial class frmUsuarioCambioPassword
     {
@@ -37,6 +37,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVerificar = new System.Windows.Forms.Button();
+<<<<<<< HEAD
+=======
+            this.bttnExit = new System.Windows.Forms.Button();
+>>>>>>> dev
             this.SuspendLayout();
             // 
             // txtConfirmarUsu
@@ -119,11 +123,28 @@
             this.btnVerificar.UseVisualStyleBackColor = true;
             this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
             // 
+<<<<<<< HEAD
+=======
+            // bttnExit
+            // 
+            this.bttnExit.Location = new System.Drawing.Point(649, 354);
+            this.bttnExit.Name = "bttnExit";
+            this.bttnExit.Size = new System.Drawing.Size(75, 23);
+            this.bttnExit.TabIndex = 10;
+            this.bttnExit.Text = "Salir";
+            this.bttnExit.UseVisualStyleBackColor = true;
+            this.bttnExit.Click += new System.EventHandler(this.bttnExit_Click);
+            // 
+>>>>>>> dev
             // frmUsuarioCambioPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 389);
+<<<<<<< HEAD
+=======
+            this.Controls.Add(this.bttnExit);
+>>>>>>> dev
             this.Controls.Add(this.btnVerificar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -147,6 +168,10 @@
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.btnVerificar, 0);
+<<<<<<< HEAD
+=======
+            this.Controls.SetChildIndex(this.bttnExit, 0);
+>>>>>>> dev
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +188,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnVerificar;
+<<<<<<< HEAD
+=======
+        private System.Windows.Forms.Button bttnExit;
+>>>>>>> dev
     }
 }
