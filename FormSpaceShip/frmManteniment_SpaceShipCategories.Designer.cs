@@ -1,5 +1,4 @@
-﻿
-namespace EchoOfRebellion.Formularios
+﻿namespace FormSpaceShip
 {
     partial class frmManteniment_SpaceShipCategories
     {

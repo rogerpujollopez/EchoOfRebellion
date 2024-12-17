@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EchoOfRebellion.Formularios
+namespace FormSpaceShip
 {
     public partial class frmManteniment_SpaceShipCategories : frmBaseBBDD
     {
@@ -31,7 +31,7 @@ namespace EchoOfRebellion.Formularios
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
+                new casella() { nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
                 new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
                 new casella() { nom="name2", ample=300, visible = true},
             };

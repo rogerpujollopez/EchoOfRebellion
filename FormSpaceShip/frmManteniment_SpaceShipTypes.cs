@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EchoOfRebellion.Formularios
+namespace FormSpaceShip
 {
     public partial class frmManteniment_SpaceShipTypes : frmBaseBBDD
     {

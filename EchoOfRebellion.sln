@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUsers", "FormUsers\Form
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormPlanetes", "FormPlanetes\FormPlanetes.csproj", "{BF4A882B-F948-45E3-81FA-AED122066A19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSpaceShip", "FormSpaceShip\FormSpaceShip.csproj", "{95140825-742D-4F97-92AC-1705920247E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,10 +79,6 @@ Global
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF4A882B-F948-45E3-81FA-AED122066A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF4A882B-F948-45E3-81FA-AED122066A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF4A882B-F948-45E3-81FA-AED122066A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF4A882B-F948-45E3-81FA-AED122066A19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
