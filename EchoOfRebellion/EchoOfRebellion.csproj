@@ -53,18 +53,6 @@
     <Compile Include="Clases\DM\DMLogin.cs" />
     <Compile Include="Clases\Utils\Comunicacio.cs" />
     <Compile Include="Clases\Utils\Missatgeria.cs" />
-    <Compile Include="Formularios\frmManteniment_SpaceShipCategories.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmManteniment_SpaceShipCategories.Designer.cs">
-      <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmManteniment_SpaceShipTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmManteniment_SpaceShipTypes.Designer.cs">
-      <DependentUpon>frmManteniment_SpaceShipTypes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmTemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +97,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipCategories.resx">
-      <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipTypes.resx">
-      <DependentUpon>frmManteniment_SpaceShipTypes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmSplashUsuario.resx">
       <DependentUpon>frmSplashUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +182,10 @@
     <ProjectReference Include="..\FormSectors\FormSectors.csproj">
       <Project>{678156b2-1c82-459d-9339-4c31bd28fb18}</Project>
       <Name>FormSectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormSpaceShip\FormSpaceShip.csproj">
+      <Project>{95140825-742d-4f97-92ac-1705920247e1}</Project>
+      <Name>FormSpaceShip</Name>
     </ProjectReference>
     <ProjectReference Include="..\FormUsers\FormUsers.csproj">
       <Project>{c7f67ecb-6523-4e2d-87df-8c28687869ff}</Project>

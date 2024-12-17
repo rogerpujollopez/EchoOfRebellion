@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35312.102
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoOfRebellion", "EchoOfRebellion\EchoOfRebellion.csproj", "{66B4EA18-B401-4F3C-AE9D-A1461646D088}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSectors", "FormSectors\FormSectors.csproj", "{678156B2-1C82-459D-9339-4C31BD28FB18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUsers", "FormUsers\FormUsers.csproj", "{C7F67ECB-6523-4E2D-87DF-8C28687869FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSpaceShip", "FormSpaceShip\FormSpaceShip.csproj", "{95140825-742D-4F97-92AC-1705920247E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95140825-742D-4F97-92AC-1705920247E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95140825-742D-4F97-92AC-1705920247E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95140825-742D-4F97-92AC-1705920247E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95140825-742D-4F97-92AC-1705920247E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
