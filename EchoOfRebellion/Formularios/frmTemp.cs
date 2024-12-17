@@ -1,6 +1,7 @@
 ﻿using FormRegions;
 using FormSectors;
 using FormUsers;
+using FormPlanetes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,6 +67,12 @@ namespace EchoOfRebellion.Formularios
         private void button9_Click(object sender, EventArgs e)
         {
             frmSelector_Sectors frm = new frmSelector_Sectors();
+            frm.ShowDialog();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            frmManteniment_Planetes frm = new frmManteniment_Planetes();
             frm.ShowDialog();
         }
     }
