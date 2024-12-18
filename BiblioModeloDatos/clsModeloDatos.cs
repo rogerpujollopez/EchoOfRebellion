@@ -9,13 +9,15 @@ using System.Net.Http.Headers;
 
 namespace BiblioModeloDatos
 {
+
+    /// <summary>
+    /// Clase de acceso a datos
+    /// </summary>
+
     public class clsModeloDatos
     {
         private SqlConnectionStringBuilder builder;
         private SqlConnection conn;
-        //private string querySelect;
-        //private string queryUpdate;
-        //private bool soloCombo;
 
         public clsModeloDatos()
         {
@@ -23,22 +25,29 @@ namespace BiblioModeloDatos
             conn = new SqlConnection(builder.ConnectionString);
         }
 
-        public void Dispose()
-        {
-            Desconectar();
-            conn.Dispose();
-        }
+        /// <summary>
+        /// Método conectar
+        /// </summary>
 
         private void Conectar()
         {
             if (conn.State != ConnectionState.Open) conn.Open();
         }
 
+        /// <summary>
+        /// Método desconectar
+        /// </summary>
+
         private void Desconectar()
         {
             if (conn.State == ConnectionState.Open) conn.Close();
         }
 
+        /// <summary>
+        /// Método para obetener un tabla mediante el nombre de la tabla
+        /// </summary>
+        /// <param name="taula"></param>
+        /// <returns>Devuelve un DataSet con el contenido</returns>
         public DataSet PortarTaula(string taula)
         {
             DataSet ds = new DataSet();
@@ -59,6 +68,11 @@ namespace BiblioModeloDatos
             return ds;
         }
 
+        /// <summary>
+        /// Método privado que devuelve un bool indicando si la tabla existe o no en la BBDD
+        /// </summary>
+        /// <param name="taula"></param>
+        /// <returns>Devuelve un bool</returns>
         private bool ExisteixTaula(string taula)
         {
             Conectar();
@@ -74,6 +88,11 @@ namespace BiblioModeloDatos
             return ds.Tables[0].Rows.Count > 0;
         }
 
+        /// <summary>
+        /// Método que nos devuelve un DataSet con el contenido de la consulta que le pasamos como parámetro
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns>Devuelve un DataSet</returns>
         public DataSet PortarPerConsulta (string consulta)
         {
             Conectar();
@@ -88,6 +107,12 @@ namespace BiblioModeloDatos
             return ds;
         }
 
+        /// <summary>
+        /// Método que nos devuelve un DataSet con el contenido de la consulta que le pasamos como parámetro. También le pasamos el nombre de la DataTable como parametro
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <param name="nomDataTable"></param>
+        /// <returns>Devuelve un DataSet</returns>
         public DataSet PortarPerConsulta(string consulta, string nomDataTable)
         {
             Conectar();
@@ -102,6 +127,12 @@ namespace BiblioModeloDatos
             return ds;
         }
 
+        /// <summary>
+        /// Método que le pasamos como parámetros una consulta y una lista de parámetros SQL para la consulta
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <param name="parametres"></param>
+        /// <returns>Devuelve un DataSet</returns>
         public DataSet PortarPerConsulta(string consulta, List<SqlParameter> parametres = null)
         {
             Conectar();
@@ -122,6 +153,12 @@ namespace BiblioModeloDatos
             return ds;
         }
 
+        /// <summary>
+        /// Método privado para detectar si al hacer el update del DataSet, da un error
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="Exception"></exception>
         private void OnRowUpdated(object sender, SqlRowUpdatedEventArgs e)
         {
             if (e.Status == UpdateStatus.ErrorsOccurred)
@@ -130,6 +167,13 @@ namespace BiblioModeloDatos
             }
         }
 
+        /// <summary>
+        /// Método que mediante el DataSet modificado y la consulta original, actualiza la BBDD
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <param name="consultaOriginal"></param>
+        /// <returns>Devuelve el nº de registros afectados</returns>
+        /// <exception cref="Exception"></exception>
         public int Actualitzar(DataSet ds, string consultaOriginal)
         {
             Conectar();
@@ -185,6 +229,11 @@ namespace BiblioModeloDatos
             return result;
         }
 
+        /// <summary>
+        /// Método para ejecutar una consulta Update, Delete o Insert, pero el Insert sin Scope
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns>Devuelve el nº de registros afectados</returns>
         public int Executa(string consulta)
         {
             Conectar();
@@ -199,6 +248,13 @@ namespace BiblioModeloDatos
 
             return numRegistres;
         }
+
+        /// <summary>
+        /// Método para ejecutar una consulta Update, Delete o Insert, pero el Insert sin Scope, con parámetros
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <param name="parametros"></param>
+        /// <returns>Devuelve el nº de registros afectados</returns>
         public int ExecutaConParametros(string consulta, Dictionary<string, object> parametros)
         {
             Conectar();
@@ -218,6 +274,11 @@ namespace BiblioModeloDatos
             return registrosAfectados;
         }
 
+        /// <summary>
+        /// Método para ejecutar una consulta Insert con Scope
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns>Devuelve el id del registro añadido (Scope)</returns>
         public int ExecutaScope(string consulta)
         {
             Conectar();
@@ -233,6 +294,12 @@ namespace BiblioModeloDatos
             return scopeIdentity;
         }
 
+        /// <summary>
+        /// Método para ejecutar una consulta Insert con Scope, con parámetros
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <param name="parametres"></param>
+        /// <returns>Devuelve el id del registro añadido (Scope)</returns>
         public DataSet GeneraConsultaCerca(string consulta, Dictionary<string, object> parametres)
         {
             Conectar();
@@ -250,6 +317,12 @@ namespace BiblioModeloDatos
             return ds;
         }
 
+        /// <summary>
+        /// Método para ejectura un StoreProcedure almacenado en la BBDD, con parámetros
+        /// </summary>
+        /// <param name="procedure"></param>
+        /// <param name="parametres"></param>
+        /// <returns>Devuelve un DataSet</returns>
         public DataSet StoreProcedure(string procedure, Dictionary<string, object> parametres)
         {
             Conectar();
@@ -267,80 +340,5 @@ namespace BiblioModeloDatos
 
             return ds;
         }
-
-
-        //
-
-        //public DataSet GetDataSet(string querySelect, bool soloCombo, string queryUpdate = "")
-        //{
-        //    this.querySelect = querySelect;
-        //    this.soloCombo = soloCombo;
-
-        //    if (!soloCombo)
-        //    {
-        //        this.queryUpdate = queryUpdate;
-        //    }
-
-        //    Conectar();
-        //    DataSet ds = new DataSet();
-        //    SqlDataAdapter da = new SqlDataAdapter($"{querySelect}", conn);
-        //    //da.SelectCommand.Parameters.AddWithValue("@ID_Neg", ID_Neg);
-        //    da.Fill(ds);
-
-        //    //if (!soloCombo)
-        //    //{
-        //    //    dsUp = new DataSet();
-        //    //    da = new SqlDataAdapter($"{queryUpdate}", conn);
-        //    //    //da.SelectCommand.Parameters.AddWithValue("@ID_Neg", ID_Neg);
-        //    //    da.Fill(dsUp);
-        //    //}
-
-        //    da.Dispose();
-
-        //    Desconectar();
-        //    return ds;
-        //}
-
-        //public int ActualitzarOld(DataSet ds)
-        //{
-        //    int result = -1;
-
-        //    Conectar();
-
-        //    SqlTransaction sqlTrans = conn.BeginTransaction();
-        //    SqlDataAdapter da2 = new SqlDataAdapter(queryUpdate, conn);
-
-        //    //da2.RowUpdated += new SqlRowUpdatedEventHandler(OnRowUpdated);
-        //    da2.RowUpdated += OnRowUpdated;
-        //    da2.SelectCommand.Transaction = sqlTrans;
-
-        //    SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(da2);
-
-        //    if (ds.HasChanges())
-        //    {
-        //        try
-        //        {
-        //            result = da2.Update(ds.Tables[0]);
-        //            sqlTrans.Commit();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            sqlTrans.Rollback();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        sqlTrans.Rollback();
-        //    }
-
-        //    sqlTrans.Dispose();
-        //    da2.Dispose();
-
-        //    Desconectar();
-
-        //    return result;
-        //}
-
-
     }
 }
