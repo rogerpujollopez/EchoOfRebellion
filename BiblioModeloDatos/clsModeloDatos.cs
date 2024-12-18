@@ -13,7 +13,6 @@ namespace BiblioModeloDatos
     /// <summary>
     /// Clase de acceso a datos
     /// </summary>
-
     public class clsModeloDatos
     {
         private SqlConnectionStringBuilder builder;
@@ -28,7 +27,6 @@ namespace BiblioModeloDatos
         /// <summary>
         /// Método conectar
         /// </summary>
-
         private void Conectar()
         {
             if (conn.State != ConnectionState.Open) conn.Open();
@@ -37,7 +35,6 @@ namespace BiblioModeloDatos
         /// <summary>
         /// Método desconectar
         /// </summary>
-
         private void Desconectar()
         {
             if (conn.State == ConnectionState.Open) conn.Close();
