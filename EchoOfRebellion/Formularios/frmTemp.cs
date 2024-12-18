@@ -16,6 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using BiblioModeloDatos;
 using CrystalDecisions.CrystalReports.Engine;
 using EchoOfRebellion.Reports;
+using Utils;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -82,6 +83,23 @@ namespace EchoOfRebellion.Formularios
 
         private void buttonRoger_Click(object sender, EventArgs e)
         {
+            clsModeloDatos dm = new clsModeloDatos();
+
+
+            //string file = @"c:\persona.jpg";
+            //byte[] arr = file.LoadFileToArrayBytes();
+
+            //Dictionary<string, object> parametros = new Dictionary<string, object>
+            //{
+            //    { "Photo", arr } 
+            //};
+            //string strsql = "update Users set Photo=@Photo where idUser=1";
+
+            //dm.ExecutaConParametros(strsql, parametros);
+
+
+
+
             string query = @"
                 select UserName,c.DescCategory,r.DescRank,s.DescSpecie,p.DescPlanet,CodeUser,Photo
                 from Users as u left join UserRanks as r on u.idUserRank=r.idUserRank
@@ -91,7 +109,6 @@ namespace EchoOfRebellion.Formularios
                 where idUser=1
             ";
 
-            clsModeloDatos dm = new clsModeloDatos();
             DataSet ds = dm.PortarPerConsulta(query);
 
             //ds.WriteXmlSchema(@"C:\dataset.xsd");

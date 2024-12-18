@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,6 +12,11 @@ namespace Utils
 {
     public static class Extensions
     {
+        public static byte[] LoadFileToArrayBytes(this string FileName)
+        {
+            return File.ReadAllBytes(FileName);
+        }
+
         public static bool EsMail(this string email)
         {
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format?redirectedfrom=MSDN
