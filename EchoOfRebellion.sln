@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSectors", "FormSectors\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUsers", "FormUsers\FormUsers.csproj", "{C7F67ECB-6523-4E2D-87DF-8C28687869FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormPlanetes", "FormPlanetes\FormPlanetes.csproj", "{BF4A882B-F948-45E3-81FA-AED122066A19}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSpaceShip", "FormSpaceShip\FormSpaceShip.csproj", "{95140825-742D-4F97-92AC-1705920247E1}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentacio", "Documentacio\Documentacio.shfbproj", "{502B63BA-1097-4F03-B015-9A5C8DB1EFED}"
@@ -79,6 +81,10 @@ Global
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F67ECB-6523-4E2D-87DF-8C28687869FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF4A882B-F948-45E3-81FA-AED122066A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4A882B-F948-45E3-81FA-AED122066A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4A882B-F948-45E3-81FA-AED122066A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4A882B-F948-45E3-81FA-AED122066A19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95140825-742D-4F97-92AC-1705920247E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95140825-742D-4F97-92AC-1705920247E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95140825-742D-4F97-92AC-1705920247E1}.Release|Any CPU.ActiveCfg = Release|Any CPU

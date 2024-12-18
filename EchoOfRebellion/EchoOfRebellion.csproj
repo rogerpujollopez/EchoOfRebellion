@@ -188,6 +188,10 @@
       <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
       <Name>FormBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormPlanetes\FormPlanetes.csproj">
+      <Project>{bf4a882b-f948-45e3-81fa-aed122066a19}</Project>
+      <Name>FormPlanetes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormRegions\FormRegions.csproj">
       <Project>{2dd2deaf-490b-4438-b42a-74987ec436db}</Project>
       <Name>FormRegions</Name>
