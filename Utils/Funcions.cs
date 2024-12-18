@@ -59,7 +59,7 @@ namespace Utils
         }
         public static bool ValidacionLogin(string login)
         {
-            string regexLogin = @"^[a-zA-Z0-9]+$";
+            string regexLogin = @"^[a-zA-Z0-9]{4,20}$";
             //MauroLopez31 = true
             bool esValid = Regex.IsMatch(login, regexLogin);
 
@@ -67,8 +67,8 @@ namespace Utils
         }
         public static bool ValidacionPassword(string password)
         {
-            string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$";
-            //Ml7482hl = true
+            string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$]{8,20}$";
+            //Ml74@82hl$ = true
 
             bool esValid = Regex.IsMatch(password, regexPassword);
             return esValid;

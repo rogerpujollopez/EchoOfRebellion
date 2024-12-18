@@ -19,7 +19,7 @@ namespace EchoOfRebellion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //ShowSplashThenLogin();
+            ShowSplashThenLogin();
             Application.Run(new frmTemp());
         }
 
