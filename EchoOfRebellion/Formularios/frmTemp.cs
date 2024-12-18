@@ -13,6 +13,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using BiblioModeloDatos;
+using CrystalDecisions.CrystalReports.Engine;
+using EchoOfRebellion.Reports;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -75,6 +78,32 @@ namespace EchoOfRebellion.Formularios
         {
             frmManteniment_Planetes frm = new frmManteniment_Planetes();
             frm.ShowDialog();
+        }
+
+        private void buttonRoger_Click(object sender, EventArgs e)
+        {
+            string query = @"
+                select UserName,c.DescCategory,r.DescRank,s.DescSpecie,p.DescPlanet,CodeUser,Photo
+                from Users as u left join UserRanks as r on u.idUserRank=r.idUserRank
+                left join UserCategories as c on u.idUserCategory=c.idUserCategory
+                left join Species as s on u.idSpecie=s.idSpecie
+                left join Planets as p on u.idPlanet=p.idPlanet
+                where idUser=1
+            ";
+
+            clsModeloDatos dm = new clsModeloDatos();
+            DataSet ds = dm.PortarPerConsulta(query);
+
+            //ds.WriteXmlSchema(@"C:\dataset.xsd");
+
+            ReportDocument cryRpt = new RptUsuario();
+            cryRpt.SetDataSource(ds);
+            cryRpt.Refresh();
+            cryRpt.PrintToPrinter(1, false, 0, 0);
+
+
+            string g = "";
+
         }
     }
 }
