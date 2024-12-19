@@ -1,4 +1,4 @@
-﻿namespace EchoOfRebellion.Formularios
+﻿namespace FormUsers
 {
     partial class frmManteniment_UserRangs
     {

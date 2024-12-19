@@ -18,9 +18,10 @@ namespace MisControles
         private float _fontSize;
         private Brush _colorFuente;
         private string _texto = "";
-        private bool isPressed = false;
+        private bool _isPressed = false;
+        private string _reflex;
 
-        public SWBotons()
+        public SWBotons(string reflex = "")
         {
             InitializeComponent();
 
@@ -35,11 +36,23 @@ namespace MisControles
             _fontSize = 14f; // Tamaño de fuente por defecto
             _font = new Font("Agency FB", _fontSize, FontStyle.Bold);
             _colorFuente = Config.Colores.Botones.FontColor;
+            this._reflex = reflex;
         }
 
         //private Color colorFondoBoton = Color.FromArgb(29, 17, 67);
         //private Color colorPerfilInteriorBoton = Color.FromArgb(85, 84, 128);
         //private Color colorPerfilExteriorBoton = Color.FromArgb(126, 157, 201);
+
+        [Browsable(true)]
+        [Category("Personalización")]
+        [Description("Reflex")]
+        public string Reflex
+        {
+            set
+            {
+                _reflex = value;
+            }
+        }
 
         [Browsable(true)]
         [Category("Personalización")]
@@ -56,7 +69,7 @@ namespace MisControles
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            isPressed = true;
+            _isPressed = true;
             Invalidate(); // Redibuja el control para reflejar el cambio
 
             base.OnMouseDown(e);
@@ -64,7 +77,7 @@ namespace MisControles
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            isPressed = false;
+            _isPressed = false;
             Invalidate(); // Redibuja el control para reflejar el cambio
 
             base.OnMouseUp(e);
@@ -187,7 +200,7 @@ namespace MisControles
             };
 
 
-            Color colorFondo = isPressed ? Config.Colores.Botones.ColorLineaInterior : Config.Colores.Botones.BackColor;
+            Color colorFondo = _isPressed ? Config.Colores.Botones.ColorLineaInterior : Config.Colores.Botones.BackColor;
 
             // Crear el pincel para rellenar el polígono principal
             using (Brush brush = new SolidBrush(colorFondo))
@@ -201,8 +214,8 @@ namespace MisControles
             //    g.DrawPolygon(pen, polygonPoints);
             //}
 
-            Color colorInicioDegradado = isPressed ? Config.Colores.Botones.ColorLineaInterior : Config.Colores.Botones.ColorLineaExterior;
-            Color colorFinalDegradado = isPressed ? Config.Colores.Botones.ColorLineaExterior : Config.Colores.Botones.ColorLineaInterior;
+            Color colorInicioDegradado = _isPressed ? Config.Colores.Botones.ColorLineaInterior : Config.Colores.Botones.ColorLineaExterior;
+            Color colorFinalDegradado = _isPressed ? Config.Colores.Botones.ColorLineaExterior : Config.Colores.Botones.ColorLineaInterior;
 
             #region "Rectangulo con degradado inferior"
 
@@ -268,7 +281,7 @@ namespace MisControles
             int centerX = this.Width / 2;
             int centerY = this.Height / 2;
 
-            if (isPressed) {
+            if (_isPressed) {
                 int inc = ((int)(this.Height / 100.0) * 2);
                 if (inc <= 0) {
                     inc = 1;

@@ -1,9 +1,4 @@
-﻿using FormRegions;
-using FormSectors;
-using FormUsers;
-using FormSpaceShip;
-using FormPlanetes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +12,9 @@ using BiblioModeloDatos;
 using CrystalDecisions.CrystalReports.Engine;
 using EchoOfRebellion.Reports;
 using Utils;
+using System.Reflection;
+using static EchoOfRebellion.Clases.Utils.Reflexio;
+using EchoOfRebellion.Clases.Utils;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -27,57 +25,59 @@ namespace EchoOfRebellion.Formularios
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Reflexio rf;
+
+        private void btnSectors_Click(object sender, EventArgs e)
         {
-            frmManteniment_Sectors frm = new frmManteniment_Sectors();
+            Form frm = GetFormulari("FormSectors.dll", "FormSectors.frmManteniment_Sectors"); 
             frm.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnUsers_Click(object sender, EventArgs e)
         {
-            frmManteniment_Users frm = new frmManteniment_Users();
+            Form frm = GetFormulari("FormUsers.dll", "FormUsers.frmManteniment_Users");
             frm.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnRegions_Click(object sender, EventArgs e)
         {
-            frmManteniment_Regions frm = new frmManteniment_Regions();
+            Form frm = GetFormulari("FormRegions.dll", "FormRegions.frmManteniment_Regions");
             frm.ShowDialog();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnUsersCat_Click(object sender, EventArgs e)
         {
-            frmManteniment_UserCategories frm = new frmManteniment_UserCategories();
+            Form frm = GetFormulari("FormUsers.dll", "FormUsers.frmManteniment_UserCategories");
             frm.ShowDialog();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnSpaceCat_Click(object sender, EventArgs e)
         {
-            frmManteniment_SpaceShipCategories frm = new frmManteniment_SpaceShipCategories();
+            Form frm = GetFormulari("FormSpaceShip.dll", "FormSpaceShip.frmManteniment_SpaceShipCategories");
             frm.ShowDialog();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnSpaceTypes_Click(object sender, EventArgs e)
         {
-            frmManteniment_SpaceShipTypes frm = new frmManteniment_SpaceShipTypes();
+            Form frm = GetFormulari("FormSpaceShip.dll", "FormSpaceShip.frmManteniment_SpaceShipTypes");
             frm.ShowDialog();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnUsersRangs_Click(object sender, EventArgs e)
         {
-            frmManteniment_UserRangs frm = new frmManteniment_UserRangs();
+            Form frm = GetFormulari("FormUsers.dll", "FormUsers.frmManteniment_UserRangs");
             frm.ShowDialog();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnSelSector_Click(object sender, EventArgs e)
         {
-            frmSelector_Sectors frm = new frmSelector_Sectors();
+            Form frm = GetFormulari("FormSectors.dll", "FormSectors.frmSelector_Sectors");
             frm.ShowDialog();
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void btnPlanets_Click(object sender, EventArgs e)
         {
-            frmManteniment_Planetes frm = new frmManteniment_Planetes();
+            Form frm = GetFormulari("FormPlanetes.dll", "FormPlanetes.frmManteniment_Planetes");
             frm.ShowDialog();
         }
 
@@ -121,6 +121,11 @@ namespace EchoOfRebellion.Formularios
 
             string g = "";
 
+        }
+
+        private void frmTemp_Load(object sender, EventArgs e)
+        {
+            //rf = new Reflexio(new DataSet());
         }
     }
 }
