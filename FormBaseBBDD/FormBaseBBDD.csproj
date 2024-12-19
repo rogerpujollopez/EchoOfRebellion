@@ -55,9 +55,18 @@
     <Compile Include="frmBaseBBDD.Designer.cs">
       <DependentUpon>frmBaseBBDD.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBaseBBDDSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaseBBDDSelect.Designer.cs">
+      <DependentUpon>frmBaseBBDDSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBaseBBDD.resx">
       <DependentUpon>frmBaseBBDD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBaseBBDDSelect.resx">
+      <DependentUpon>frmBaseBBDDSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -67,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,6 +113,12 @@
       <Project>{abe79258-d83c-4ae1-80ef-6c47cc71d1fc}</Project>
       <Name>Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SinFoto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SinFoto2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

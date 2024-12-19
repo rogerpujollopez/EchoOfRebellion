@@ -5,6 +5,7 @@ App.config
 *.exe
 App
 App/*
+Documentacio/Help/*
 
 # Archivos de compilación
 bin/

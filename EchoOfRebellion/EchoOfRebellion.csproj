@@ -33,41 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
-      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
-    </Reference>
-    <Reference Include="MailKit, Version=4.8.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
-      <HintPath>..\packages\MailKit.4.8.0\lib\net48\MailKit.dll</HintPath>
-    </Reference>
-    <Reference Include="MimeKit, Version=4.8.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
-      <HintPath>..\packages\MimeKit.4.8.0\lib\net48\MimeKit.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Formats.Asn1, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Formats.Asn1.8.0.1\lib\net462\System.Formats.Asn1.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,28 +55,7 @@
     <Compile Include="Clases\BIZ\BIZLogin.cs" />
     <Compile Include="Clases\DM\DMLogin.cs" />
     <Compile Include="Clases\Utils\Comunicacio.cs" />
-<<<<<<< HEAD
-    <Compile Include="Clases\Utils\Extensions.cs" />
     <Compile Include="Clases\Utils\Missatgeria.cs" />
-    <Compile Include="Formularios\frmBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmBase.Designer.cs">
-      <DependentUpon>frmBase.cs</DependentUpon>
-=======
-    <Compile Include="Clases\Utils\Missatgeria.cs" />
-    <Compile Include="Formularios\frmManteniment_SpaceShipCategories.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmManteniment_SpaceShipCategories.Designer.cs">
-      <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmManteniment_SpaceShipTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmManteniment_SpaceShipTypes.Designer.cs">
-      <DependentUpon>frmManteniment_SpaceShipTypes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmTemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,7 +67,6 @@
     </Compile>
     <Compile Include="Formularios\frmVerificacionMail.designer.cs">
       <DependentUpon>frmVerificacionMail.cs</DependentUpon>
->>>>>>> dev
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -149,25 +100,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-    <EmbeddedResource Include="Formularios\frmBase.resx">
-      <DependentUpon>frmBase.cs</DependentUpon>
-=======
-    <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipCategories.resx">
-      <DependentUpon>frmManteniment_SpaceShipCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmManteniment_SpaceShipTypes.resx">
-      <DependentUpon>frmManteniment_SpaceShipTypes.cs</DependentUpon>
->>>>>>> dev
-    </EmbeddedResource>
+    <Compile Include="Reports\RptUsuario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptUsuario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Formularios\frmSplashUsuario.resx">
       <DependentUpon>frmSplashUsuario.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Formularios\frmUsuarioCambioPassword.resx">
-      <DependentUpon>frmUsuarioCambioPassword.cs</DependentUpon>
-    </EmbeddedResource>
-=======
     <EmbeddedResource Include="Formularios\frmTemp.resx">
       <DependentUpon>frmTemp.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,7 +118,6 @@
     <EmbeddedResource Include="Formularios\frmVerificacionMail.resx">
       <DependentUpon>frmVerificacionMail.cs</DependentUpon>
     </EmbeddedResource>
->>>>>>> dev
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,7 +137,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <EmbeddedResource Include="Reports\RptUsuario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptUsuario.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Fonts\Code39r.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -220,18 +164,14 @@
   <ItemGroup>
     <Content Include="frmLogin\conQueueUserWorkItem.txt" />
     <Content Include="frmLogin\conThreadCreate.txt" />
-<<<<<<< HEAD
-    <Content Include="Resources\EfectoSplashUsuario.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-=======
+    <Content Include="Resources\SinFoto.png" />
+    <Content Include="Resources\SinFoto2.jpg" />
     <None Include="Resources\reset_password_icon.png" />
     <None Include="Resources\arrow_icon.png" />
     <Content Include="Resources\EfectoSplashUsuario.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\email_image.jpg" />
->>>>>>> dev
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -243,8 +183,6 @@
       <Project>{5a1ca935-053e-490d-a9eb-3eea151ab007}</Project>
       <Name>Configuracio</Name>
     </ProjectReference>
-<<<<<<< HEAD
-=======
     <ProjectReference Include="..\FormBaseBBDD\FormBaseBBDD.csproj">
       <Project>{836ae73e-3ee2-4a7c-9aad-54081d82f899}</Project>
       <Name>FormBaseBBDD</Name>
@@ -252,6 +190,10 @@
     <ProjectReference Include="..\FormBase\FormBase.csproj">
       <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
       <Name>FormBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormPlanetes\FormPlanetes.csproj">
+      <Project>{bf4a882b-f948-45e3-81fa-aed122066a19}</Project>
+      <Name>FormPlanetes</Name>
     </ProjectReference>
     <ProjectReference Include="..\FormRegions\FormRegions.csproj">
       <Project>{2dd2deaf-490b-4438-b42a-74987ec436db}</Project>
@@ -261,11 +203,14 @@
       <Project>{678156b2-1c82-459d-9339-4c31bd28fb18}</Project>
       <Name>FormSectors</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormSpaceShip\FormSpaceShip.csproj">
+      <Project>{95140825-742d-4f97-92ac-1705920247e1}</Project>
+      <Name>FormSpaceShip</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormUsers\FormUsers.csproj">
       <Project>{c7f67ecb-6523-4e2d-87df-8c28687869ff}</Project>
       <Name>FormUsers</Name>
     </ProjectReference>
->>>>>>> dev
     <ProjectReference Include="..\MisControles\MisControles.csproj">
       <Project>{bb4afc56-429b-4bd1-9e00-fbce966d30f4}</Project>
       <Name>MisControles</Name>
@@ -278,6 +223,9 @@
       <Project>{abe79258-d83c-4ae1-80ef-6c47cc71d1fc}</Project>
       <Name>Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

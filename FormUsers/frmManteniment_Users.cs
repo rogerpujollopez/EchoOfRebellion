@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,6 +53,13 @@ namespace FormUsers
 
         private void frmManteniment_Users_Load(object sender, EventArgs e)
         {
+            if (DesignMode) return;
+
+            swCodi1.ViewDataColumns = new List<int> { 2, 1 };
+            swCodi2.ViewDataColumns = new List<int> { 2, 1, 3 };
+            swCodi3.ViewDataColumns = new List<int> { 2, 1 };
+            swCodi4.ViewDataColumns = new List<int> { 2, 1 };
+
             InicializarFormulario();
         }
     }

@@ -83,7 +83,10 @@ namespace MisControles
         [Description("Columnes a mostrar")]
         public List<int> ViewDataColumns
         {
-            set { _viewDataColumns = value; }
+            set {
+                //if (DesignMode) return;
+                _viewDataColumns = value; 
+            }
         }
 
         private void ActualitzarLabelDesdeTextId()

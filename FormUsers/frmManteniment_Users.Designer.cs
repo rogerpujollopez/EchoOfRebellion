@@ -34,12 +34,12 @@ namespace FormUsers
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.swCodi1 = new MisControles.SWCodi();
             this.swCodi2 = new MisControles.SWCodi();
             this.swCodi3 = new MisControles.SWCodi();
             this.swCodi4 = new MisControles.SWCodi();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +75,15 @@ namespace FormUsers
             this.textBox4.TabIndex = 3;
             this.textBox4.Tag = "Mail";
             // 
+            // textBox5
+            // 
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(0, -1);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(35, 20);
+            this.textBox5.TabIndex = 9;
+            this.textBox5.Tag = "idUser";
+            // 
             // pictureBox1
             // 
             //this.pictureBox1.BackColor = System.Drawing.Color.White;
@@ -98,7 +107,7 @@ namespace FormUsers
             this.swCodi1.Tag = "idUserRank";
             this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescRank";
-            this.swCodi1.ViewDataColumns = new List<int> { 2, 1 };
+            //this.swCodi1.ViewDataColumns = new List<int> { 2, 1 };
             this.swCodi1.TextDesc = "XXX";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
@@ -114,7 +123,7 @@ namespace FormUsers
             this.swCodi2.Tag = "idUserCategory";
             this.swCodi2.Tag2 = "DescCategory";
             this.swCodi2.Tag3 = "";
-            this.swCodi2.ViewDataColumns = new List<int> { 2, 1, 3 };
+            //this.swCodi2.ViewDataColumns = new List<int> { 2, 1, 3 };
             this.swCodi2.TextDesc = "XXX";
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
@@ -130,7 +139,7 @@ namespace FormUsers
             this.swCodi3.Tag = "idPlanet";
             this.swCodi3.Tag2 = "";
             this.swCodi3.Tag3 = "";
-            this.swCodi3.ViewDataColumns = new List<int> { 2, 1 };
+            //this.swCodi3.ViewDataColumns = new List<int> { 2, 1 };
             this.swCodi3.TextDesc = "XXX";
             this.swCodi3.TextId = "";
             this.swCodi3.TextValue = "";
@@ -146,31 +155,22 @@ namespace FormUsers
             this.swCodi4.Tag = "idSpecie";
             this.swCodi4.Tag2 = "";
             this.swCodi4.Tag3 = "";
-            this.swCodi4.ViewDataColumns = new List<int> { 2, 1 };
+            //this.swCodi4.ViewDataColumns = new List<int> { 2, 1 };
             this.swCodi4.TextDesc = "XXX";
             this.swCodi4.TextId = "";
             this.swCodi4.TextValue = "";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(0, -1);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(35, 20);
-            this.textBox5.TabIndex = 9;
-            this.textBox5.Tag = "idUser";
             // 
             // frmManteniment_Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 554);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.swCodi4);
             this.Controls.Add(this.swCodi3);
             this.Controls.Add(this.swCodi2);
             this.Controls.Add(this.swCodi1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -183,12 +183,12 @@ namespace FormUsers
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.textBox3, 0);
             this.Controls.SetChildIndex(this.textBox4, 0);
+            this.Controls.SetChildIndex(this.textBox5, 0);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.swCodi1, 0);
             this.Controls.SetChildIndex(this.swCodi2, 0);
             this.Controls.SetChildIndex(this.swCodi3, 0);
             this.Controls.SetChildIndex(this.swCodi4, 0);
-            this.Controls.SetChildIndex(this.textBox5, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,12 +201,12 @@ namespace FormUsers
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MisControles.SWCodi swCodi1;
         private MisControles.SWCodi swCodi2;
         private MisControles.SWCodi swCodi3;
         private MisControles.SWCodi swCodi4;
-        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
