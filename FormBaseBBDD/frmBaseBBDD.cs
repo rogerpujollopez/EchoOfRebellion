@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace FormBaseBBDD
 
         private List<casella> caselles;
         private List<llista> llistes;
+        private List<string> nomsCampsPhoto;
 
         public frmBaseBBDD()
         {
@@ -74,31 +76,6 @@ namespace FormBaseBBDD
         private void FormatoGrid()
         {
             Formats.Grids.FormatoGrid(dataGridView1);
-
-            //// Configuración general
-            //dataGridView1.Font = new Font("Arial", 10, FontStyle.Regular); // Fuente general
-            //dataGridView1.ForeColor = Color.Black; // Color de letra en negro
-            //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Selección por fila completa
-            //dataGridView1.RowHeadersVisible = false; // Ocultar selector de la izquierda
-            //dataGridView1.AllowUserToAddRows = false; // No permitir añadir filas
-            //dataGridView1.AllowUserToDeleteRows = false; // No permitir eliminar filas
-            //dataGridView1.ReadOnly = true; // No permitir editar celdas
-            //dataGridView1.MultiSelect = false; // No permitir selección múltiple
-
-            //// Configuración de estilos para la selección
-            //DataGridViewCellStyle selectionStyle = new DataGridViewCellStyle
-            //{
-            //    BackColor = Color.Violet, // Fondo violeta para la fila seleccionada
-            //    ForeColor = Color.White   // Letra blanca para la fila seleccionada
-            //};
-            //dataGridView1.DefaultCellStyle.SelectionBackColor = selectionStyle.BackColor;
-            //dataGridView1.DefaultCellStyle.SelectionForeColor = selectionStyle.ForeColor;
-
-            //// Configuración adicional para mejorar estética (opcional)
-            //dataGridView1.DefaultCellStyle.BackColor = Color.White; // Fondo blanco para las celdas no seleccionadas
-            //dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // Texto negro para celdas no seleccionadas
-            //dataGridView1.GridColor = Color.LightGray; // Color de las líneas del grid
-            //dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Encabezados centrados
         }
 
 
@@ -106,8 +83,20 @@ namespace FormBaseBBDD
         private void frmBaseBBDD_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
+            
+            dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
 
             FormatoGrid();
+
+            nomsCampsPhoto = new List<string>();
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is PictureBox pb && control.Tag != null)
+                {
+                    nomsCampsPhoto.Add(pb.Tag.ToString());
+                }
+            }
 
             md = new clsModeloDatos();
 
@@ -126,6 +115,7 @@ namespace FormBaseBBDD
             {
                 _ds = md.PortarPerConsulta(_querySelect);
             }
+
             dataGridView1.DataSource = _ds.Tables[0];
             DibujarGrid();
 
@@ -257,6 +247,27 @@ namespace FormBaseBBDD
                     }
                     cd.Validating += Evento;
                 }
+                else if (control is PictureBox pb)
+                {
+                    pb.DataBindings.Clear();
+                    pb.DataBindings.Add("Image", _ds.Tables[0], pb.Tag.ToString(), true, DataSourceUpdateMode.Never);
+                    pb.DataBindings[pb.DataBindings.Count - 1].Format += (s, e) =>
+                    {
+                        // Convertir el byte[] en una imagen
+                        if (e.Value is byte[] byteArray)
+                        {
+                            using (var ms = new MemoryStream(byteArray))
+                            {
+                                e.Value = Image.FromStream(ms);
+                            }
+                        }
+                        else
+                        {
+                            //e.Value = null; // Si el valor no es byte[], no se muestra nada
+                            e.Value = Properties.Resources.SinFoto;
+                        }
+                    };
+                }
             }
         }
 
@@ -282,6 +293,10 @@ namespace FormBaseBBDD
                 {
                     cd.DataBindings.Clear();
                     cd.Validating -= Evento;
+                }
+                else if (control is PictureBox pb)
+                {
+                    pb.DataBindings.Clear();
                 }
             }
         }
@@ -596,6 +611,128 @@ namespace FormBaseBBDD
             }
 
         }
+
+
+        #region "Resize tamaño vertical"
+        private void dataGridView1_CellFormattingResizeVertical(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (nomsCampsPhoto.Contains(dataGridView1.Columns[e.ColumnIndex].Name, StringComparer.OrdinalIgnoreCase))
+            {
+                if (e.Value == null || e.Value == DBNull.Value)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        Properties.Resources.SinFoto.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        e.Value = ms.ToArray();
+                    }
+                }
+
+                byte[] byteArray = (byte[])e.Value;
+
+                using (var ms = new MemoryStream(byteArray))
+                {
+                    Image originalImage = Image.FromStream(ms);
+
+                    // Ajustar el tamaño de la imagen al ancho de la columna
+                    int columnWidth = dataGridView1.Columns[e.ColumnIndex].Width;
+                    int cellHeight = dataGridView1.Rows[e.RowIndex].Height;
+
+                    // Redimensionar y centrar la imagen verticalmente
+                    e.Value = ResizeAndCenterImage(originalImage, columnWidth, cellHeight);
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private Image ResizeAndCenterImage(Image image, int cellWidth, int cellHeight)
+        {
+            float aspectRatio = (float)image.Width / image.Height;
+
+            // Calcular el tamaño de la imagen dentro de la celda
+            int imgWidth = cellWidth;
+            int imgHeight = (int)(cellWidth / aspectRatio);
+
+            if (imgHeight > cellHeight)
+            {
+                imgHeight = cellHeight;
+                imgWidth = (int)(cellHeight * aspectRatio);
+            }
+
+            // Crear una nueva imagen que incluya el centrado vertical
+            var centeredImage = new Bitmap(cellWidth, cellHeight);
+            using (var graphics = Graphics.FromImage(centeredImage))
+            {
+                graphics.Clear(Color.Transparent);
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+                // Calcular la posición para centrar la imagen
+                int x = (cellWidth - imgWidth) / 2;
+                int y = (cellHeight - imgHeight) / 2;
+
+                graphics.DrawImage(image, new Rectangle(x, y, imgWidth, imgHeight));
+            }
+
+            return centeredImage;
+        }
+
+        #endregion
+
+        #region "Resize tamaño celda horizontal"
+
+        /// <summary>
+        /// Resize al ancho de la celda
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            var resizedImage = new Bitmap(width, height);
+            using (var graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
+        }
+
+        /// <summary>
+        /// Evento Resize al ancho de la celda
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // nomsCampsPhoto
+
+
+            if (nomsCampsPhoto.Contains(dataGridView1.Columns[e.ColumnIndex].Name, StringComparer.OrdinalIgnoreCase))
+            {
+                if (e.Value == null || e.Value == DBNull.Value)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        Properties.Resources.SinFoto.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        e.Value = ms.ToArray();
+                    }
+                }
+
+                byte[] byteArray = (byte[])e.Value;
+
+                using (var ms = new MemoryStream(byteArray))
+                {
+                    Image originalImage = Image.FromStream(ms);
+
+                    // Ajustar el tamaño de la imagen al ancho de la columna
+                    int columnWidth = dataGridView1.Columns[e.ColumnIndex].Width;
+                    e.Value = ResizeImage(originalImage, columnWidth, originalImage.Height * columnWidth / originalImage.Width);
+                }
+                e.FormattingApplied = true;
+            }
+        }
+
+        #endregion
     }
 
     public enum CasellaAlineacio
