@@ -28,47 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtConfirmarUsu = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
-            this.txtPass2 = new System.Windows.Forms.TextBox();
-            this.txtMail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVerificar = new System.Windows.Forms.Button();
             this.bttnExit = new System.Windows.Forms.Button();
+            this.txtConfirmarUsu = new MisControles.SWTextbox();
+            this.txtPass = new MisControles.SWTextbox();
+            this.txtPass2 = new MisControles.SWTextbox();
+            this.txtMail = new MisControles.SWTextbox();
             this.SuspendLayout();
-            // 
-            // txtConfirmarUsu
-            // 
-            this.txtConfirmarUsu.Location = new System.Drawing.Point(134, 87);
-            this.txtConfirmarUsu.Name = "txtConfirmarUsu";
-            this.txtConfirmarUsu.Size = new System.Drawing.Size(147, 20);
-            this.txtConfirmarUsu.TabIndex = 1;
-            // 
-            // txtPass
-            // 
-            this.txtPass.Location = new System.Drawing.Point(134, 113);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.PasswordChar = '#';
-            this.txtPass.Size = new System.Drawing.Size(147, 20);
-            this.txtPass.TabIndex = 2;
-            // 
-            // txtPass2
-            // 
-            this.txtPass2.Location = new System.Drawing.Point(134, 139);
-            this.txtPass2.Name = "txtPass2";
-            this.txtPass2.PasswordChar = '#';
-            this.txtPass2.Size = new System.Drawing.Size(147, 20);
-            this.txtPass2.TabIndex = 3;
-            // 
-            // txtMail
-            // 
-            this.txtMail.Location = new System.Drawing.Point(134, 165);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(147, 20);
-            this.txtMail.TabIndex = 4;
             // 
             // label1
             // 
@@ -130,52 +100,99 @@
             this.bttnExit.UseVisualStyleBackColor = true;
             this.bttnExit.Click += new System.EventHandler(this.bttnExit_Click);
             // 
+            // txtConfirmarUsu
+            // 
+            this.txtConfirmarUsu.BackColorError = System.Drawing.Color.Empty;
+            this.txtConfirmarUsu.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.txtConfirmarUsu.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.txtConfirmarUsu.Location = new System.Drawing.Point(134, 88);
+            this.txtConfirmarUsu.Name = "txtConfirmarUsu";
+            this.txtConfirmarUsu.Patro = null;
+            this.txtConfirmarUsu.Size = new System.Drawing.Size(150, 20);
+            this.txtConfirmarUsu.TabIndex = 11;
+            this.txtConfirmarUsu.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
+            // txtPass
+            // 
+            this.txtPass.BackColorError = System.Drawing.Color.Empty;
+            this.txtPass.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.txtPass.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.txtPass.Location = new System.Drawing.Point(134, 113);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Patro = null;
+            this.txtPass.Size = new System.Drawing.Size(150, 20);
+            this.txtPass.TabIndex = 12;
+            this.txtPass.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
+            // txtPass2
+            // 
+            this.txtPass2.BackColorError = System.Drawing.Color.Empty;
+            this.txtPass2.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.txtPass2.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.txtPass2.Location = new System.Drawing.Point(134, 139);
+            this.txtPass2.Name = "txtPass2";
+            this.txtPass2.Patro = null;
+            this.txtPass2.Size = new System.Drawing.Size(150, 20);
+            this.txtPass2.TabIndex = 13;
+            this.txtPass2.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
+            // txtMail
+            // 
+            this.txtMail.BackColorError = System.Drawing.Color.Empty;
+            this.txtMail.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.txtMail.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.txtMail.Location = new System.Drawing.Point(134, 165);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Patro = null;
+            this.txtMail.Size = new System.Drawing.Size(150, 20);
+            this.txtMail.TabIndex = 14;
+            this.txtMail.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
             // frmUsuarioCambioPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 389);
+            this.Controls.Add(this.txtMail);
+            this.Controls.Add(this.txtPass2);
+            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtConfirmarUsu);
             this.Controls.Add(this.bttnExit);
             this.Controls.Add(this.btnVerificar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMail);
-            this.Controls.Add(this.txtPass2);
-            this.Controls.Add(this.txtPass);
-            this.Controls.Add(this.txtConfirmarUsu);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmUsuarioCambioPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.Text = "Cambio password";
             this.Load += new System.EventHandler(this.frmUsuarioCambioPassword_Load);
-            this.Controls.SetChildIndex(this.txtConfirmarUsu, 0);
-            this.Controls.SetChildIndex(this.txtPass, 0);
-            this.Controls.SetChildIndex(this.txtPass2, 0);
-            this.Controls.SetChildIndex(this.txtMail, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.btnVerificar, 0);
             this.Controls.SetChildIndex(this.bttnExit, 0);
+            this.Controls.SetChildIndex(this.txtConfirmarUsu, 0);
+            this.Controls.SetChildIndex(this.txtPass, 0);
+            this.Controls.SetChildIndex(this.txtPass2, 0);
+            this.Controls.SetChildIndex(this.txtMail, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtConfirmarUsu;
-        private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.TextBox txtPass2;
-        private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnVerificar;
         private System.Windows.Forms.Button bttnExit;
+        private MisControles.SWTextbox txtConfirmarUsu;
+        private MisControles.SWTextbox txtPass;
+        private MisControles.SWTextbox txtPass2;
+        private MisControles.SWTextbox txtMail;
     }
 }

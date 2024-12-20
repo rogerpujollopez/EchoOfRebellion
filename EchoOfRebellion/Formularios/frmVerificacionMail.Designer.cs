@@ -31,16 +31,16 @@ namespace EchoOfRebellion.Formularios
         {
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelTxtVerificacion = new System.Windows.Forms.Label();
-            this.txtCodeEmail = new System.Windows.Forms.TextBox();
             this.bttnEnviarCodigo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelReenviar = new System.Windows.Forms.Label();
             this.panelSuccess = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.bttnAceptar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.imgArrow = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bttnAceptar = new System.Windows.Forms.Button();
+            this.txtCodeEmail = new MisControles.SWTextbox();
             this.panelSuccess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgArrow)).BeginInit();
@@ -72,14 +72,6 @@ namespace EchoOfRebellion.Formularios
             this.labelTxtVerificacion.Text = "Hemos enviado un número de verifiación a tu\r\ncorreo.\r\nIntorduce el código en el r" +
     "ecuadro inferior.";
             this.labelTxtVerificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtCodeEmail
-            // 
-            this.txtCodeEmail.Location = new System.Drawing.Point(92, 187);
-            this.txtCodeEmail.Name = "txtCodeEmail";
-            this.txtCodeEmail.Size = new System.Drawing.Size(139, 20);
-            this.txtCodeEmail.TabIndex = 3;
-            this.txtCodeEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // bttnEnviarCodigo
             // 
@@ -129,6 +121,26 @@ namespace EchoOfRebellion.Formularios
             this.panelSuccess.TabIndex = 9;
             this.panelSuccess.Visible = false;
             // 
+            // bttnAceptar
+            // 
+            this.bttnAceptar.Location = new System.Drawing.Point(64, 147);
+            this.bttnAceptar.Name = "bttnAceptar";
+            this.bttnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.bttnAceptar.TabIndex = 2;
+            this.bttnAceptar.Text = "Aceptar";
+            this.bttnAceptar.UseVisualStyleBackColor = true;
+            this.bttnAceptar.Click += new System.EventHandler(this.bttnAceptar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EchoOfRebellion.Properties.Resources.reset_password_icon;
+            this.pictureBox2.Location = new System.Drawing.Point(75, 70);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(51, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -141,16 +153,6 @@ namespace EchoOfRebellion.Formularios
             this.label2.TabIndex = 0;
             this.label2.Text = "¡Enhorabuena! \r\nSe ha actualizado \r\nsu contraseña";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::EchoOfRebellion.Properties.Resources.reset_password_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(75, 70);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 63);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
             // 
             // imgArrow
             // 
@@ -172,15 +174,18 @@ namespace EchoOfRebellion.Formularios
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // bttnAceptar
+            // txtCodeEmail
             // 
-            this.bttnAceptar.Location = new System.Drawing.Point(64, 147);
-            this.bttnAceptar.Name = "bttnAceptar";
-            this.bttnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bttnAceptar.TabIndex = 2;
-            this.bttnAceptar.Text = "Aceptar";
-            this.bttnAceptar.UseVisualStyleBackColor = true;
-            this.bttnAceptar.Click += new System.EventHandler(this.bttnAceptar_Click);
+            this.txtCodeEmail.BackColorError = System.Drawing.Color.Empty;
+            this.txtCodeEmail.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.txtCodeEmail.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.txtCodeEmail.Location = new System.Drawing.Point(92, 188);
+            this.txtCodeEmail.Name = "txtCodeEmail";
+            this.txtCodeEmail.Patro = null;
+            this.txtCodeEmail.Size = new System.Drawing.Size(140, 20);
+            this.txtCodeEmail.TabIndex = 10;
+            this.txtCodeEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodeEmail.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
             // frmVerificacionMail
             // 
@@ -188,12 +193,12 @@ namespace EchoOfRebellion.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(337, 321);
+            this.Controls.Add(this.txtCodeEmail);
             this.Controls.Add(this.panelSuccess);
             this.Controls.Add(this.imgArrow);
             this.Controls.Add(this.labelReenviar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnEnviarCodigo);
-            this.Controls.Add(this.txtCodeEmail);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelTxtVerificacion);
             this.Controls.Add(this.labelTitle);
@@ -216,7 +221,6 @@ namespace EchoOfRebellion.Formularios
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelTxtVerificacion;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtCodeEmail;
         private System.Windows.Forms.Button bttnEnviarCodigo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelReenviar;
@@ -225,5 +229,6 @@ namespace EchoOfRebellion.Formularios
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bttnAceptar;
+        private MisControles.SWTextbox txtCodeEmail;
     }
 }

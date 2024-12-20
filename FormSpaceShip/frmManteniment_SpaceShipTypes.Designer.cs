@@ -29,36 +29,12 @@ namespace FormSpaceShip
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.swCodi1 = new MisControles.SWCodi();
             this.swCodi2 = new MisControles.SWCodi();
+            this.swTextbox1 = new MisControles.SWTextbox();
+            this.swTextbox2 = new MisControles.SWTextbox();
+            this.swTextbox3 = new MisControles.SWTextbox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Tag = "idSpaceShipType";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(164, 63);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Tag = "CodeSpaceShipType";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(164, 89);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 10;
-            this.textBox3.Tag = "DescSpaceShipType";
             // 
             // swCodi1
             // 
@@ -90,15 +66,54 @@ namespace FormSpaceShip
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
             // 
+            // swTextbox1
+            // 
+            this.swTextbox1.BackColorError = System.Drawing.Color.Empty;
+            this.swTextbox1.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.swTextbox1.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.swTextbox1.Location = new System.Drawing.Point(68, 12);
+            this.swTextbox1.Name = "swTextbox1";
+            this.swTextbox1.Patro = null;
+            this.swTextbox1.Size = new System.Drawing.Size(53, 20);
+            this.swTextbox1.TabIndex = 13;
+            this.swTextbox1.Tag = "idSpaceShipType";
+            this.swTextbox1.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
+            // swTextbox2
+            // 
+            this.swTextbox2.BackColorError = System.Drawing.Color.Empty;
+            this.swTextbox2.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.swTextbox2.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.swTextbox2.Location = new System.Drawing.Point(164, 50);
+            this.swTextbox2.Name = "swTextbox2";
+            this.swTextbox2.Patro = null;
+            this.swTextbox2.Size = new System.Drawing.Size(100, 20);
+            this.swTextbox2.TabIndex = 14;
+            this.swTextbox2.Tag = "CodeSpaceShipType";
+            this.swTextbox2.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
+            // swTextbox3
+            // 
+            this.swTextbox3.BackColorError = System.Drawing.Color.Empty;
+            this.swTextbox3.BackColorGetFocus = System.Drawing.Color.Empty;
+            this.swTextbox3.BackColorLostFocus = System.Drawing.Color.Empty;
+            this.swTextbox3.Location = new System.Drawing.Point(164, 88);
+            this.swTextbox3.Name = "swTextbox3";
+            this.swTextbox3.Patro = null;
+            this.swTextbox3.Size = new System.Drawing.Size(169, 20);
+            this.swTextbox3.TabIndex = 15;
+            this.swTextbox3.Tag = "DescSpaceShipType";
+            this.swTextbox3.Tipus = MisControles.SWTextbox.TipusDada.Sense;
+            // 
             // frmManteniment_SpaceShipTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.swTextbox3);
+            this.Controls.Add(this.swTextbox2);
+            this.Controls.Add(this.swTextbox1);
             this.Controls.Add(this.swCodi2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.swCodi1);
             this.Name = "frmManteniment_SpaceShipTypes";
             this.Text = "frmManteniment_SpaceShipTypes";
@@ -109,11 +124,10 @@ namespace FormSpaceShip
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private MisControles.SWCodi swCodi1;
         private MisControles.SWCodi swCodi2;
+        private MisControles.SWTextbox swTextbox1;
+        private MisControles.SWTextbox swTextbox2;
+        private MisControles.SWTextbox swTextbox3;
     }
 }
