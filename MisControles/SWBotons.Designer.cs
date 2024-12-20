@@ -32,10 +32,11 @@
             // 
             // SWBotons
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "SWBotons";
-            this.Size = new System.Drawing.Size(350, 201);
+            this.Size = new System.Drawing.Size(642, 371);
             this.ResumeLayout(false);
 
         }

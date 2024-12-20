@@ -67,10 +67,12 @@ namespace Utils
         }
         public static bool ValidacionPassword(string password)
         {
-            string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$]{8,20}$";
-            //Ml74@82hl$ = true
+            //string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$]{8,20}$";
+            ////Ml74@82hl$ = true
 
-            bool esValid = Regex.IsMatch(password, regexPassword);
+            //bool esValid = Regex.IsMatch(password, regexPassword);
+            bool esValid = true;
+
             return esValid;
         }
     }

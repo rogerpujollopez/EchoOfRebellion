@@ -19,43 +19,23 @@ namespace MisControles
         private Brush _colorFuente;
         private string _texto = "";
         private bool _isPressed = false;
-        private string _reflex;
 
-        public SWBotons(string reflex = "")
+        public SWBotons()
         {
             InitializeComponent();
 
             this.DoubleBuffered = true;
             this.Resize += (s, e) => this.Invalidate();
 
-            //this.MouseDown += (s, e) => { OnButtonPressed(s,e); };
-            //this.MouseUp += (s, e) => { OnButtonReleased(s,e); };
-
             this.BackColor = Config.Colores.Formularios.BackColor;
 
             _fontSize = 14f; // Tamaño de fuente por defecto
             _font = new Font("Agency FB", _fontSize, FontStyle.Bold);
             _colorFuente = Config.Colores.Botones.FontColor;
-            this._reflex = reflex;
-        }
-
-        //private Color colorFondoBoton = Color.FromArgb(29, 17, 67);
-        //private Color colorPerfilInteriorBoton = Color.FromArgb(85, 84, 128);
-        //private Color colorPerfilExteriorBoton = Color.FromArgb(126, 157, 201);
-
-        [Browsable(true)]
-        [Category("Personalización")]
-        [Description("Reflex")]
-        public string Reflex
-        {
-            set
-            {
-                _reflex = value;
-            }
         }
 
         [Browsable(true)]
-        [Category("Personalización")]
+        [Category("Personalizació")]
         [Description("Texto")]
         public string Texto 
         {
@@ -66,6 +46,11 @@ namespace MisControles
                 Invalidate(); // Redibuja el control para reflejar el cambio de texto
             }
         }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Nom formulari")]
+        public string Formulari { get; set; }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -295,6 +280,16 @@ namespace MisControles
                 centerY - textSize.Height / 2
             );
             g.DrawString(_texto, _font, _colorFuente, textPosition);
+        }
+
+        public new event MouseEventHandler MouseClick;
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            //base.OnMouseClick(e);
+
+            // Invocar el evento MouseClick personalizado
+            MouseClick?.Invoke(this, e);
         }
     }
 }

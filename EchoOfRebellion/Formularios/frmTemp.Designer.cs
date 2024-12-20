@@ -50,7 +50,7 @@
             this.btnSectors.TabIndex = 0;
             this.btnSectors.Text = "Sectors";
             this.btnSectors.UseVisualStyleBackColor = true;
-            this.btnSectors.Click += new System.EventHandler(this.btnSectors_Click);
+            //this.btnSectors.Click += new System.EventHandler(this.btnSectors_Click);
             // 
             // btnUsers
             // 
@@ -61,7 +61,7 @@
             this.btnUsers.TabIndex = 1;
             this.btnUsers.Text = "Users";
             this.btnUsers.UseVisualStyleBackColor = true;
-            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
+            //this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // btnRegions
             // 
@@ -72,7 +72,7 @@
             this.btnRegions.TabIndex = 2;
             this.btnRegions.Text = "Regions";
             this.btnRegions.UseVisualStyleBackColor = true;
-            this.btnRegions.Click += new System.EventHandler(this.btnRegions_Click);
+            //this.btnRegions.Click += new System.EventHandler(this.btnRegions_Click);
             // 
             // btnUsersCat
             // 
@@ -83,7 +83,7 @@
             this.btnUsersCat.TabIndex = 3;
             this.btnUsersCat.Text = "Users Categories";
             this.btnUsersCat.UseVisualStyleBackColor = true;
-            this.btnUsersCat.Click += new System.EventHandler(this.btnUsersCat_Click);
+            //this.btnUsersCat.Click += new System.EventHandler(this.btnUsersCat_Click);
             // 
             // btnSpaceCat
             // 
@@ -94,7 +94,7 @@
             this.btnSpaceCat.TabIndex = 4;
             this.btnSpaceCat.Text = "SpaceShips Categories";
             this.btnSpaceCat.UseVisualStyleBackColor = true;
-            this.btnSpaceCat.Click += new System.EventHandler(this.btnSpaceCat_Click);
+            //this.btnSpaceCat.Click += new System.EventHandler(this.btnSpaceCat_Click);
             // 
             // btnSpaceTypes
             // 
@@ -105,7 +105,7 @@
             this.btnSpaceTypes.TabIndex = 5;
             this.btnSpaceTypes.Text = "SpaceShips Types";
             this.btnSpaceTypes.UseVisualStyleBackColor = true;
-            this.btnSpaceTypes.Click += new System.EventHandler(this.btnSpaceTypes_Click);
+            //this.btnSpaceTypes.Click += new System.EventHandler(this.btnSpaceTypes_Click);
             // 
             // button7
             // 
@@ -124,7 +124,7 @@
             this.btnUsersRangs.TabIndex = 6;
             this.btnUsersRangs.Text = "Users Rangs";
             this.btnUsersRangs.UseVisualStyleBackColor = true;
-            this.btnUsersRangs.Click += new System.EventHandler(this.btnUsersRangs_Click);
+            //this.btnUsersRangs.Click += new System.EventHandler(this.btnUsersRangs_Click);
             // 
             // btnSelSector
             // 
@@ -135,7 +135,7 @@
             this.btnSelSector.TabIndex = 7;
             this.btnSelSector.Text = "Selector Sectors";
             this.btnSelSector.UseVisualStyleBackColor = true;
-            this.btnSelSector.Click += new System.EventHandler(this.btnSelSector_Click);
+            //this.btnSelSector.Click += new System.EventHandler(this.btnSelSector_Click);
             // 
             // btnPlanets
             // 
@@ -146,7 +146,7 @@
             this.btnPlanets.TabIndex = 8;
             this.btnPlanets.Text = "Planetes";
             this.btnPlanets.UseVisualStyleBackColor = true;
-            this.btnPlanets.Click += new System.EventHandler(this.btnPlanets_Click);
+            //this.btnPlanets.Click += new System.EventHandler(this.btnPlanets_Click);
             // 
             // buttonRoger
             // 

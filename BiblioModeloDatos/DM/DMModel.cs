@@ -38,6 +38,18 @@ namespace BiblioModeloDatos.DM
             public string IPPlanet { get; set; }
             public int PortPlanet { get; set; }
             public int PortPlanet1 { get; set; }
+
+            public List<Permis> Permisos { get; set; }
+        }
+
+        public class Permis
+        {
+            public int ID_Op { get; set; }
+            public string Dll { get; set; }
+            public string Tipus{ get; set; }
+            public string Nom { get; set; }
+            public byte[] Icona { get;set; }
+            public string Desc { get; set; }
         }
 
     }

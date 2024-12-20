@@ -57,6 +57,9 @@ namespace EchoOfRebellion.Clases.DM
                     // Revisar password
                     string bbddPassword = r["Password"].ToString();
 
+                    int AccessLevel = (int)r["AccessLevel"];
+
+                    List<Permis> permisos = new List<Permis>();
 
                     UsuariActiu.usuari = new UsuariComplet()
                     {
@@ -85,11 +88,48 @@ namespace EchoOfRebellion.Clases.DM
                         DescFiliations = r["DescFiliations"].ToString(),
                         UrlPlanetPicture = r.IsNull("UrlPlanetPicture") ? "" : r["UrlPlanetPicture"].ToString(),
                         IPPlanet = r.IsNull("IPPlanet") ? "" : r["IPPlanet"].ToString(),
-                        PortPlanet = r.IsNull("PortPlanet") ? 0 : (int)r["PortPlanet"],
-                        PortPlanet1 = r.IsNull("PortPlanet1") ? 0 : (int)r["PortPlanet1"],
+                        PortPlanet = r.IsNull("PortPlanet") ? 0 : Convert.ToInt32(r["PortPlanet"]),
+                        PortPlanet1 = r.IsNull("PortPlanet1") ? 0 : Convert.ToInt32(r["PortPlanet1"]),
                         Mail = r["Mail"].ToString(),
+                        Permisos = permisos
                     };
                     result = 1;
+
+                    // Carregar permisos
+
+                    parametros = new Dictionary<string, object>()
+                    {
+                        { "@AccessLevel", AccessLevel },
+                    };
+
+                    consulta = @"
+                        select ID_Op,Dll,Tipus,Nom,Icona,DescForm from UserOptions where AccessLevel<=@AccessLevel and EsManteniment=1 order by Ordre,Nom
+                    ";
+                    ds = m.GeneraConsultaCerca(consulta, parametros);
+
+                    string dll, tipu, nom, desc;
+                    int id_op;
+                    byte[] icona;
+
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        id_op = (int)row[0];
+                        dll = (string)row[1];
+                        tipu = (string)row[2];
+                        nom = (string)row[3];
+                        icona = row.IsNull(4) ? null : (byte[])row[4];
+                        desc = (string)row[5];
+
+                        permisos.Add(new Permis()
+                        {
+                            Dll = dll,
+                            Icona = icona,
+                            ID_Op = id_op,
+                            Nom = nom,
+                            Tipus = tipu,
+                            Desc = desc
+                        });
+                    }
                 }
                 else
                 {
