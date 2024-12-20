@@ -62,5 +62,10 @@ namespace FormUsers
 
             InicializarFormulario();
         }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

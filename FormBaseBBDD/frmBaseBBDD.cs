@@ -493,6 +493,18 @@ namespace FormBaseBBDD
                     pic.Top += _offset_top;
                     pic.Left += _offset_left;
                 }
+                else if (control is Panel cr && cr.Tag != null && cr.Tag.ToString() != "")
+                {
+                    cr.Top += _offset_top;
+                    cr.Left += _offset_left;
+                    _listFront.Add(control);
+                }
+                else if (control is Button bt )//&& bt.Tag != null && bt.Tag.ToString() != ""
+                {
+                    bt.Top += _offset_top;
+                    bt.Left += _offset_left;
+                    _listFront.Add(control);
+                }
             }
 
             foreach (Control control in _listFront)
