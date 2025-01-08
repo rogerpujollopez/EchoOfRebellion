@@ -36,7 +36,7 @@ namespace FormBaseBBDD
         private string _id { get; set; }
         private bool _autoLabel { get; set; }
 
-        public Color _color { get; set; } = Color.Red;
+        public Color _color { get; set; } = Color.White;
 
         private List<casella> caselles;
         private List<llista> llistes;
@@ -46,6 +46,7 @@ namespace FormBaseBBDD
         {
             InitializeComponent();
             dataGridView1.RowHeadersVisible = false;
+            ForeColor = Color.White;
         }
 
         protected Data SetData
@@ -90,7 +91,9 @@ namespace FormBaseBBDD
 
             nomsCampsPhoto = new List<string>();
 
-            foreach (Control control in this.Controls)
+            var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+            foreach (Control control in grupo.Controls)
             {
                 if (control is PictureBox pb && control.Tag != null)
                 {
@@ -127,7 +130,9 @@ namespace FormBaseBBDD
         {
             if (llistes != null && llistes.Count > 0)
             {
-                foreach (Control control in this.Controls)
+                var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+                foreach (Control control in grupo.Controls)
                 {
                     if (control is SWCodi txt && control.Tag != null)
                     {
@@ -208,18 +213,16 @@ namespace FormBaseBBDD
                     {
                         // La columna es de tipo entero (int)
                     }
-
-
                 }
                 pos += 1;
             }
-
         }
-
 
         private void EstablecerBinding()
         {
-            foreach (Control control in this.Controls)
+            var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+            foreach (Control control in grupo.Controls)
             {
                 if (control is TextBox txt && control.Tag != null)
                 {
@@ -273,7 +276,9 @@ namespace FormBaseBBDD
 
         private void RemoverBinding(bool borrarCampos)
         {
-            foreach (Control control in this.Controls)
+            var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+            foreach (Control control in grupo.Controls)
             {
                 if (control is TextBox txt)
                 {
@@ -338,6 +343,9 @@ namespace FormBaseBBDD
 
         private void _DibujarLabels()
         {
+            var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+
             foreach (DataColumn col in _ds.Tables[0].Columns)
             {
                 Type dataType = col.DataType;
@@ -346,100 +354,92 @@ namespace FormBaseBBDD
                 {
                     string columnName = col.ColumnName;
 
-                    foreach (Control control in this.Controls)
+                    foreach (Control control in grupo.Controls)
                     {
                         if (control is TextBox txt)
                         {
-                            if (txt.Tag.ToString() == columnName && !txt.ReadOnly)
+                            if (txt.Tag.ToString() == columnName) // && !txt.ReadOnly
                             {
-                                int offset = columnName.Length * 8;
-
-                                Label lbl = new Label()
-                                {
-                                    Name = "lbl" + columnName,
-                                    Text = columnName,
-                                    Location = new Point(txt.Location.X - offset, txt.Location.Y + 2),
-                                    AutoSize = false,
-                                    Width = offset,
-                                    Height = 13,
-                                    ForeColor = _color,
-                                };
-                                this.Controls.Add(lbl);
-                                lbl.BringToFront();
+                                Label lbl = columnName.SituarLabel(txt, _color);
+                                grupo.Controls.Add(lbl);
                             }
                         }
                         else if (control is ComboBox cmb)
                         {
                             if (cmb.Tag.ToString() == columnName)
                             {
-                                int offset = columnName.Length * 8;
+                                //int offset = columnName.Length * 8;
 
-                                Label lbl = new Label()
-                                {
-                                    Name = "lbl" + columnName,
-                                    Text = columnName,
-                                    Location = new Point(cmb.Location.X - offset, cmb.Location.Y + 2),
-                                    AutoSize = false,
-                                    Width = offset,
-                                    Height = 13,
-                                    ForeColor = _color,
-                                };
-                                this.Controls.Add(lbl);
-                                lbl.BringToFront();
+                                //Label lbl = new Label()
+                                //{
+                                //    Name = "lbl" + columnName,
+                                //    Text = columnName,
+                                //    Location = new Point(txt.Location.X, txt.Location.Y),
+                                //    AutoSize = false,
+                                //    Width = offset,
+                                //    Height = 13,
+                                //    ForeColor = _color,
+                                //};
+
+                                //lbl.SituarLabel(cmb);
+                                Label lbl = columnName.SituarLabel(cmb, _color);
+                                grupo.Controls.Add(lbl);
                             }
                         }
                         else if (control is SWCodi cd)
                         {
                             if (cd.Tag.ToString() == columnName)
                             {
-                                int offset = columnName.Length * 8;
+                                //int offset = columnName.Length * 8;
 
-                                Label lbl = new Label()
-                                {
-                                    Name = "lbl" + columnName,
-                                    Text = columnName,
-                                    Location = new Point(cd.Location.X - offset, cd.Location.Y + 2),
-                                    AutoSize = false,
-                                    Width = offset,
-                                    Height = 13,
-                                    ForeColor = _color,
-                                };
-                                this.Controls.Add(lbl);
-                                lbl.BringToFront();
+                                //Label lbl = new Label()
+                                //{
+                                //    Name = "lbl" + columnName,
+                                //    Text = columnName,
+                                //    Location = new Point(txt.Location.X, txt.Location.Y),
+                                //    AutoSize = false,
+                                //    Width = offset,
+                                //    Height = 13,
+                                //    ForeColor = _color,
+                                //};
+
+                                //lbl.SituarLabel(cd);
+                                Label lbl = columnName.SituarLabel(cd, _color);
+                                grupo.Controls.Add(lbl);
                             }
                         }
-                        else if (control is PictureBox pic)
-                        {
-                            pic.BorderStyle = BorderStyle.None;
+                        //else if (control is PictureBox pic)
+                        //{
+                        //    pic.BorderStyle = BorderStyle.None;
 
-                            pic.Paint += (sender, e) =>
-                            {
-                                using (var pen = new Pen(_color, 2)) 
-                                {
-                                    e.Graphics.DrawRectangle(pen, 0, 0, pic.Width, pic.Height);
-                                }
-                            };
+                        //    pic.Paint += (sender, e) =>
+                        //    {
+                        //        using (var pen = new Pen(_color, 2)) 
+                        //        {
+                        //            e.Graphics.DrawRectangle(pen, 0, 0, pic.Width, pic.Height);
+                        //        }
+                        //    };
 
-                            pic.Refresh();
+                        //    pic.Refresh();
 
-                            if (pic.Tag.ToString() == columnName)
-                            {
-                                int offset = columnName.Length * 8;
+                        //    if (pic.Tag.ToString() == columnName)
+                        //    {
+                        //        int offset = columnName.Length * 8;
 
-                                Label lbl = new Label()
-                                {
-                                    Name = "lbl" + columnName,
-                                    Text = columnName,
-                                    Location = new Point(pic.Location.X - offset, pic.Location.Y + 2),
-                                    AutoSize = false,
-                                    Width = offset,
-                                    Height = 13,
-                                    ForeColor = _color,
-                                };
-                                this.Controls.Add(lbl);
-                                lbl.BringToFront();
-                            }
-                        }
+                        //        Label lbl = new Label()
+                        //        {
+                        //            Name = "lbl" + columnName,
+                        //            Text = columnName,
+                        //            Location = new Point(pic.Location.X - offset, pic.Location.Y + 2),
+                        //            AutoSize = false,
+                        //            Width = offset,
+                        //            Height = 13,
+                        //            ForeColor = _color,
+                        //        };
+                        //        this.Controls.Add(lbl);
+                        //        //lbl.BringToFront();
+                        //    }
+                        //}
                     }
                 }
             }
@@ -447,92 +447,50 @@ namespace FormBaseBBDD
 
         private void _SituarCamposEnFormulario(int offset_top = 0, int offset_left = 0)
         {
+            int pos = 310;
+
             var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+            grupo.ForeColor = _color;
+            this.Height = pos + grupo.Height + 14;
+            grupo.Top = pos;
 
-            int _offset_top = grupo != null ? grupo.Top : 0;
-            int _offset_left = grupo != null ? grupo.Left : 0;
 
-            _offset_top += offset_top;
-            _offset_left += offset_left;
-
-            List<Control> _listFront = new List<Control>();
-            List<Control> _listBack = new List<Control>();
-
-            foreach (Control control in Controls)
+            foreach (Control control in grupo.Controls)
             {
                 if (control is TextBox txt)
                 {
                     if (txt.Tag.ToString() == _id)
                     {
-                        txt.Top = 0;
-                        txt.Left = 0;
                         txt.Enabled = false;
-                        _listBack.Add(control);
-                    }
-                    else
-                    {
-                        txt.Top += _offset_top;
-                        txt.Left += _offset_left;
-                        _listFront.Add(control);
+                        //txt.Visible = false;
                     }
                 }
-                else if (control is ComboBox cmb)
-                {
-                    cmb.Top += _offset_top;
-                    cmb.Left += _offset_left;
-                    _listFront.Add(control);
-                }
-                else if (control is SWCodi cd)
-                {
-                    cd.Top += _offset_top;
-                    cd.Left += _offset_left;
-                    _listFront.Add(control);
-                }
-                else if (control is PictureBox pic)
-                {
-                    pic.Top += _offset_top;
-                    pic.Left += _offset_left;
-                }
-                else if (control is Panel cr && cr.Tag != null && cr.Tag.ToString() != "")
-                {
-                    cr.Top += _offset_top;
-                    cr.Left += _offset_left;
-                    _listFront.Add(control);
-                }
-                else if (control is Button bt )//&& bt.Tag != null && bt.Tag.ToString() != ""
-                {
-                    bt.Top += _offset_top;
-                    bt.Left += _offset_left;
-                    _listFront.Add(control);
-                }
-            }
-
-            foreach (Control control in _listFront)
-            {
-                control.BringToFront();
-            }
-            foreach (Control control in _listBack)
-            {
-                control.SendToBack();
             }
         }
 
-        public void InicializarFormulario(int offset_top = 0, int offset_left = 0)
+        public void InicializarFormulario(Form frm, int offset_top = 0, int offset_left = 0)
         {
+            frm.SuspendLayout();
+
             _SituarCamposEnFormulario(offset_top, offset_left);
             if (_autoLabel)
             {
                 _DibujarLabels();
             }
+
+            frm.ResumeLayout(false);
+            frm.PerformLayout();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (_esNou)
             {
+                var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
                 DataRow row = _ds.Tables[0].NewRow();
 
-                foreach (Control control in this.Controls)
+                foreach (Control control in grupo.Controls)
                 {
                     if (control is TextBox txt)
                     {
@@ -576,11 +534,35 @@ namespace FormBaseBBDD
 
         private void btnNou_Click(object sender, EventArgs e)
         {
+
             if (!_esNou)
             {
-                RemoverBinding(true);
                 _esNou = true;
             }
+            else
+            {
+                var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+                DataRow row = _ds.Tables[0].NewRow();
+
+                foreach (Control control in grupo.Controls)
+                {
+                    if (control is TextBox txt)
+                    {
+                        if (txt.Enabled)
+                        {
+                            row[txt.Tag.ToString()] = txt.Text;
+                        }
+                    }
+                    else if (control is ComboBox cmb)
+                    {
+                        row[cmb.Tag.ToString()] = cmb.SelectedValue;
+                    }
+                }
+                _ds.Tables[0].Rows.Add(row);
+            }
+
+            RemoverBinding(true);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -595,7 +577,9 @@ namespace FormBaseBBDD
                 return;
             }
 
-            foreach (Control control in this.Controls)
+            var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+            foreach (Control control in grupo.Controls)
             {
                 if (control is TextBox txt)
                 {

@@ -52,7 +52,7 @@ namespace FormSpaceShip
 
         private void frmManteniment_SpaceShipTypes_Load(object sender, EventArgs e)
         {
-            InicializarFormulario();
+            InicializarFormulario(this);
         }
     }
 }

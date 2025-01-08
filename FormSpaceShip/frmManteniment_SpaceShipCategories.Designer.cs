@@ -31,6 +31,8 @@
             this.swTextbox1 = new MisControles.SWTextbox();
             this.swTextbox2 = new MisControles.SWTextbox();
             this.swTextbox3 = new MisControles.SWTextbox();
+            this.GrupCamps = new System.Windows.Forms.GroupBox();
+            this.GrupCamps.SuspendLayout();
             this.SuspendLayout();
             // 
             // swTextbox1
@@ -38,10 +40,10 @@
             this.swTextbox1.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox1.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox1.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox1.Location = new System.Drawing.Point(129, 12);
+            this.swTextbox1.Location = new System.Drawing.Point(101, 76);
             this.swTextbox1.Name = "swTextbox1";
             this.swTextbox1.Patro = null;
-            this.swTextbox1.Size = new System.Drawing.Size(32, 20);
+            this.swTextbox1.Size = new System.Drawing.Size(65, 20);
             this.swTextbox1.TabIndex = 3;
             this.swTextbox1.Tag = "idSpaceShipCategory";
             this.swTextbox1.Tipus = MisControles.SWTextbox.TipusDada.Sense;
@@ -51,7 +53,7 @@
             this.swTextbox2.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox2.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox2.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox2.Location = new System.Drawing.Point(187, 41);
+            this.swTextbox2.Location = new System.Drawing.Point(101, 24);
             this.swTextbox2.Name = "swTextbox2";
             this.swTextbox2.Patro = null;
             this.swTextbox2.Size = new System.Drawing.Size(210, 20);
@@ -64,7 +66,7 @@
             this.swTextbox3.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox3.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox3.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox3.Location = new System.Drawing.Point(187, 84);
+            this.swTextbox3.Location = new System.Drawing.Point(101, 50);
             this.swTextbox3.Name = "swTextbox3";
             this.swTextbox3.Patro = null;
             this.swTextbox3.Size = new System.Drawing.Size(210, 20);
@@ -72,19 +74,31 @@
             this.swTextbox3.Tag = "DescSpaceShipCategory";
             this.swTextbox3.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
+            // GrupCamps
+            // 
+            this.GrupCamps.Controls.Add(this.swTextbox3);
+            this.GrupCamps.Controls.Add(this.swTextbox1);
+            this.GrupCamps.Controls.Add(this.swTextbox2);
+            this.GrupCamps.ForeColor = System.Drawing.Color.White;
+            this.GrupCamps.Location = new System.Drawing.Point(12, 322);
+            this.GrupCamps.Name = "GrupCamps";
+            this.GrupCamps.Size = new System.Drawing.Size(774, 114);
+            this.GrupCamps.TabIndex = 6;
+            this.GrupCamps.TabStop = false;
+            this.GrupCamps.Text = "Camps";
+            // 
             // frmManteniment_SpaceShipCategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.swTextbox3);
-            this.Controls.Add(this.swTextbox2);
-            this.Controls.Add(this.swTextbox1);
+            this.Controls.Add(this.GrupCamps);
             this.Name = "frmManteniment_SpaceShipCategories";
             this.Text = "frmMantniment_Naus";
             this.Load += new System.EventHandler(this.frmManteniment_ShipCategories_Load);
+            this.GrupCamps.ResumeLayout(false);
+            this.GrupCamps.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -93,5 +107,6 @@
         private MisControles.SWTextbox swTextbox1;
         private MisControles.SWTextbox swTextbox2;
         private MisControles.SWTextbox swTextbox3;
+        private System.Windows.Forms.GroupBox GrupCamps;
     }
 }

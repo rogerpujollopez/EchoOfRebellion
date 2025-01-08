@@ -39,7 +39,7 @@ namespace FormSpaceShip
 
         private void frmManteniment_ShipCategories_Load(object sender, EventArgs e)
         {
-            InicializarFormulario();
+            InicializarFormulario(this);
         }
     }
 }

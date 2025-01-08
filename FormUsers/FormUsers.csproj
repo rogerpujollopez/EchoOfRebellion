@@ -84,6 +84,9 @@
     <EmbeddedResource Include="frmManteniment_UserCategories.resx">
       <DependentUpon>frmManteniment_UserCategories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManteniment_UserRangs.resx">
+      <DependentUpon>frmManteniment_UserRangs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmManteniment_Users.resx">
       <DependentUpon>frmManteniment_Users.cs</DependentUpon>
     </EmbeddedResource>

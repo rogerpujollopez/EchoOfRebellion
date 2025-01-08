@@ -18,6 +18,7 @@ namespace FormPlanetes
             InitializeComponent();
 
             string tabla = "Planetes";
+
             Data data = new Data()
             {
                 autoLabel = true,
@@ -26,24 +27,22 @@ namespace FormPlanetes
                 queryUpdate = @"SELECT idPlanet, CodePlanet, DescPlanet, idSector, long, lat, parsecs, idNatives, idFiliation, PlanetPicture, IPPlanet, PortPlanet, PortPlanet1 FROM Planets",
                 id = "idPlanet",
                 titol = $"Mantenimiento tabla '{tabla}'"
-
             };
-
             SetData = data;
 
             SetCaselles = new List<casella>() {
-               new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "Code Planet", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "Desc Planet", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "Desc Sector", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "long", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "lat", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "parsecs", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "Desc Specie", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
-               new casella() { nom = "Desc Filiations", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "Code Planet", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "Desc Planet", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "Desc Sector", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "long", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "lat", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "parsecs", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "Desc Specie", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "id", ample = 120 , visible = false, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "Desc Filiations", ample = 120 , visible = true, alineacio = CasellaAlineacio.Centrat},
             };
 
             SetLlistes = new List<llista>()
@@ -56,7 +55,7 @@ namespace FormPlanetes
 
         private void frmManteniment_Planetes_Load(object sender, EventArgs e)
         {
-            InicializarFormulario();
+            InicializarFormulario(this);
         }
     }
 }

@@ -162,7 +162,8 @@ namespace FormUsers
             // panel1
             // 
             this.panel1.Controls.Add(this.crystalReportViewer1);
-            this.panel1.Location = new System.Drawing.Point(550, 20);
+            this.panel1.Location = new System.Drawing.Point(126, 265);
+            //this.panel1.Location = new System.Drawing.Point(504, 342);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 300);
             this.panel1.TabIndex = 0;

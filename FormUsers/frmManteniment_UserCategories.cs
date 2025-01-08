@@ -32,18 +32,15 @@ namespace FormUsers
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
-                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                new casella() { nom="name2", ample=300, visible = true},
+                new casella() { visible = false},
+                new casella() { ample = 180, visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { ample = 180, visible = true},
             };
         }
 
         private void frmManteniment_UserCategories_Load(object sender, EventArgs e)
         {
-            this.SuspendLayout();
-            InicializarFormulario();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            InicializarFormulario(this);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace FormSectors
 
         private void frmManteniment_Sectors_Load(object sender, EventArgs e)
         {
-            InicializarFormulario();
+            InicializarFormulario(this);
         }
 
         //protected override void HandleKeyDown(KeyEventArgs e)

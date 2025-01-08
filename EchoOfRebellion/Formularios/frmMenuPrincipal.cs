@@ -24,6 +24,8 @@ namespace EchoOfRebellion.Formularios
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
+            BackColor = Color.FromArgb(32, 32, 32);
+
             Titulo = "Menú principal";
             
             DibuixarMenu();
@@ -47,7 +49,7 @@ namespace EchoOfRebellion.Formularios
                     Left = _x,
                     Height = _h,
                     Width = _w,
-
+                    BackColor = BackColor
                 };
 
                 _y += _h + offset;

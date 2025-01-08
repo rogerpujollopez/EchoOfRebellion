@@ -36,7 +36,7 @@
             // txtcodi
             // 
             this.txtcodi.Location = new System.Drawing.Point(0, 0);
-            this.txtcodi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtcodi.Margin = new System.Windows.Forms.Padding(2);
             this.txtcodi.Name = "txtcodi";
             this.txtcodi.Size = new System.Drawing.Size(54, 20);
             this.txtcodi.TabIndex = 0;
@@ -46,14 +46,15 @@
             // 
             // txtLabel
             // 
-            this.txtLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.txtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabel.Location = new System.Drawing.Point(58, 0);
-            this.txtLabel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabel.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabel.Name = "txtLabel";
             this.txtLabel.ReadOnly = true;
-            this.txtLabel.Size = new System.Drawing.Size(282, 20);
+            this.txtLabel.Size = new System.Drawing.Size(224, 20);
             this.txtLabel.TabIndex = 1;
             this.txtLabel.Text = "XXX";
             this.txtLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtLabel_MouseClick);
@@ -61,22 +62,23 @@
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(275, 0);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(170, 0);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(54, 20);
+            this.txtId.Size = new System.Drawing.Size(54, 18);
             this.txtId.TabIndex = 2;
             // 
             // SWCodi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtLabel);
             this.Controls.Add(this.txtcodi);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.txtId);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SWCodi";
-            this.Size = new System.Drawing.Size(342, 21);
+            this.Size = new System.Drawing.Size(284, 21);
             this.ResumeLayout(false);
             this.PerformLayout();
 

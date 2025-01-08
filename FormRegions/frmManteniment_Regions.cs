@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,9 +31,10 @@ namespace FormRegions
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
-                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                new casella() { nom="name2", ample=300, visible = true},
+                new casella() { nom = "id", visible = false },
+                new casella() { nom = "CodeRegion", ample = 100, visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { nom = "DescRegion", ample = 100, visible = true},
+                new casella() { nom = "Remarks", ample = 300, visible = true},
             };
 
             // ds Combo
@@ -47,13 +47,7 @@ namespace FormRegions
 
         private void frmManteniment_Regions_Load(object sender, EventArgs e)
         {
-
-            this.SuspendLayout();
-
-            InicializarFormulario();
-
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            InicializarFormulario(this);
         }
     }
 }

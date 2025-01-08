@@ -31,20 +31,15 @@ namespace FormUsers
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella(){ nom="id", ample=100 , visible=false, alineacio=CasellaAlineacio.Centrat},
-                new casella() { nom ="CodeRank", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                new casella() { nom="DescRank", ample=300, visible = true},
+                new casella() { visible = false},
+                new casella() { ample=200, visible = true, alineacio = CasellaAlineacio.Centrat},
+                new casella() { ample=300, visible = true},
             };
         }
 
         private void frmManteniment_UserRangs_Load(object sender, EventArgs e)
         {
-            this.SuspendLayout();
-
-            InicializarFormulario();
-
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            InicializarFormulario(this);
         }
     }
 }

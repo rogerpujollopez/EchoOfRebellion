@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -7,11 +8,39 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Utils
 {
     public static class Extensions
     {
+        public static Label SituarLabel<T>(this string texto, T control, Color color) where T : Control
+        {
+            int offset = texto.Length * 8;
+            int offset_w = 10; // Desplazamiento horizontal
+            int offset_h = 2;  // Desplazamiento vertical
+
+            Label lbl = new Label()
+            {
+                Name = "lbl" + texto,
+                Text = texto,
+                Location = new Point(0, 0),
+                AutoSize = false,
+                Width = offset,
+                Height = 13,
+                ForeColor = color,
+            };
+
+            // Calcular el tamaño del texto en el Label
+            Size textSize = TextRenderer.MeasureText(lbl.Text, lbl.Font);
+
+            // Posicionar el Label relativo al Control
+            lbl.Location = new Point(control.Location.X - (textSize.Width + offset_w), control.Location.Y + offset_h);
+
+            return lbl;
+        }
+
         public static byte[] LoadFileToArrayBytes(this string FileName)
         {
             return File.ReadAllBytes(FileName);

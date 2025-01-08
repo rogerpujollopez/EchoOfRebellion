@@ -60,7 +60,7 @@ namespace FormUsers
             swCodi3.ViewDataColumns = new List<int> { 2, 1 };
             swCodi4.ViewDataColumns = new List<int> { 2, 1 };
 
-            InicializarFormulario();
+            InicializarFormulario(this);
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)
