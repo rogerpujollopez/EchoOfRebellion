@@ -40,7 +40,7 @@
             this.swTextbox1.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox1.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox1.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox1.Location = new System.Drawing.Point(101, 76);
+            this.swTextbox1.Location = new System.Drawing.Point(171, 78);
             this.swTextbox1.Name = "swTextbox1";
             this.swTextbox1.Patro = null;
             this.swTextbox1.Size = new System.Drawing.Size(65, 20);
@@ -53,7 +53,7 @@
             this.swTextbox2.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox2.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox2.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox2.Location = new System.Drawing.Point(101, 24);
+            this.swTextbox2.Location = new System.Drawing.Point(171, 26);
             this.swTextbox2.Name = "swTextbox2";
             this.swTextbox2.Patro = null;
             this.swTextbox2.Size = new System.Drawing.Size(210, 20);
@@ -66,7 +66,7 @@
             this.swTextbox3.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox3.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox3.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox3.Location = new System.Drawing.Point(101, 50);
+            this.swTextbox3.Location = new System.Drawing.Point(171, 52);
             this.swTextbox3.Name = "swTextbox3";
             this.swTextbox3.Patro = null;
             this.swTextbox3.Size = new System.Drawing.Size(210, 20);
@@ -93,9 +93,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.GrupCamps);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.Name = "frmManteniment_SpaceShipCategories";
             this.Text = "frmMantniment_Naus";
             this.Load += new System.EventHandler(this.frmManteniment_ShipCategories_Load);
+            this.Controls.SetChildIndex(this.GrupCamps, 0);
             this.GrupCamps.ResumeLayout(false);
             this.GrupCamps.PerformLayout();
             this.ResumeLayout(false);

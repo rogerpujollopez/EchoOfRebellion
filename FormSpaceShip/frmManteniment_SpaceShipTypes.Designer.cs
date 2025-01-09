@@ -34,11 +34,13 @@ namespace FormSpaceShip
             this.swTextbox1 = new MisControles.SWTextbox();
             this.swTextbox2 = new MisControles.SWTextbox();
             this.swTextbox3 = new MisControles.SWTextbox();
+            this.GrupCamps = new System.Windows.Forms.GroupBox();
+            this.GrupCamps.SuspendLayout();
             this.SuspendLayout();
             // 
             // swCodi1
             // 
-            this.swCodi1.Location = new System.Drawing.Point(164, 126);
+            this.swCodi1.Location = new System.Drawing.Point(141, 70);
             this.swCodi1.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi1.Name = "swCodi1";
             this.swCodi1.Origen = null;
@@ -53,7 +55,7 @@ namespace FormSpaceShip
             // 
             // swCodi2
             // 
-            this.swCodi2.Location = new System.Drawing.Point(164, 163);
+            this.swCodi2.Location = new System.Drawing.Point(141, 95);
             this.swCodi2.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi2.Name = "swCodi2";
             this.swCodi2.Origen = null;
@@ -71,7 +73,7 @@ namespace FormSpaceShip
             this.swTextbox1.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox1.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox1.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox1.Location = new System.Drawing.Point(68, 12);
+            this.swTextbox1.Location = new System.Drawing.Point(430, 19);
             this.swTextbox1.Name = "swTextbox1";
             this.swTextbox1.Patro = null;
             this.swTextbox1.Size = new System.Drawing.Size(53, 20);
@@ -84,10 +86,10 @@ namespace FormSpaceShip
             this.swTextbox2.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox2.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox2.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox2.Location = new System.Drawing.Point(164, 50);
+            this.swTextbox2.Location = new System.Drawing.Point(141, 19);
             this.swTextbox2.Name = "swTextbox2";
             this.swTextbox2.Patro = null;
-            this.swTextbox2.Size = new System.Drawing.Size(100, 20);
+            this.swTextbox2.Size = new System.Drawing.Size(169, 20);
             this.swTextbox2.TabIndex = 14;
             this.swTextbox2.Tag = "CodeSpaceShipType";
             this.swTextbox2.Tipus = MisControles.SWTextbox.TipusDada.Sense;
@@ -97,7 +99,7 @@ namespace FormSpaceShip
             this.swTextbox3.BackColorError = System.Drawing.Color.Empty;
             this.swTextbox3.BackColorGetFocus = System.Drawing.Color.Empty;
             this.swTextbox3.BackColorLostFocus = System.Drawing.Color.Empty;
-            this.swTextbox3.Location = new System.Drawing.Point(164, 88);
+            this.swTextbox3.Location = new System.Drawing.Point(141, 45);
             this.swTextbox3.Name = "swTextbox3";
             this.swTextbox3.Patro = null;
             this.swTextbox3.Size = new System.Drawing.Size(169, 20);
@@ -105,21 +107,34 @@ namespace FormSpaceShip
             this.swTextbox3.Tag = "DescSpaceShipType";
             this.swTextbox3.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
+            // GrupCamps
+            // 
+            this.GrupCamps.Controls.Add(this.swTextbox2);
+            this.GrupCamps.Controls.Add(this.swTextbox3);
+            this.GrupCamps.Controls.Add(this.swCodi1);
+            this.GrupCamps.Controls.Add(this.swCodi2);
+            this.GrupCamps.Controls.Add(this.swTextbox1);
+            this.GrupCamps.ForeColor = System.Drawing.Color.White;
+            this.GrupCamps.Location = new System.Drawing.Point(12, 315);
+            this.GrupCamps.Name = "GrupCamps";
+            this.GrupCamps.Size = new System.Drawing.Size(776, 124);
+            this.GrupCamps.TabIndex = 16;
+            this.GrupCamps.TabStop = false;
+            this.GrupCamps.Text = "Camps";
+            // 
             // frmManteniment_SpaceShipTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.swTextbox3);
-            this.Controls.Add(this.swTextbox2);
-            this.Controls.Add(this.swTextbox1);
-            this.Controls.Add(this.swCodi2);
-            this.Controls.Add(this.swCodi1);
+            this.Controls.Add(this.GrupCamps);
             this.Name = "frmManteniment_SpaceShipTypes";
             this.Text = "frmManteniment_SpaceShipTypes";
             this.Load += new System.EventHandler(this.frmManteniment_SpaceShipTypes_Load);
+            this.Controls.SetChildIndex(this.GrupCamps, 0);
+            this.GrupCamps.ResumeLayout(false);
+            this.GrupCamps.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -129,5 +144,6 @@ namespace FormSpaceShip
         private MisControles.SWTextbox swTextbox1;
         private MisControles.SWTextbox swTextbox2;
         private MisControles.SWTextbox swTextbox3;
+        private System.Windows.Forms.GroupBox GrupCamps;
     }
 }

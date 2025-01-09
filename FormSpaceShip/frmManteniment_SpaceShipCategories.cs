@@ -31,9 +31,9 @@ namespace FormSpaceShip
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella() { nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
-                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                new casella() { nom="name2", ample=300, visible = true},
+                new casella() { visible = false },
+                new casella() { ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
+                new casella() { ample=400, visible = true},
             };
         }
 

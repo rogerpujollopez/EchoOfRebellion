@@ -33,7 +33,13 @@ namespace FormSpaceShip
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                    new casella() { nom = "id", ample = 100 , visible = true, alineacio = CasellaAlineacio.Centrat},
+                    new casella() { visible = false },
+                    new casella() { visible = false },
+                    new casella() { visible = false },
+                    new casella() { ample = 200 , visible = true, alineacio = CasellaAlineacio.Centrat },
+                    new casella() { ample = 200 , visible = true },
+                    new casella() { ample = 200 , visible = true },
+                    new casella() { ample = 200 , visible = true },
                 };
 
             // ds Combo

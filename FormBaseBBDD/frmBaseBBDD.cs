@@ -472,6 +472,8 @@ namespace FormBaseBBDD
         {
             frm.SuspendLayout();
 
+            frm.Top = 100;
+
             _SituarCamposEnFormulario(offset_top, offset_left);
             if (_autoLabel)
             {
