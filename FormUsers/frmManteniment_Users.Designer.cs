@@ -43,13 +43,16 @@ namespace FormUsers
             this.panel1 = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.btnMostrar = new System.Windows.Forms.Button();
+            this.GrupCamps = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.GrupCamps.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(126, 23);
+            this.textBox1.Location = new System.Drawing.Point(106, 23);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(124, 20);
             this.textBox1.TabIndex = 0;
@@ -57,7 +60,7 @@ namespace FormUsers
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 49);
+            this.textBox2.Location = new System.Drawing.Point(106, 49);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(124, 20);
             this.textBox2.TabIndex = 1;
@@ -65,7 +68,7 @@ namespace FormUsers
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(126, 75);
+            this.textBox3.Location = new System.Drawing.Point(106, 75);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(124, 20);
             this.textBox3.TabIndex = 2;
@@ -73,7 +76,7 @@ namespace FormUsers
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(126, 101);
+            this.textBox4.Location = new System.Drawing.Point(106, 101);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(124, 20);
             this.textBox4.TabIndex = 3;
@@ -82,16 +85,16 @@ namespace FormUsers
             // textBox5
             // 
             this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(0, -1);
+            this.textBox5.Location = new System.Drawing.Point(106, 127);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(35, 20);
+            this.textBox5.Size = new System.Drawing.Size(59, 20);
             this.textBox5.TabIndex = 9;
             this.textBox5.Tag = "idUser";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(355, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 184);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(113, 118);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -101,7 +104,7 @@ namespace FormUsers
             // 
             // swCodi1
             // 
-            this.swCodi1.Location = new System.Drawing.Point(126, 165);
+            this.swCodi1.Location = new System.Drawing.Point(412, 22);
             this.swCodi1.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi1.Name = "swCodi1";
             this.swCodi1.Origen = null;
@@ -116,7 +119,7 @@ namespace FormUsers
             // 
             // swCodi2
             // 
-            this.swCodi2.Location = new System.Drawing.Point(126, 190);
+            this.swCodi2.Location = new System.Drawing.Point(412, 47);
             this.swCodi2.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi2.Name = "swCodi2";
             this.swCodi2.Origen = null;
@@ -131,7 +134,7 @@ namespace FormUsers
             // 
             // swCodi3
             // 
-            this.swCodi3.Location = new System.Drawing.Point(126, 215);
+            this.swCodi3.Location = new System.Drawing.Point(412, 72);
             this.swCodi3.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi3.Name = "swCodi3";
             this.swCodi3.Origen = null;
@@ -146,7 +149,7 @@ namespace FormUsers
             // 
             // swCodi4
             // 
-            this.swCodi4.Location = new System.Drawing.Point(126, 240);
+            this.swCodi4.Location = new System.Drawing.Point(412, 97);
             this.swCodi4.Margin = new System.Windows.Forms.Padding(2);
             this.swCodi4.Name = "swCodi4";
             this.swCodi4.Origen = null;
@@ -162,10 +165,9 @@ namespace FormUsers
             // panel1
             // 
             this.panel1.Controls.Add(this.crystalReportViewer1);
-            this.panel1.Location = new System.Drawing.Point(126, 265);
-            //this.panel1.Location = new System.Drawing.Point(504, 342);
+            this.panel1.Location = new System.Drawing.Point(171, 127);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 300);
+            this.panel1.Size = new System.Drawing.Size(583, 284);
             this.panel1.TabIndex = 0;
             this.panel1.Tag = "PanelReport";
             // 
@@ -177,13 +179,13 @@ namespace FormUsers
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(500, 300);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(583, 284);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(380, 39);
+            this.btnMostrar.Location = new System.Drawing.Point(0, 0);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(75, 23);
             this.btnMostrar.TabIndex = 14;
@@ -192,41 +194,53 @@ namespace FormUsers
             this.btnMostrar.UseVisualStyleBackColor = true;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
+            // GrupCamps
+            // 
+            this.GrupCamps.Controls.Add(this.button1);
+            this.GrupCamps.Controls.Add(this.panel1);
+            this.GrupCamps.Controls.Add(this.textBox5);
+            this.GrupCamps.Controls.Add(this.swCodi4);
+            this.GrupCamps.Controls.Add(this.pictureBox1);
+            this.GrupCamps.Controls.Add(this.swCodi3);
+            this.GrupCamps.Controls.Add(this.textBox1);
+            this.GrupCamps.Controls.Add(this.swCodi2);
+            this.GrupCamps.Controls.Add(this.textBox2);
+            this.GrupCamps.Controls.Add(this.swCodi1);
+            this.GrupCamps.Controls.Add(this.textBox3);
+            this.GrupCamps.Controls.Add(this.textBox4);
+            this.GrupCamps.ForeColor = System.Drawing.Color.White;
+            this.GrupCamps.Location = new System.Drawing.Point(12, 313);
+            this.GrupCamps.Name = "GrupCamps";
+            this.GrupCamps.Size = new System.Drawing.Size(776, 428);
+            this.GrupCamps.TabIndex = 10;
+            this.GrupCamps.TabStop = false;
+            this.GrupCamps.Text = "Camps";
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(36, 334);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmManteniment_Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 554);
-            this.Controls.Add(this.swCodi4);
-            this.Controls.Add(this.swCodi3);
-            this.Controls.Add(this.swCodi2);
-            this.Controls.Add(this.swCodi1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(800, 753);
+            this.Controls.Add(this.GrupCamps);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmManteniment_Users";
             this.Text = "frmManteniment_Users";
             this.Load += new System.EventHandler(this.frmManteniment_Users_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
-            this.Controls.SetChildIndex(this.textBox4, 0);
-            this.Controls.SetChildIndex(this.textBox5, 0);
-            this.Controls.SetChildIndex(this.pictureBox1, 0);
-            this.Controls.SetChildIndex(this.swCodi1, 0);
-            this.Controls.SetChildIndex(this.swCodi2, 0);
-            this.Controls.SetChildIndex(this.swCodi3, 0);
-            this.Controls.SetChildIndex(this.swCodi4, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.GrupCamps.ResumeLayout(false);
+            this.GrupCamps.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -245,6 +259,8 @@ namespace FormUsers
         private System.Windows.Forms.Panel panel1;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.Button btnMostrar;
+        private System.Windows.Forms.GroupBox GrupCamps;
+        private System.Windows.Forms.Button button1;
     }
 }
 
