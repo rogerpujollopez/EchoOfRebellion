@@ -171,21 +171,41 @@ namespace MisControles
             txtcodi.Select(0, txtcodi.Text.Length);
         }
 
+        
+        private void ObtenerValorParent(Control ctrl, ref int x, ref int y)
+        {
+            if (ctrl.Parent != null)
+            {
+                x += ctrl.Parent.Location.X;
+                y += ctrl.Parent.Location.Y;
+                ObtenerValorParent(ctrl.Parent, ref x, ref y);
+            }
+        }
+
+
         private void txtLabel_MouseClick(object sender, MouseEventArgs e)
         {
-            int offsetT, offsetL;
+            //int offsetT, offsetL;
             int ample;
 
             TextBox control = sender as TextBox;
             ample = control.Width;
-            Point p = control.Parent.Location;
-            offsetL = p.Y;
-            offsetT = p.X + control.Location.X;
-            p = control.Parent.Parent.Location;
-            offsetL += p.Y;
-            offsetT += p.X;
 
-            p = new Point(offsetT, offsetL);
+            int x = 0, y = 0;
+
+            ObtenerValorParent(control, ref x, ref y);
+            //x += control.Parent.Height;
+            x += 60;
+
+            //Point p = control.Parent.Location;
+            //offsetL = p.Y;
+            //offsetT = p.X + control.Location.X;
+            //p = control.Parent.Parent.Location;
+            //offsetL += p.Y;
+            //offsetT += p.X;
+            //p = new Point(offsetT, offsetL);
+
+            Point p = new Point(x, y);
 
             Form frm = new Form()
             {

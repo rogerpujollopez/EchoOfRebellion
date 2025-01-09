@@ -368,20 +368,6 @@ namespace FormBaseBBDD
                         {
                             if (cmb.Tag.ToString() == columnName)
                             {
-                                //int offset = columnName.Length * 8;
-
-                                //Label lbl = new Label()
-                                //{
-                                //    Name = "lbl" + columnName,
-                                //    Text = columnName,
-                                //    Location = new Point(txt.Location.X, txt.Location.Y),
-                                //    AutoSize = false,
-                                //    Width = offset,
-                                //    Height = 13,
-                                //    ForeColor = _color,
-                                //};
-
-                                //lbl.SituarLabel(cmb);
                                 Label lbl = columnName.SituarLabel(cmb, _color);
                                 grupo.Controls.Add(lbl);
                             }
@@ -390,20 +376,6 @@ namespace FormBaseBBDD
                         {
                             if (cd.Tag.ToString() == columnName)
                             {
-                                //int offset = columnName.Length * 8;
-
-                                //Label lbl = new Label()
-                                //{
-                                //    Name = "lbl" + columnName,
-                                //    Text = columnName,
-                                //    Location = new Point(txt.Location.X, txt.Location.Y),
-                                //    AutoSize = false,
-                                //    Width = offset,
-                                //    Height = 13,
-                                //    ForeColor = _color,
-                                //};
-
-                                //lbl.SituarLabel(cd);
                                 Label lbl = columnName.SituarLabel(cd, _color);
                                 grupo.Controls.Add(lbl);
                             }

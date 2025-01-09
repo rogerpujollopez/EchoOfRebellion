@@ -32,12 +32,13 @@ namespace FormSectors
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
-                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                new casella() { nom="name2", ample=300, visible = true},
+                new casella(){ visible = false },
+                new casella(){ visible = false },
+                //new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
+                //new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
+                //new casella() { nom="name2", ample=300, visible = true},
             };
 
-            // ds Combo
             SetLlistes = new List<llista>()
             {
                 new llista() { id="idRegion", query="select idRegion,CodeRegion,DescRegion as Region from Regions order by Region"}
@@ -47,6 +48,8 @@ namespace FormSectors
 
         private void frmManteniment_Sectors_Load(object sender, EventArgs e)
         {
+            swCodi1.ViewDataColumns = new List<int> { 2, 1 };
+
             InicializarFormulario(this);
         }
 
