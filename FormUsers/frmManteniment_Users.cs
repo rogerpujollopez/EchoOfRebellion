@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BiblioModeloDatos;
 
 namespace FormUsers
 {
@@ -67,9 +68,18 @@ namespace FormUsers
 
             InicializarFormulario(this);
         }
-
-        private void btnMostrar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            DataSet ds = new DataSet();
+            clsModeloDatos md = new clsModeloDatos();
+
+            string query = $"Select u.UserName, uc.DescCategory, ur.DescRank, s.DescSpecie, p.DescPlanet, u.Photo FROM Users AS u, UserCategories AS uc, UserRanks AS ur, Species AS s, Planets AS p WHERE u.idUserCategory = uc.idUserCategory AND u.idUserRank = ur.idUserRank AND u.idSpecie = s.idSpecie AND u.idPlanet = p.idPlanet AND u.UserName = 'Guti StormLight'";
+
+            ds = md.PortarPerConsulta(query, "CrystalData");
+
+            tarjaIdentificacio r = new tarjaIdentificacio();
+            r.SetDataSource(ds.Tables["CrystalData"]);
+            crystalReportViewer1.ReportSource = r;
 
         }
     }
