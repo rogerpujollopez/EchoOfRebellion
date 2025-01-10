@@ -185,25 +185,13 @@ namespace MisControles
 
         private void txtLabel_MouseClick(object sender, MouseEventArgs e)
         {
-            //int offsetT, offsetL;
-            int ample;
+            int ample, x = 0, y = 0;
 
             TextBox control = sender as TextBox;
             ample = control.Width;
 
-            int x = 0, y = 0;
-
             ObtenerValorParent(control, ref x, ref y);
-            //x += control.Parent.Height;
             x += 60;
-
-            //Point p = control.Parent.Location;
-            //offsetL = p.Y;
-            //offsetT = p.X + control.Location.X;
-            //p = control.Parent.Parent.Location;
-            //offsetL += p.Y;
-            //offsetT += p.X;
-            //p = new Point(offsetT, offsetL);
 
             Point p = new Point(x, y);
 
@@ -273,17 +261,13 @@ namespace MisControles
 
             frm.Controls.Add(listBox);
 
-
-
             frm.ShowDialog();
-
         }
 
         private void txtcodi_Validating(object sender, CancelEventArgs e)
         {
             int _id = 0;
-            string _codi = "";
-            string _desc = "";
+            string _codi = "", _desc = "";
 
             if (txtcodi.Text == "")
             {
