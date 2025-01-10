@@ -40,7 +40,7 @@ namespace FormRegions
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 27);
+            this.textBox1.Location = new System.Drawing.Point(95, 19);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.MaxLength = 12;
             this.textBox1.Name = "textBox1";
@@ -50,7 +50,7 @@ namespace FormRegions
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(95, 51);
+            this.textBox2.Location = new System.Drawing.Point(95, 43);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
@@ -60,7 +60,7 @@ namespace FormRegions
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(288, 27);
+            this.textBox3.Location = new System.Drawing.Point(288, 19);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.MaxLength = 2000;
             this.textBox3.Multiline = true;
@@ -72,7 +72,7 @@ namespace FormRegions
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(95, 75);
+            this.textBox4.Location = new System.Drawing.Point(95, 67);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(96, 20);
@@ -88,9 +88,9 @@ namespace FormRegions
             this.GrupCamps.Controls.Add(this.textBox1);
             this.GrupCamps.Controls.Add(this.textBox2);
             this.GrupCamps.ForeColor = System.Drawing.Color.White;
-            this.GrupCamps.Location = new System.Drawing.Point(12, 312);
+            this.GrupCamps.Location = new System.Drawing.Point(12, 311);
             this.GrupCamps.Name = "GrupCamps";
-            this.GrupCamps.Size = new System.Drawing.Size(775, 107);
+            this.GrupCamps.Size = new System.Drawing.Size(775, 98);
             this.GrupCamps.TabIndex = 19;
             this.GrupCamps.TabStop = false;
             this.GrupCamps.Text = "Camps";
@@ -99,7 +99,7 @@ namespace FormRegions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 430);
+            this.ClientSize = new System.Drawing.Size(800, 421);
             this.Controls.Add(this.GrupCamps);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmManteniment_Regions";
