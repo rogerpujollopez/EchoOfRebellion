@@ -24,6 +24,10 @@ namespace BiblioModeloDatos
             conn = new SqlConnection(builder.ConnectionString);
         }
 
+        public static SqlConnectionStringBuilder GetConnectionStringBuilder() { 
+            return clsSqlParameters.SqlConectionString();
+        }
+
         /// <summary>
         /// Método conectar
         /// </summary>

@@ -9,11 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BiblioModeloDatos;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System.Data.SqlClient;
 
 namespace FormUsers
 {
     public partial class frmManteniment_Users : frmBaseBBDD
     {
+        private ReportDocument cryRpt;
         public frmManteniment_Users()
         {
             InitializeComponent();
@@ -70,17 +74,38 @@ namespace FormUsers
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            clsModeloDatos md = new clsModeloDatos();
+            cryRpt = new ReportDocument();
+            cryRpt.Load("tarjaIdentificacio.rpt");
 
-            string query = $"Select u.UserName, uc.DescCategory, ur.DescRank, s.DescSpecie, p.DescPlanet, u.Photo FROM Users AS u, UserCategories AS uc, UserRanks AS ur, Species AS s, Planets AS p WHERE u.idUserCategory = uc.idUserCategory AND u.idUserRank = ur.idUserRank AND u.idSpecie = s.idSpecie AND u.idPlanet = p.idPlanet AND u.UserName = 'Guti StormLight'";
+            SetCredentials();
 
-            ds = md.PortarPerConsulta(query, "CrystalData");
+            cryRpt.RecordSelectionFormula = "{Users.idUser} = " +
+            Convert.ToInt32(textBox5.Text);
 
-            tarjaIdentificacio r = new tarjaIdentificacio();
-            r.SetDataSource(ds.Tables["CrystalData"]);
-            crystalReportViewer1.ReportSource = r;
+            crystalReportViewer1.ReportSource = cryRpt;
+            crystalReportViewer1.Refresh();
+        }
 
+        private void SetCredentials()
+        {
+
+            SqlConnectionStringBuilder builder = clsModeloDatos.GetConnectionStringBuilder();
+
+            ConnectionInfo crConnectionInfo = new ConnectionInfo();
+            crConnectionInfo.ServerName = builder.DataSource;
+            crConnectionInfo.DatabaseName = builder.InitialCatalog;
+            crConnectionInfo.UserID = builder.UserID;
+            crConnectionInfo.Password = builder.Password;
+
+            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
+            Tables CrTables = cryRpt.Database.Tables;
+
+            foreach (Table CrTable in CrTables)
+            {
+                crtableLogoninfo = CrTable.LogOnInfo;
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                CrTable.ApplyLogOnInfo(crtableLogoninfo);
+            }
         }
     }
 }
