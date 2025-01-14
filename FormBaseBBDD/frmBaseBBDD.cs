@@ -315,6 +315,11 @@ namespace FormBaseBBDD
                 {
                     cd.DataBindings.Clear();
                     cd.Validating -= Evento;
+                    if (borrarCampos)
+                    {
+                        cd.TextValue = "";
+                        cd.TextDesc = "";
+                    }
                 }
                 else if (control is PictureBox pb)
                 {
