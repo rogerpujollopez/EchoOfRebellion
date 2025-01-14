@@ -79,7 +79,24 @@ namespace FormBaseBBDD
             Formats.Grids.FormatoGrid(dataGridView1);
         }
 
+        #region "Evento"
 
+        // Delegado para manejar el evento
+        public delegate void NuevoRegistroCreadoEventHandler(object sender, NuevoRegistroEventArgs e);
+
+        // Evento que se dispara cuando se crea un nuevo registro
+        public event NuevoRegistroCreadoEventHandler NuevoRegistroCreado;
+        public class NuevoRegistroEventArgs : EventArgs
+        {
+            public List<int> Identificadores { get; }
+
+            public NuevoRegistroEventArgs(List<int> identificadores)
+            {
+                Identificadores = identificadores;
+            }
+        }
+
+        #endregion
 
         private void frmBaseBBDD_Load(object sender, EventArgs e)
         {
@@ -486,8 +503,14 @@ namespace FormBaseBBDD
             int selectedColumnIndex = dataGridView1.CurrentCell?.ColumnIndex ?? -1;
             int selectedRowIndex = dataGridView1.CurrentCell?.RowIndex ?? -1;
 
+            List<int> returnIds = new List<int>();
 
-            int result = md.Actualitzar(_ds, _queryUpdate);
+            int result = md.Actualitzar(_ds, _queryUpdate, returnIds);
+
+            if (returnIds.Count > 0)
+            {
+                NuevoRegistroCreado?.Invoke(this, new NuevoRegistroEventArgs(returnIds));
+            }
 
             CargarDatosBBDD();
 
@@ -534,6 +557,7 @@ namespace FormBaseBBDD
                     }
                 }
                 _ds.Tables[0].Rows.Add(row);
+
             }
 
             RemoverBinding(true);

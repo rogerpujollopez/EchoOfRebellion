@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace BiblioModeloDatos
 {
@@ -154,19 +155,19 @@ namespace BiblioModeloDatos
             return ds;
         }
 
-        /// <summary>
-        /// Método privado para detectar si al hacer el update del DataSet, da un error
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <exception cref="Exception"></exception>
-        private void OnRowUpdated(object sender, SqlRowUpdatedEventArgs e)
-        {
-            if (e.Status == UpdateStatus.ErrorsOccurred)
-            {
-                throw new Exception("Error: " + e.Errors.Message);
-            }
-        }
+        ///// <summary>
+        ///// Método privado para detectar si al hacer el update del DataSet, da un error
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        ///// <exception cref="Exception"></exception>
+        //private void OnRowUpdated(object sender, SqlRowUpdatedEventArgs e)
+        //{
+        //    if (e.Status == UpdateStatus.ErrorsOccurred)
+        //    {
+        //        throw new Exception("Error: " + e.Errors.Message);
+        //    }
+        //}
 
         /// <summary>
         /// Método que mediante el DataSet modificado y la consulta original, actualiza la BBDD
@@ -175,7 +176,7 @@ namespace BiblioModeloDatos
         /// <param name="consultaOriginal"></param>
         /// <returns>Devuelve el nº de registros afectados</returns>
         /// <exception cref="Exception"></exception>
-        public int Actualitzar(DataSet ds, string consultaOriginal)
+        public int Actualitzar(DataSet ds, string consultaOriginal, List<int> returnIds)
         {
             Conectar();
 
@@ -188,11 +189,32 @@ namespace BiblioModeloDatos
                 sqlTrans = conn.BeginTransaction();
                 SqlDataAdapter da2 = new SqlDataAdapter(consultaOriginal, conn);
 
-                //da2.RowUpdated += new SqlRowUpdatedEventHandler(OnRowUpdated);
-                da2.RowUpdated += OnRowUpdated;
+                //da2.RowUpdated += OnRowUpdated;
+                da2.RowUpdated += (sender, e) =>
+                {
+                    if (e.StatementType == StatementType.Insert && e.Row != null)
+                    {
+                        // Recuperar el valor del ID generado
+                        SqlCommand idCommand = new SqlCommand("SELECT SCOPE_IDENTITY()", conn, sqlTrans);
+                        object id = idCommand.ExecuteScalar();
+
+                        if (id != null && id != DBNull.Value)
+                        {
+                            returnIds.Add(Convert.ToInt32(id)); // Agregar el ID a la lista
+                            //e.Row[0] = Convert.ToInt32(id); // Sincronizar el ID con el DataRow
+                        }
+                    }
+                };
+
                 da2.SelectCommand.Transaction = sqlTrans;
 
                 SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(da2);
+
+                if (da2.InsertCommand == null)
+                {
+                    da2.InsertCommand = sqlCommandBuilder.GetInsertCommand();
+                }
+                da2.InsertCommand.CommandText += "; SELECT CAST(SCOPE_IDENTITY() AS int)";
 
                 if (ds.HasChanges())
                 {

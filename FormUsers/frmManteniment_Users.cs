@@ -22,6 +22,8 @@ namespace FormUsers
         {
             InitializeComponent();
 
+            this.NuevoRegistroCreado += FrmHijo_NuevoRegistroCreado;
+
             string tabla = "Users";
 
             Data data = new Data()
@@ -107,5 +109,15 @@ namespace FormUsers
                 CrTable.ApplyLogOnInfo(crtableLogoninfo);
             }
         }
+
+        private void FrmHijo_NuevoRegistroCreado(object sender, NuevoRegistroEventArgs e)
+        {
+            // Procesar los identificadores del nuevo registro
+            foreach (var identificador in e.Identificadores)
+            {
+                string g = identificador.ToString();
+            }
+        }
+
     }
 }
