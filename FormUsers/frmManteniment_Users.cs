@@ -61,6 +61,11 @@ namespace FormUsers
                 new llista() { id="idPlanet", query="select idPlanet,CodePlanet,DescPlanet from Planets order by DescPlanet"},
                 new llista() { id="idSpecie", query="select idSpecie,CodeSpecie,DescSpecie from Species order by DescSpecie"},
             };
+
+            campsNoVuits = new List<string>()
+            {
+                "CodeUser","UserName","Login","Mail"
+            };
         }
 
         private void frmManteniment_Users_Load(object sender, EventArgs e)

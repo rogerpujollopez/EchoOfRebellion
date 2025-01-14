@@ -176,13 +176,18 @@ namespace BiblioModeloDatos
         /// <param name="consultaOriginal"></param>
         /// <returns>Devuelve el nº de registros afectados</returns>
         /// <exception cref="Exception"></exception>
-        public int Actualitzar(DataSet ds, string consultaOriginal, List<int> returnIds)
+
+        public int numInserts = 0;
+
+        public int Actualitzar(DataSet ds, string consultaOriginal)
         {
             Conectar();
 
             int result = -1;
 
             SqlTransaction sqlTrans = null;
+
+            numInserts = 0;
 
             try
             {
@@ -194,15 +199,17 @@ namespace BiblioModeloDatos
                 {
                     if (e.StatementType == StatementType.Insert && e.Row != null)
                     {
-                        // Recuperar el valor del ID generado
-                        SqlCommand idCommand = new SqlCommand("SELECT SCOPE_IDENTITY()", conn, sqlTrans);
-                        object id = idCommand.ExecuteScalar();
+                        numInserts++;
 
-                        if (id != null && id != DBNull.Value)
-                        {
-                            returnIds.Add(Convert.ToInt32(id)); // Agregar el ID a la lista
-                            //e.Row[0] = Convert.ToInt32(id); // Sincronizar el ID con el DataRow
-                        }
+                        //// Recuperar el valor del ID generado
+                        //SqlCommand idCommand = new SqlCommand("SELECT SCOPE_IDENTITY()", conn, sqlTrans);
+                        //object id = idCommand.ExecuteScalar();
+
+                        //if (id != null && id != DBNull.Value)
+                        //{
+                        //    //returnIds.Add(Convert.ToInt32(id)); // Agregar el ID a la lista
+                        //    //e.Row[0] = Convert.ToInt32(id); // Sincronizar el ID con el DataRow
+                        //}
                     }
                 };
 
@@ -210,11 +217,11 @@ namespace BiblioModeloDatos
 
                 SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(da2);
 
-                if (da2.InsertCommand == null)
-                {
-                    da2.InsertCommand = sqlCommandBuilder.GetInsertCommand();
-                }
-                da2.InsertCommand.CommandText += "; SELECT CAST(SCOPE_IDENTITY() AS int)";
+                //if (da2.InsertCommand == null)
+                //{
+                //    da2.InsertCommand = sqlCommandBuilder.GetInsertCommand();
+                //}
+                //da2.InsertCommand.CommandText += "; SELECT CAST(SCOPE_IDENTITY() AS int)";
 
                 if (ds.HasChanges())
                 {

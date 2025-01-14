@@ -170,6 +170,9 @@ namespace MisControles
                     hayError = false;
                     break;
             }
+
+            e.Cancel = hayError;
+
             SetColorError();
         }
 

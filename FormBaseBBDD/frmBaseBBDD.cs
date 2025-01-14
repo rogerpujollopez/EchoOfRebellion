@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Schema;
 using Utils;
 
 namespace FormBaseBBDD
@@ -41,6 +42,7 @@ namespace FormBaseBBDD
         private List<casella> caselles;
         private List<llista> llistes;
         private List<string> nomsCampsPhoto;
+        public List<string> campsNoVuits = new List<string>();
 
         public frmBaseBBDD()
         {
@@ -90,9 +92,23 @@ namespace FormBaseBBDD
         {
             public List<int> Identificadores { get; }
 
-            public NuevoRegistroEventArgs(List<int> identificadores)
+            public NuevoRegistroEventArgs(clsModeloDatos md)
             {
-                Identificadores = identificadores;
+                // Lanzar envio mails
+
+                string query = $"select idUser,Mail from Users where PasswordTmp is null and Password is null";
+                DataSet ds = md.PortarPerConsulta(query);
+
+                foreach (DataRow row in ds.Tables[0].Rows) 
+                {
+                    
+                }
+
+                //int code = BIZLogin.EnviarMail(usuario, mail);
+
+
+
+
             }
         }
 
@@ -484,6 +500,12 @@ namespace FormBaseBBDD
             {
                 var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
 
+                if (!RevisarCamposOK(grupo))
+                {
+
+                    return;
+                }
+
                 DataRow row = _ds.Tables[0].NewRow();
 
                 foreach (Control control in grupo.Controls)
@@ -508,13 +530,11 @@ namespace FormBaseBBDD
             int selectedColumnIndex = dataGridView1.CurrentCell?.ColumnIndex ?? -1;
             int selectedRowIndex = dataGridView1.CurrentCell?.RowIndex ?? -1;
 
-            List<int> returnIds = new List<int>();
+            int result = md.Actualitzar(_ds, _queryUpdate);
 
-            int result = md.Actualitzar(_ds, _queryUpdate, returnIds);
-
-            if (returnIds.Count > 0)
+            if (md.numInserts > 0)
             {
-                NuevoRegistroCreado?.Invoke(this, new NuevoRegistroEventArgs(returnIds));
+                NuevoRegistroCreado?.Invoke(this, new NuevoRegistroEventArgs(md));
             }
 
             CargarDatosBBDD();
@@ -534,6 +554,42 @@ namespace FormBaseBBDD
 
         }
 
+        private bool RevisarCamposOK(Control grupo)
+        {
+            if (campsNoVuits.Count == 0) return true;
+
+            bool estado = true;
+
+            foreach(string camp in campsNoVuits)
+            {
+                foreach (Control c in grupo.Controls)
+                {
+                    if (c is TextBox txt)
+                    {
+                        if (camp == txt.Tag.ToString())
+                        {
+                            if (c.Text.Trim() == "")
+                            {
+                                c.BackColor = Color.Red;
+                                estado = false;
+                            }
+                            else
+                            {
+                                c.BackColor = Color.White;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!estado)
+            {
+                MessageBox.Show("Hay campos sin datos", "Atención!!!");
+            }
+
+            return estado;
+        }
+
         private void btnNou_Click(object sender, EventArgs e)
         {
 
@@ -544,6 +600,12 @@ namespace FormBaseBBDD
             else
             {
                 var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+                if (!RevisarCamposOK(grupo))
+                {
+                    
+                    return;
+                }
 
                 DataRow row = _ds.Tables[0].NewRow();
 

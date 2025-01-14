@@ -57,7 +57,7 @@ namespace EchoOfRebellion.Clases.DM
                     // Revisar password
                     string bbddPassword = r["Password"].ToString();
 
-                    int AccessLevel = (int)r["AccessLevel"];
+                    int AccessLevel = r.IsNull("AccessLevel") ? 0 : (int)r["AccessLevel"];
 
                     List<Permis> permisos = new List<Permis>();
 
@@ -67,25 +67,25 @@ namespace EchoOfRebellion.Clases.DM
                         SiSalt = (bool)r["SiSalt"],
                         CodeUser = r["CodeUser"].ToString(),
                         UserName = r["UserName"].ToString(),
-                        IdUserRank = (int)r["idUserRank"],
-                        CodeRank = r["CodeRank"].ToString(),
-                        DescRank = r["DescRank"].ToString(),
-                        AccessLevel = (int)r["AccessLevel"],
-                        CodeCategory = r["CodeCategory"].ToString(),
-                        DescCategory = r["DescCategory"].ToString(),
-                        UncPhoto = r["UncPhoto"].ToString(),
-                        CodePlanet = r["CodePlanet"].ToString(),
-                        CodeSector = r["CodeSector"].ToString(),
-                        DescSector = r["DescSector"].ToString(),
+                        IdUserRank = r.IsNull("idUserRank") ? 0 : (int)r["idUserRank"],
+                        CodeRank = r.IsNull("CodeRank") ? "" : r["CodeRank"].ToString(),
+                        DescRank = r.IsNull("DescRank") ? "" : r["DescRank"].ToString(),
+                        AccessLevel = AccessLevel,
+                        CodeCategory = r.IsNull("CodeCategory") ? "" : r["CodeCategory"].ToString(),
+                        DescCategory = r.IsNull("DescCategory") ? "" : r["DescCategory"].ToString(),
+                        UncPhoto = r.IsNull("UncPhoto") ? "" : r["UncPhoto"].ToString(),
+                        CodePlanet = r.IsNull("CodePlanet") ? "" : r["CodePlanet"].ToString(),
+                        CodeSector = r.IsNull("CodeSector") ? "" : r["CodeSector"].ToString(),
+                        DescSector = r.IsNull("DescSector") ? "" : r["DescSector"].ToString(),
                         RemarksSector = r.IsNull("RemarksSector") ? "" : r["RemarksSector"].ToString(),
-                        CodeRegion = r["CodeRegion"].ToString(),
-                        DescRegion = r["DescRegion"].ToString(),
+                        CodeRegion = r.IsNull("CodeRegion") ? "" : r["CodeRegion"].ToString(),
+                        DescRegion = r.IsNull("DescRegion") ? "" : r["DescRegion"].ToString(),
                         RemarksRegion = r.IsNull("RemarksRegion") ? "" : r["RemarksRegion"].ToString(),
-                        Longitude = Convert.ToInt32(r["long"]),
-                        Latitude = Convert.ToInt32(r["lat"]),
-                        Parsecs = Convert.ToInt32(r["parsecs"]),
-                        CodeFiliation = r["CodeFiliation"].ToString(),
-                        DescFiliations = r["DescFiliations"].ToString(),
+                        Longitude = r.IsNull("long") ? 0 : Convert.ToInt32(r["long"]),
+                        Latitude = r.IsNull("lat") ? 0 : Convert.ToInt32(r["lat"]),
+                        Parsecs = r.IsNull("parsecs") ? 0 : Convert.ToInt32(r["parsecs"]),
+                        CodeFiliation = r.IsNull("CodeFiliation") ? "" : r["CodeFiliation"].ToString(),
+                        DescFiliations = r.IsNull("DescFiliations") ? "" : r["DescFiliations"].ToString(),
                         UrlPlanetPicture = r.IsNull("UrlPlanetPicture") ? "" : r["UrlPlanetPicture"].ToString(),
                         IPPlanet = r.IsNull("IPPlanet") ? "" : r["IPPlanet"].ToString(),
                         PortPlanet = r.IsNull("PortPlanet") ? 0 : Convert.ToInt32(r["PortPlanet"]),
