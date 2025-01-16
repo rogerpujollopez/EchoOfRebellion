@@ -1,5 +1,6 @@
 ﻿using BiblioModeloDatos;
 using FormBase;
+using FormBaseBBDD.Util;
 using MisControles;
 using System;
 using System.Collections.Generic;
@@ -96,21 +97,38 @@ namespace FormBaseBBDD
             {
                 // Lanzar envio mails
 
-                string query = $"select idUser,Mail from Users where PasswordTmp is null and Password is null";
+                string query = $"select idUser,Mail,UserName from Users where PasswordTmp is null and Password is null";
                 DataSet ds = md.PortarPerConsulta(query);
 
                 foreach (DataRow row in ds.Tables[0].Rows) 
                 {
-                    
+                    EnviarMail(row);
                 }
-
-                //int code = BIZLogin.EnviarMail(usuario, mail);
-
-
-
-
             }
         }
+
+        private static void EnviarMail(DataRow row)
+        {
+            int idUser = (int)row[0];
+            string mail = (string)row[1];
+            string username = (string)row[2];
+            string pass = Funcions.CreateNumRNG().ToString();
+
+            string consulta = "update Users set PasswordTmp=@Pass where idUser=@idUser and Password is null and PasswordTmp is null and mail=@mail";
+
+            var parametros = new Dictionary<string, object>
+            {
+                { "@Pass", pass },
+                { "@idUser", idUser },
+                { "@mail", mail },
+            };
+
+            clsModeloDatos m = new clsModeloDatos();
+            int registrosAfectados = m.ExecutaConParametros(consulta, parametros);
+
+            Comunicacio.EnviarMail(username, mail, "Código de verificacion",$"Codigo de verifiacion: {pass}");
+        }
+
 
         #endregion
 

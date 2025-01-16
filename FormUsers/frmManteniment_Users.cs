@@ -117,11 +117,7 @@ namespace FormUsers
 
         private void FrmHijo_NuevoRegistroCreado(object sender, NuevoRegistroEventArgs e)
         {
-            // Procesar los identificadores del nuevo registro
-            foreach (var identificador in e.Identificadores)
-            {
-                string g = identificador.ToString();
-            }
+            string g = "";
         }
 
     }

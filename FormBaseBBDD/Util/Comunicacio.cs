@@ -8,9 +8,9 @@ using System.Configuration;
 using System.Net;
 using System.Windows.Forms;
 
-namespace EchoOfRebellion.Clases.Utils
+namespace FormBaseBBDD.Util
 {
-    internal static class Comunicacio
+    internal class Comunicacio
     {
         public static bool EnviarMail(string nomDestinatari, string mailDestinatari, string asumpte, string missatge)
         {
@@ -51,47 +51,5 @@ namespace EchoOfRebellion.Clases.Utils
 
             return enviat;
         }
-
-
-        //public static bool EnviarMailOld(string nomDestinatari, string mailDestinatari, string asumpte, string missatge)
-        //{
-        //    string usu = ConfigurationManager.AppSettings["MailUser"];
-        //    string pass = ConfigurationManager.AppSettings["MailPassword"];
-        //    string smtp = ConfigurationManager.AppSettings["SmtpServer"];
-
-        //    var mensaje = new MimeMessage();
-        //    mensaje.From.Add(new MailboxAddress("App", usu));
-        //    mensaje.To.Add(new MailboxAddress(nomDestinatari, mailDestinatari));
-        //    mensaje.Subject = asumpte;
-
-        //    mensaje.Body = new TextPart("plain")
-        //    {
-        //        Text = missatge
-        //    };
-
-        //    bool enviat = false;
-
-        //    using (var client = new MailKit.Net.Smtp.SmtpClient())
-        //    {
-        //        try
-        //        {
-        //            client.Connect(smtp, 587, MailKit.Security.SecureSocketOptions.StartTls);
-
-        //            client.Authenticate(usu, pass);
-
-        //            client.Send(mensaje);
-        //            enviat = true;
-
-        //            client.Disconnect(true);
-        //        }
-        //        catch (Exception)
-        //        {
-        //            //Console.WriteLine($"Error al enviar el correo: {ex.Message}");
-        //        }
-        //    }
-
-        //    return enviat;
-        //}
-
     }
 }

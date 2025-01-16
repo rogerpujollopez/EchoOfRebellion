@@ -73,12 +73,7 @@ namespace EchoOfRebellion.Formularios
 
         private void frmMenuPrincipal_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Escape:
-                    Cerrar();
-                    break;
-            }
+            HandleKeyDown(e);
         }
 
         private void Cerrar()
@@ -86,6 +81,16 @@ namespace EchoOfRebellion.Formularios
             if (Missatgeria.Sortir())
             {
                 this.Close();
+            }
+        }
+
+        protected override void HandleKeyDown(KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Cerrar();
+                    break;
             }
         }
     }
