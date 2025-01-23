@@ -93,6 +93,9 @@ namespace MisControles
         {
             int result = int.TryParse(txtId.Text, out var temp) ? temp : -1;
 
+            txtcodi.Text = "";
+            txtLabel.Text = "";
+
             if (ds != null && result >= 0)
             {
 

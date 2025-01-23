@@ -48,6 +48,7 @@ namespace FormBaseBBDD
         public frmBaseBBDD()
         {
             InitializeComponent();
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.RowHeadersVisible = false;
             ForeColor = Color.White;
         }
@@ -83,6 +84,16 @@ namespace FormBaseBBDD
         }
 
         #region "Evento"
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (_esNou)
+            {
+                _esNou = false;
+                EstablecerBinding();
+            }
+        }
+
 
         // Delegado para manejar el evento
         public delegate void NuevoRegistroCreadoEventHandler(object sender, NuevoRegistroEventArgs e);
@@ -538,6 +549,10 @@ namespace FormBaseBBDD
                     else if (control is ComboBox cmb)
                     {
                         row[cmb.Tag.ToString()] = cmb.SelectedValue;
+                    }
+                    else if (control is SWCodi sw)
+                    {
+                        row[sw.Tag.ToString()] = sw.TextId;
                     }
                 }
                 _ds.Tables[0].Rows.Add(row);

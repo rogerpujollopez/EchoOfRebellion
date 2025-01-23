@@ -49,7 +49,7 @@ namespace FormSpaceShip
             this.swCodi1.Tag = "idSpaceShipCategory";
             this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescSpaceShipCategory";
-            this.swCodi1.TextDesc = "XXX";
+            this.swCodi1.TextDesc = "";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
             // 
@@ -64,7 +64,7 @@ namespace FormSpaceShip
             this.swCodi2.Tag = "idFiliation";
             this.swCodi2.Tag2 = "";
             this.swCodi2.Tag3 = "DescFiliations";
-            this.swCodi2.TextDesc = "XXX";
+            this.swCodi2.TextDesc = "";
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
             // 

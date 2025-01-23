@@ -63,7 +63,7 @@
             this.swCodi1.Tag = "idRegion";
             this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescRegion";
-            this.swCodi1.TextDesc = "XXX";
+            this.swCodi1.TextDesc = "";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
             // 

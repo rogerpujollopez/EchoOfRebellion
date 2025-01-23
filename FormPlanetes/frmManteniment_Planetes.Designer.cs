@@ -73,7 +73,7 @@ namespace FormPlanetes
             this.swCodi1.Tag = "idSector";
             this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescSector";
-            this.swCodi1.TextDesc = "XXX";
+            this.swCodi1.TextDesc = "";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
             // 
@@ -112,7 +112,7 @@ namespace FormPlanetes
             this.swCodi2.Tag = "idNatives";
             this.swCodi2.Tag2 = "";
             this.swCodi2.Tag3 = "DescSpecie";
-            this.swCodi2.TextDesc = "XXX";
+            this.swCodi2.TextDesc = "";
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
             // 
@@ -127,7 +127,7 @@ namespace FormPlanetes
             this.swCodi3.Tag = "idFiliation";
             this.swCodi3.Tag2 = "";
             this.swCodi3.Tag3 = "DescFiliations";
-            this.swCodi3.TextDesc = "XXX";
+            this.swCodi3.TextDesc = "";
             this.swCodi3.TextId = "";
             this.swCodi3.TextValue = "";
             // 

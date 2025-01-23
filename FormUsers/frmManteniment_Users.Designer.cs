@@ -106,7 +106,7 @@ namespace FormUsers
             this.swCodi1.Tag = "idUserRank";
             this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescRank";
-            this.swCodi1.TextDesc = "XXX";
+            this.swCodi1.TextDesc = "";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
             // 
@@ -121,7 +121,7 @@ namespace FormUsers
             this.swCodi2.Tag = "idUserCategory";
             this.swCodi2.Tag2 = "DescCategory";
             this.swCodi2.Tag3 = "";
-            this.swCodi2.TextDesc = "XXX";
+            this.swCodi2.TextDesc = "";
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
             // 
@@ -136,7 +136,7 @@ namespace FormUsers
             this.swCodi3.Tag = "idPlanet";
             this.swCodi3.Tag2 = "";
             this.swCodi3.Tag3 = "";
-            this.swCodi3.TextDesc = "XXX";
+            this.swCodi3.TextDesc = "";
             this.swCodi3.TextId = "";
             this.swCodi3.TextValue = "";
             // 
@@ -151,7 +151,7 @@ namespace FormUsers
             this.swCodi4.Tag = "idSpecie";
             this.swCodi4.Tag2 = "";
             this.swCodi4.Tag3 = "";
-            this.swCodi4.TextDesc = "XXX";
+            this.swCodi4.TextDesc = "";
             this.swCodi4.TextId = "";
             this.swCodi4.TextValue = "";
             // 

@@ -56,7 +56,7 @@
             this.txtLabel.ReadOnly = true;
             this.txtLabel.Size = new System.Drawing.Size(224, 20);
             this.txtLabel.TabIndex = 1;
-            this.txtLabel.Text = "XXX";
+            this.txtLabel.Text = "";
             this.txtLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtLabel_MouseClick);
             // 
             // txtId
