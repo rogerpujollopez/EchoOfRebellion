@@ -43,6 +43,10 @@ namespace FormSectors
             {
                 new llista() { id="idRegion", query="select idRegion,CodeRegion,DescRegion as Region from Regions order by Region"}
             };
+            campsNoVuits = new List<string>()
+            {
+                "CodeSector","DescSector","idRegion"
+            };
 
         }
 

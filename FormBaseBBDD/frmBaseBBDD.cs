@@ -364,6 +364,7 @@ namespace FormBaseBBDD
                     {
                         cd.TextValue = "";
                         cd.TextDesc = "";
+                        cd.TextId = "0";
                     }
                 }
                 else if (control is PictureBox pb)
@@ -565,10 +566,18 @@ namespace FormBaseBBDD
 
             int result = md.Actualitzar(_ds, _queryUpdate);
 
+            if (result < 0)
+            {
+                MessageBox.Show("No es poden actualitzar les dades");
+                btnUpdate.Enabled = true;
+                return;
+            }
+
             if (md.numInserts > 0)
             {
                 NuevoRegistroCreado?.Invoke(this, new NuevoRegistroEventArgs(md));
-            }
+            } 
+
 
             CargarDatosBBDD();
 
@@ -602,6 +611,20 @@ namespace FormBaseBBDD
                         if (camp == txt.Tag.ToString())
                         {
                             if (c.Text.Trim() == "")
+                            {
+                                c.BackColor = Color.Red;
+                                estado = false;
+                            }
+                            else
+                            {
+                                c.BackColor = Color.White;
+                            }
+                        }
+                    } else if (c is SWCodi sw)
+                    {
+                        if (camp == sw.Tag.ToString())
+                        {
+                            if (sw.TextValue == "")
                             {
                                 c.BackColor = Color.Red;
                                 estado = false;

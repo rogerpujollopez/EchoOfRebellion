@@ -51,6 +51,12 @@ namespace FormPlanetes
                new llista() { id="idNatives", query="SELECT idSpecie,CodeSpecie,DescSpecie FROM Species ORDER BY DescSpecie"},
                new llista() { id="idFiliation", query="SELECT idFiliation,CodeFiliation,DescFiliations FROM Filiations ORDER BY DescFiliations"},
             };
+
+            campsNoVuits = new List<string>()
+            {
+                "CodePlanet","DescPlanet","idSector","idNatives","idFiliation"
+            };
+
         }
 
         private void frmManteniment_Planetes_Load(object sender, EventArgs e)

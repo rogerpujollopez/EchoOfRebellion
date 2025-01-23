@@ -35,6 +35,11 @@ namespace FormSpaceShip
                 new casella() { ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
                 new casella() { ample=400, visible = true},
             };
+            campsNoVuits = new List<string>()
+            {
+                "CodeSpaceShipCategory","DescSpaceShipCategory"
+            };
+
         }
 
         private void frmManteniment_ShipCategories_Load(object sender, EventArgs e)

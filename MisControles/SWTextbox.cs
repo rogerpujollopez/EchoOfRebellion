@@ -173,6 +173,11 @@ namespace MisControles
 
             e.Cancel = hayError;
 
+            if (hayError)
+            {
+                Text = "";
+            }
+
             SetColorError();
         }
 

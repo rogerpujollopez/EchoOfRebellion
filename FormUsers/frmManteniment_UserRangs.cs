@@ -35,6 +35,11 @@ namespace FormUsers
                 new casella() { ample=200, visible = true, alineacio = CasellaAlineacio.Centrat},
                 new casella() { ample=300, visible = true},
             };
+            campsNoVuits = new List<string>()
+            {
+                "CodeRank","DescRank"
+            };
+
         }
 
         private void frmManteniment_UserRangs_Load(object sender, EventArgs e)

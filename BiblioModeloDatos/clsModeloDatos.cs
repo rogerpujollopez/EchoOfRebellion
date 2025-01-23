@@ -236,20 +236,21 @@ namespace BiblioModeloDatos
                 sqlTrans.Dispose();
                 da2.Dispose();
             }
-            catch (Exception) 
+            catch (Exception ex) 
             {
+                string f = ex.Message;
+
                 if (sqlTrans != null && sqlTrans.Connection != null)
                 {
                     try
                     {
                         sqlTrans.Rollback();
                     }
-                    catch (Exception)
+                    catch (Exception ex2)
                     {
+                        string g = ex2.Message;
                     }
                 }
-
-                throw new Exception("Error en la transacción");
             }
             finally
             {

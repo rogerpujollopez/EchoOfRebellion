@@ -43,6 +43,7 @@ namespace FormPlanetes
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.GrupCamps = new System.Windows.Forms.GroupBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.GrupCamps.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,6 +168,7 @@ namespace FormPlanetes
             // 
             this.GrupCamps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrupCamps.Controls.Add(this.textBox10);
             this.GrupCamps.Controls.Add(this.textBox1);
             this.GrupCamps.Controls.Add(this.swCodi2);
             this.GrupCamps.Controls.Add(this.swCodi3);
@@ -187,6 +189,15 @@ namespace FormPlanetes
             this.GrupCamps.TabStop = false;
             this.GrupCamps.Text = "Camps";
             // 
+            // textBox10
+            // 
+            this.textBox10.Enabled = false;
+            this.textBox10.Location = new System.Drawing.Point(537, 109);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(50, 20);
+            this.textBox10.TabIndex = 11;
+            this.textBox10.Tag = "idPlanet";
+            // 
             // frmManteniment_Planetes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,9 +205,7 @@ namespace FormPlanetes
             this.ClientSize = new System.Drawing.Size(800, 491);
             this.Controls.Add(this.GrupCamps);
             this.Name = "frmManteniment_Planetes";
-            this.Text = "";
             this.Load += new System.EventHandler(this.frmManteniment_Planetes_Load);
-            this.Controls.SetChildIndex(this.GrupCamps, 0);
             this.GrupCamps.ResumeLayout(false);
             this.GrupCamps.PerformLayout();
             this.ResumeLayout(false);
@@ -218,5 +227,6 @@ namespace FormPlanetes
         private TextBox textBox8;
         private TextBox textBox9;
         private GroupBox GrupCamps;
+        private TextBox textBox10;
     }
 }

@@ -36,6 +36,11 @@ namespace FormUsers
                 new casella() { ample = 180, visible = true, alineacio = CasellaAlineacio.Centrat},
                 new casella() { ample = 180, visible = true},
             };
+            campsNoVuits = new List<string>()
+            {
+                "CodeCategory","DescCategory","AccessLevel"
+            };
+
         }
 
         private void frmManteniment_UserCategories_Load(object sender, EventArgs e)

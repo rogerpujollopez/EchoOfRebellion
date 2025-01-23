@@ -33,21 +33,26 @@ namespace FormSpaceShip
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                    new casella() { visible = false },
-                    new casella() { visible = false },
-                    new casella() { visible = false },
-                    new casella() { ample = 200 , visible = true, alineacio = CasellaAlineacio.Centrat },
-                    new casella() { ample = 200 , visible = true },
-                    new casella() { ample = 200 , visible = true },
-                    new casella() { ample = 200 , visible = true },
-                };
+                new casella() { visible = false },
+                new casella() { visible = false },
+                new casella() { visible = false },
+                new casella() { ample = 200 , visible = true, alineacio = CasellaAlineacio.Centrat },
+                new casella() { ample = 200 , visible = true },
+                new casella() { ample = 200 , visible = true },
+                new casella() { ample = 200 , visible = true },
+            };
 
             // ds Combo
             SetLlistes = new List<llista>()
-                {
-                    new llista() { id="idSpaceShipCategory", query="select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories order by DescSpaceShipCategory"},
-                    new llista() { id="idFiliation", query="select idFiliation,CodeFiliation,DescFiliations as Filiation from Filiations order by Filiation"}
-                };
+            {
+                new llista() { id="idSpaceShipCategory", query="select idSpaceShipCategory,CodeSpaceShipCategory,DescSpaceShipCategory from SpaceShipCategories order by DescSpaceShipCategory"},
+                new llista() { id="idFiliation", query="select idFiliation,CodeFiliation,DescFiliations as Filiation from Filiations order by Filiation"}
+            };
+
+            campsNoVuits = new List<string>()
+            {
+                "CodeSpaceShipType","DescSpaceShipType","idFiliation","idSpaceShipCategory"
+            };
 
 
             //SetLlistes = new List<llista>()

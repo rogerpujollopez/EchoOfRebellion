@@ -37,6 +37,11 @@ namespace FormRegions
                 new casella() { nom = "Remarks", ample = 300, visible = true},
             };
 
+            campsNoVuits = new List<string>()
+            {
+                "CodeRegion","DescRegion"
+            };
+
             // ds Combo
             //SetLlistes = new List<llista>()
             //{

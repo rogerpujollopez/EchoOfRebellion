@@ -85,7 +85,7 @@
             this.btnVerificar.Location = new System.Drawing.Point(206, 211);
             this.btnVerificar.Name = "btnVerificar";
             this.btnVerificar.Size = new System.Drawing.Size(75, 23);
-            this.btnVerificar.TabIndex = 9;
+            this.btnVerificar.TabIndex = 4;
             this.btnVerificar.Text = "Verificar";
             this.btnVerificar.UseVisualStyleBackColor = true;
             this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
@@ -95,7 +95,7 @@
             this.bttnExit.Location = new System.Drawing.Point(649, 354);
             this.bttnExit.Name = "bttnExit";
             this.bttnExit.Size = new System.Drawing.Size(75, 23);
-            this.bttnExit.TabIndex = 10;
+            this.bttnExit.TabIndex = 5;
             this.bttnExit.Text = "Salir";
             this.bttnExit.UseVisualStyleBackColor = true;
             this.bttnExit.Click += new System.EventHandler(this.bttnExit_Click);
@@ -109,7 +109,7 @@
             this.txtConfirmarUsu.Name = "txtConfirmarUsu";
             this.txtConfirmarUsu.Patro = null;
             this.txtConfirmarUsu.Size = new System.Drawing.Size(150, 20);
-            this.txtConfirmarUsu.TabIndex = 11;
+            this.txtConfirmarUsu.TabIndex = 0;
             this.txtConfirmarUsu.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
             // txtPass
@@ -119,9 +119,10 @@
             this.txtPass.BackColorLostFocus = System.Drawing.Color.Empty;
             this.txtPass.Location = new System.Drawing.Point(134, 113);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '#';
             this.txtPass.Patro = null;
             this.txtPass.Size = new System.Drawing.Size(150, 20);
-            this.txtPass.TabIndex = 12;
+            this.txtPass.TabIndex = 1;
             this.txtPass.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
             // txtPass2
@@ -131,9 +132,10 @@
             this.txtPass2.BackColorLostFocus = System.Drawing.Color.Empty;
             this.txtPass2.Location = new System.Drawing.Point(134, 139);
             this.txtPass2.Name = "txtPass2";
+            this.txtPass2.PasswordChar = '#';
             this.txtPass2.Patro = null;
             this.txtPass2.Size = new System.Drawing.Size(150, 20);
-            this.txtPass2.TabIndex = 13;
+            this.txtPass2.TabIndex = 2;
             this.txtPass2.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
             // txtMail
@@ -145,7 +147,7 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Patro = null;
             this.txtMail.Size = new System.Drawing.Size(150, 20);
-            this.txtMail.TabIndex = 14;
+            this.txtMail.TabIndex = 3;
             this.txtMail.Tipus = MisControles.SWTextbox.TipusDada.Sense;
             // 
             // frmUsuarioCambioPassword
@@ -164,6 +166,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(0, 0);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmUsuarioCambioPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.Text = "Cambio password";

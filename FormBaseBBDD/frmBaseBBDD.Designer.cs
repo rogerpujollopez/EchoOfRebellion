@@ -67,7 +67,7 @@
             this.dataGridView1.RowHeadersWidth = 72;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(758, 138);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -92,7 +92,7 @@
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(6);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(102, 26);
-            this.btnEliminar.TabIndex = 13;
+            this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -105,7 +105,7 @@
             this.btnNou.Margin = new System.Windows.Forms.Padding(6);
             this.btnNou.Name = "btnNou";
             this.btnNou.Size = new System.Drawing.Size(102, 26);
-            this.btnNou.TabIndex = 12;
+            this.btnNou.TabIndex = 0;
             this.btnNou.Text = "Nou";
             this.btnNou.UseVisualStyleBackColor = true;
             this.btnNou.Click += new System.EventHandler(this.btnNou_Click);
@@ -118,7 +118,7 @@
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(102, 26);
-            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Actualitzar";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);

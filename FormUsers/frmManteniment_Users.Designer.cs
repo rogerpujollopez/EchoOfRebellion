@@ -44,8 +44,8 @@ namespace FormUsers
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.GrupCamps = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.GrupCamps.SuspendLayout();
@@ -82,6 +82,7 @@ namespace FormUsers
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(59, 20);
             this.textBox5.TabIndex = 9;
+            this.textBox5.TabStop = false;
             this.textBox5.Tag = "idUser";
             // 
             // pictureBox1
@@ -102,7 +103,7 @@ namespace FormUsers
             this.swCodi1.Name = "swCodi1";
             this.swCodi1.Origen = null;
             this.swCodi1.Size = new System.Drawing.Size(342, 21);
-            this.swCodi1.TabIndex = 5;
+            this.swCodi1.TabIndex = 4;
             this.swCodi1.Tag = "idUserRank";
             this.swCodi1.Tag2 = "";
             this.swCodi1.Tag3 = "DescRank";
@@ -117,7 +118,7 @@ namespace FormUsers
             this.swCodi2.Name = "swCodi2";
             this.swCodi2.Origen = null;
             this.swCodi2.Size = new System.Drawing.Size(342, 21);
-            this.swCodi2.TabIndex = 6;
+            this.swCodi2.TabIndex = 5;
             this.swCodi2.Tag = "idUserCategory";
             this.swCodi2.Tag2 = "DescCategory";
             this.swCodi2.Tag3 = "";
@@ -132,7 +133,7 @@ namespace FormUsers
             this.swCodi3.Name = "swCodi3";
             this.swCodi3.Origen = null;
             this.swCodi3.Size = new System.Drawing.Size(342, 21);
-            this.swCodi3.TabIndex = 7;
+            this.swCodi3.TabIndex = 6;
             this.swCodi3.Tag = "idPlanet";
             this.swCodi3.Tag2 = "";
             this.swCodi3.Tag3 = "";
@@ -147,7 +148,7 @@ namespace FormUsers
             this.swCodi4.Name = "swCodi4";
             this.swCodi4.Origen = null;
             this.swCodi4.Size = new System.Drawing.Size(342, 21);
-            this.swCodi4.TabIndex = 8;
+            this.swCodi4.TabIndex = 7;
             this.swCodi4.Tag = "idSpecie";
             this.swCodi4.Tag2 = "";
             this.swCodi4.Tag3 = "";
@@ -208,34 +209,24 @@ namespace FormUsers
             this.GrupCamps.TabStop = false;
             this.GrupCamps.Text = "Camps";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(106, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(124, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Tag = "CodeUser";
+            // 
             // button1
             // 
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(36, 334);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Mostrar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(106, 23);
-            this.textBox1.Name = "textBox3";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Tag = "CodeUser";
-            //this.swTextbox1.BackColorError = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            //this.swTextbox1.BackColorGetFocus = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            //this.swTextbox1.BackColorLostFocus = System.Drawing.Color.White;
-            //this.swTextbox1.Location = new System.Drawing.Point(106, 23);
-            //this.swTextbox1.Name = "swTextbox1";
-            //this.swTextbox1.Patro = "^\\S.*$";
-            //this.swTextbox1.Size = new System.Drawing.Size(124, 20);
-            //this.swTextbox1.TabIndex = 11;
-            //this.swTextbox1.Tag = "CodeUser";
-            //this.swTextbox1.Tipus = MisControles.SWTextbox.TipusDada.Personalitzat;
             // 
             // frmManteniment_Users
             // 

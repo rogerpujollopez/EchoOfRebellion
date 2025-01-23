@@ -1,4 +1,6 @@
-﻿namespace FormUsers
+﻿using MisControles;
+
+namespace FormUsers
 {
     partial class frmManteniment_UserCategories
     {
@@ -31,7 +33,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new SWTextbox();
             this.GrupCamps = new System.Windows.Forms.GroupBox();
             this.GrupCamps.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +70,8 @@
             this.textBox4.Size = new System.Drawing.Size(162, 20);
             this.textBox4.TabIndex = 3;
             this.textBox4.Tag = "AccessLevel";
+            //this.textBox4.Patro = "^\\d+$";
+            this.textBox4.Tipus = SWTextbox.TipusDada.Numero;
             // 
             // GrupCamps
             // 
@@ -106,7 +110,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private SWTextbox textBox4;
         private System.Windows.Forms.GroupBox GrupCamps;
     }
 }
