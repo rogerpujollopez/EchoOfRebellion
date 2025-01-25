@@ -117,7 +117,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SinFoto.png" />
+    <None Include="Resources\SinFoto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SinFoto2.jpg" />

@@ -86,25 +86,21 @@ namespace Utils
             int RandomNumber;
             RandomNumber = rand.Next(100000, 999999);
             string ret = "";
-            for (Int32 t = 0; t < longitud; t++) { ret += alphabet.Substring(rand.Next(0, alphabet.Length - 1), 1); }
+            for (int t = 0; t < longitud; t++) { ret += alphabet.Substring(rand.Next(0, alphabet.Length - 1), 1); }
 
             return ret;
         }
         public static bool ValidacionLogin(string login)
         {
             string regexLogin = @"^[a-zA-Z0-9]{4,20}$";
-            //MauroLopez31 = true
             bool esValid = Regex.IsMatch(login, regexLogin);
 
             return esValid;
         }
         public static bool ValidacionPassword(string password)
         {
-            //string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$]{8,20}$";
-            ////Ml74@82hl$ = true
-
-            //bool esValid = Regex.IsMatch(password, regexPassword);
-            bool esValid = true;
+            string regexPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$]{8,20}$";
+            bool esValid = Regex.IsMatch(password, regexPassword);
 
             return esValid;
         }

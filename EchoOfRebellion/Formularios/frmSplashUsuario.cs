@@ -1,10 +1,12 @@
 ﻿using EchoOfRebellion.Clases.BIZ;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,7 +46,16 @@ namespace EchoOfRebellion.Formularios
             labCategory.Text = UsuariActiu.usuari.DescCategory;
             labRank.Text = UsuariActiu.usuari.DescRank;
 
-            // Mostra la imatge de l'usuari
+            if (UsuariActiu.usuari.Photo != null) {
+                using (var ms = new MemoryStream(UsuariActiu.usuari.Photo))
+                {
+                    ptbFotoUsuario.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                ptbFotoUsuario.Image = FormBaseBBDD.Util.Recursos.ObtenerImagenSinFoto();
+            }
         }
         private void EllipseImatgeUsuari()
         {

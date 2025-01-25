@@ -10,28 +10,41 @@ using UsuariActiuNameSpace;
 using System.Security.Cryptography;
 using static BiblioModeloDatos.DM.DMModel;
 using EchoOfRebellion.Clases.Utils;
+using Utils;
 
 namespace EchoOfRebellion.Clases.DM
 {
     internal class DMLogin
     {
+        private static string HashPassword(string salt, string nuevoPassword)
+        {
+            return (salt + nuevoPassword).Hash256();
+        }
+
         public static int DmLogin(string usuari, string password)
         {
             string consulta;
+
+            usuari = usuari.Trim();
+            password = password.Trim();
+
+            if (usuari == "" || password == "")
+            {
+                return 0;
+            }
 
             clsModeloDatos m = new clsModeloDatos();
 
             Dictionary<string, object> parametros = new Dictionary<string, object>()
             {
                 { "@Usuari", usuari },
-                { "@Password", password },
             };
 
             consulta = @"
                 select idUser,case when Salt is null then cast(0 as bit) else CAST(1 as bit) end as SiSalt,CodeUser,UserName,u.idUserRank,r.CodeRank,r.DescRank,c.AccessLevel,c.CodeCategory,c.DescCategory,
-                coalesce(Photo,'') as UncPhoto,CodePlanet,
+                Photo,CodePlanet,
                 sec.CodeSector,sec.DescSector,coalesce(sec.Remarks,'') as RemarksSector,reg.CodeRegion,reg.DescRegion,coalesce(reg.Remarks,'') as RemarksRegion,long,lat,parsecs,
-                fil.CodeFiliation,fil.DescFiliations,PlanetPicture as UrlPlanetPicture,IPPlanet,PortPlanet,PortPlanet1,coalesce(Mail,'') as Mail,Password,PasswordTmp
+                fil.CodeFiliation,fil.DescFiliations,PlanetPicture as UrlPlanetPicture,IPPlanet,PortPlanet,PortPlanet1,coalesce(Mail,'') as Mail,Password,PasswordTmp,Salt
                 from Users as u left join UserRanks as r on u.idUserRank=r.idUserRank
                 left join UserCategories as c on u.idUserCategory=c.idUserCategory
                 left join Planets as p on u.idPlanet=p.idPlanet left join Sectors as sec on p.idSector=sec.idSector left join Regions as reg on sec.idRegion=reg.idRegion
@@ -45,7 +58,7 @@ namespace EchoOfRebellion.Clases.DM
 
             int result = 0;
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables[0].Rows.Count == 1)
             {
                 DataRow r = ds.Tables[0].Rows[0];
                 bool siSalt = (bool)r["SiSalt"];
@@ -55,7 +68,15 @@ namespace EchoOfRebellion.Clases.DM
                 if (siSalt && !siPassEmpty && siPassTmpEmpty)
                 {
                     // Revisar password
-                    string bbddPassword = r["Password"].ToString();
+                    string bbddPassword = (string)r["Password"];
+
+                    string salt = (string)r["Salt"];
+                    string hashPassword = HashPassword(salt, password);
+
+                    if (bbddPassword != hashPassword)
+                    {
+                        return 0;
+                    }
 
                     int AccessLevel = r.IsNull("AccessLevel") ? 0 : (int)r["AccessLevel"];
 
@@ -73,7 +94,7 @@ namespace EchoOfRebellion.Clases.DM
                         AccessLevel = AccessLevel,
                         CodeCategory = r.IsNull("CodeCategory") ? "" : r["CodeCategory"].ToString(),
                         DescCategory = r.IsNull("DescCategory") ? "" : r["DescCategory"].ToString(),
-                        UncPhoto = r.IsNull("UncPhoto") ? "" : r["UncPhoto"].ToString(),
+                        Photo = r.IsNull("Photo") ? null : (byte[])r["Photo"],
                         CodePlanet = r.IsNull("CodePlanet") ? "" : r["CodePlanet"].ToString(),
                         CodeSector = r.IsNull("CodeSector") ? "" : r["CodeSector"].ToString(),
                         DescSector = r.IsNull("DescSector") ? "" : r["DescSector"].ToString(),
@@ -93,6 +114,7 @@ namespace EchoOfRebellion.Clases.DM
                         Mail = r["Mail"].ToString(),
                         Permisos = permisos
                     };
+
                     result = 1;
 
                     // Carregar permisos
@@ -156,17 +178,48 @@ namespace EchoOfRebellion.Clases.DM
             // 2 OK, pero no tiene Salt
         }
 
-        public static bool UsuarioExiste(string usuario)
+        public static bool LoginExiste(string login)
         {
             string consulta;
             clsModeloDatos m = new clsModeloDatos();
 
-            consulta = "SELECT COUNT(*) FROM Users WHERE Login = @usuario";
-            var parametros = new Dictionary<string, object> { { "@usuario", usuario } };
+            consulta = "SELECT idUser FROM Users WHERE Login = @Login";
+            var parametros = new Dictionary<string, object> { 
+                { "@Login", login } 
+            };
             DataSet ds = m.GeneraConsultaCerca(consulta, parametros);
 
-            return ds.Tables[0].Rows[0][0].ToString() != "0";
+            return ds.Tables[0].Rows.Count != 0;
         }
+
+        public static bool UserNameExiste(string username)
+        {
+            string consulta;
+            clsModeloDatos m = new clsModeloDatos();
+
+            consulta = "SELECT idUser FROM Users WHERE UserName = @UserName";
+            var parametros = new Dictionary<string, object> {
+                { "@UserName", username }
+            };
+            DataSet ds = m.GeneraConsultaCerca(consulta, parametros);
+
+            return ds.Tables[0].Rows.Count != 0;
+        }
+
+        public static bool CodeUserExiste(string codeuser)
+        {
+            string consulta;
+            clsModeloDatos m = new clsModeloDatos();
+
+            consulta = "SELECT idUser FROM Users WHERE CodeUser = @CodeUser";
+            var parametros = new Dictionary<string, object> {
+                { "@CodeUser", codeuser }
+            };
+            DataSet ds = m.GeneraConsultaCerca(consulta, parametros);
+
+            return ds.Tables[0].Rows.Count != 0;
+        }
+
         public static bool ActualizarPasswordConHash(string usuario, string salt, string passwordHasheado, string mail)
         {
 

@@ -18,74 +18,53 @@ namespace EchoOfRebellion.Clases.BIZ
         public static int BizLogin(string usuari, string password)
         {
             int result;
-            bool isValidLogin, isValidPassword;
 
-            isValidLogin = Funcions.ValidacionLogin(usuari); 
-            if (isValidLogin)
-            {
-                isValidPassword = Funcions.ValidacionPassword(password);
-                if (isValidPassword)
-                {
-                    result = DMLogin.DmLogin(usuari, password);
-                }
-                else
-                {
-                    result = 3;
-                }
-            }
-            else
-            {
-                result = 3;
-            }
+            result = DMLogin.DmLogin(usuari, password);
 
             return result;
         }
 
-        public static bool EsPasswordValido(string pass)
-        {
-            return true;
-        }
-
         public static bool RevisarCondicionesRestablecer(string usuario, string nuevoPassword, string confirmarPassword)
         {
-            bool isValidPassword;
-
-            if (!DMLogin.UsuarioExiste(usuario))
+            if (!DMLogin.LoginExiste(usuario))
             {
-                MessageBox.Show("El usuario no existe.");
+                MessageBox.Show("Este Login ya existe.");
                 return false;
             }
 
-            isValidPassword = Funcions.ValidacionPassword(nuevoPassword);
-            if (isValidPassword)
+            if (nuevoPassword != confirmarPassword)
             {
-                if (nuevoPassword != confirmarPassword)
-                {
-                    MessageBox.Show("Las contraseñas no coinciden.");
-                    return false;
-                }
-                else if (!BIZLogin.EsPasswordValido(nuevoPassword))
-                {
-                    MessageBox.Show("La contraseñas no es válida.");
-                    return false;
-                }
-                return true;
+                MessageBox.Show("Las contraseñas no coinciden.");
+                return false;
             }
 
-            return false;
+            if (Funcions.ValidacionPassword(nuevoPassword))
+            {
+                MessageBox.Show("La contraseñas no es válida.");
+                return false;
+            }
+
+            return true;
         }
 
         public static bool RestablecerPassword(string usuario, string nuevoPassword, string mail)
         {
             string salt = Funcions.CreateSalt();
 
-            string passwordHasheado = (salt + nuevoPassword).Hash256();
+            string passwordHasheado = HashPassword(salt, nuevoPassword);
 
             // Actualizar la contraseña con hash y salt
             bool esOk = DMLogin.ActualizarPasswordConHash(usuario, salt, passwordHasheado, mail);
 
             return esOk;
         }
+
+        private static string HashPassword(string salt, string nuevoPassword)
+        {
+            return (salt + nuevoPassword).Hash256();
+        }
+
+
         public static int EnviarMail(string usuario, string mail)
         {
             int code = Funcions.CreateNumRNG();

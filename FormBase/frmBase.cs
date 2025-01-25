@@ -14,8 +14,8 @@ namespace FormBase
 {
     public partial class frmBase : Form
     {
-        System.Windows.Forms.Timer timer;
-
+        private Timer timer;
+        private Timer logTimer;
         public frmBase()
         {
             InitializeComponent();
@@ -53,6 +53,13 @@ namespace FormBase
             };
             timer.Tick += new EventHandler(OnTimerTick);
             timer.Start();
+
+            logTimer = new System.Windows.Forms.Timer
+            {
+                Interval = 5000, // 5 segundos
+                Enabled = false
+            };
+            logTimer.Tick += LogTimer_Tick;
         }
 
         //public void TituloBorrar(string titulo)
@@ -113,6 +120,46 @@ namespace FormBase
                     Close();
                     break;
             }
+        }
+
+        private bool activarTimerLog = false;
+
+        public bool SetLogActivarTimer
+        {
+            set
+            {
+                activarTimerLog = value;
+            }
+        }
+
+        public string SetLog
+        {
+            set
+            {
+                label1.Text = value;
+                Refresh();
+
+                logTimer.Stop();
+
+                if (activarTimerLog)
+                {
+                    logTimer.Start();
+                }
+            }
+        }
+
+        public Color SetLogColor
+        {
+            set
+            {
+                label1.ForeColor = value;
+            }
+        }
+
+        private void LogTimer_Tick(object sender, EventArgs e)
+        {
+            label1.Text = string.Empty;
+            logTimer.Stop();
         }
 
     }

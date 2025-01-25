@@ -7,8 +7,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -84,21 +86,24 @@ namespace FormBaseBBDD
             {
                 string campoFoto = nomsCampsPhoto[0];
 
-                // Obtener el contexto de binding
-                var bindingManager = this.BindingContext[_ds.Tables[0]];
-
-                if (bindingManager.Position >= 0) // Verificar que haya una fila activa
+                if (!_esNou)
                 {
-                    // Obtener la fila actual
-                    DataRowView currentRowView = (DataRowView)bindingManager.Current;
-                    // Actualizar la columna de la foto
-                    currentRowView[campoFoto] = imagenBytes;
-                    // Notificar al sistema de binding que la fila ha cambiado
-                    currentRowView.EndEdit();
-                }
+                    // Obtener el contexto de binding
+                    var bindingManager = this.BindingContext[_ds.Tables[0]];
 
-                // Asegurar que el DataGridView refleje los cambios
-                dataGridView1.Refresh();
+                    if (bindingManager.Position >= 0) // Verificar que haya una fila activa
+                    {
+                        // Obtener la fila actual
+                        DataRowView currentRowView = (DataRowView)bindingManager.Current;
+                        // Actualizar la columna de la foto
+                        currentRowView[campoFoto] = imagenBytes;
+                        // Notificar al sistema de binding que la fila ha cambiado
+                        currentRowView.EndEdit();
+                    }
+
+                    // Asegurar que el DataGridView refleje los cambios
+                    dataGridView1.Refresh();
+                }
 
                 // Actualizar el PictureBox
                 var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
@@ -457,6 +462,11 @@ namespace FormBaseBBDD
                 else if (control is PictureBox pb)
                 {
                     pb.DataBindings.Clear();
+                    pb.Validating -= Evento;
+                    if (borrarCampos)
+                    {
+                        pb.Image = null;
+                    }
                 }
             }
         }
@@ -613,6 +623,10 @@ namespace FormBaseBBDD
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            SetLogColor = Color.LightGreen;
+            SetLogActivarTimer = false;
+            SetLog = "Actualitzant dades ...";
+
             if (_esNou)
             {
                 var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
@@ -640,7 +654,39 @@ namespace FormBaseBBDD
                     }
                     else if (control is SWCodi sw)
                     {
-                        row[sw.Tag.ToString()] = sw.TextId;
+                        if (string.IsNullOrEmpty(sw.TextId) || sw.TextId == "0")
+                        {
+                            row[sw.Tag.ToString()] = DBNull.Value;
+                        }
+                        else
+                        {
+                            row[sw.Tag.ToString()] = sw.TextId;
+                        }
+                    }
+                    else if (control is PictureBox pic && pic.Image != null) 
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            using (var imagenClonada = new Bitmap(pic.Image)) // Clonar la imagen
+                            {
+                                var formato = pic.Image.RawFormat;
+
+                                if (ImageFormat.Jpeg.Equals(formato))
+                                {
+                                    imagenClonada.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                }
+                                else if (ImageFormat.Png.Equals(formato))
+                                {
+                                    imagenClonada.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                                }
+                                else
+                                {
+                                    throw new InvalidOperationException("El formato de la imagen no es válido. Solo se permiten JPG y PNG.");
+                                }
+
+                                row[pic.Tag.ToString()] = ms.ToArray();
+                            }
+                        }
                     }
                 }
                 _ds.Tables[0].Rows.Add(row);
@@ -655,18 +701,10 @@ namespace FormBaseBBDD
 
             int result = md.Actualitzar(_ds, _queryUpdate);
 
-            if (result < 0)
-            {
-                MessageBox.Show("No es poden actualitzar les dades");
-                btnUpdate.Enabled = true;
-                return;
-            }
-
             if (md.numInserts > 0)
             {
                 NuevoRegistroCreado?.Invoke(this, new NuevoRegistroEventArgs(md));
-            } 
-
+            }
 
             CargarDatosBBDD();
 
@@ -685,6 +723,17 @@ namespace FormBaseBBDD
 
             _esNou = false;
 
+            if (result < 0)
+            {
+                SetLogColor = Color.Red;
+                SetLogActivarTimer = true;
+                SetLog = "No es poden actualitzar les dades";
+            }
+            else
+            {
+                SetLogActivarTimer = true;
+                SetLog = "Dades actualitzades";
+            }
         }
 
         private bool RevisarCamposOK(Control grupo)

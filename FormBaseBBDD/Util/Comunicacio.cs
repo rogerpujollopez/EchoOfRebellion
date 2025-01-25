@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Net;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FormBaseBBDD.Util
 {
@@ -52,4 +53,14 @@ namespace FormBaseBBDD.Util
             return enviat;
         }
     }
+
+    public class Recursos
+    {
+        public static Image ObtenerImagenSinFoto()
+        {
+            return Properties.Resources.SinFoto; // Reemplaza con el nombre del recurso exacto
+        }
+    }
+
+
 }

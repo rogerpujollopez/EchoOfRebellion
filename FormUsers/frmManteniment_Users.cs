@@ -14,6 +14,7 @@ using CrystalDecisions.Shared;
 using System.Data.SqlClient;
 using Utils;
 using System.IO;
+using System.Xml.Schema;
 
 namespace FormUsers
 {
@@ -82,6 +83,13 @@ namespace FormUsers
             InicializarFormulario(this);
 
             pictureBox1.Click += PictureBox_Click;
+            swTextbox4.ValidacioFallida += ValidacioFallidaMail;
+        }
+
+        private void ValidacioFallidaMail(object sender, EventArgs e)
+        {
+            ((TextBox)sender).BackColor = Color.Red;
+            MessageBox.Show("Correu electrònic no vàlid.", "Error de mail");
         }
 
         private void PictureBox_Click(object sender, EventArgs e)
@@ -98,18 +106,41 @@ namespace FormUsers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cryRpt = new ReportDocument();
-            cryRpt.Load("tarjaIdentificacio.rpt");
+            string valor = textBox5.Text;
 
-            SetCredentials();
+            if (valor == "")
+            {
+                return;
+            }
 
-            cryRpt.RecordSelectionFormula = "{Users.idUser} = " +
-            Convert.ToInt32(textBox5.Text);
+            Enabled = false;
 
-            crystalReportViewer1.ReportSource = cryRpt;
-            crystalReportViewer1.Refresh();
+            try
+            {
+                cryRpt = new ReportDocument();
+                cryRpt.Load("tarjaIdentificacio.rpt");
 
-            panel1.Visible = true;
+                SetCredentials();
+
+                string formula = "{Users.idUser} = ";
+                formula += $"{valor}";
+
+                cryRpt.RecordSelectionFormula = formula;
+
+                crystalReportViewer1.ReportSource = cryRpt;
+                crystalReportViewer1.Refresh();
+
+                panel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!!!");
+            }
+            finally
+            {
+                Enabled = true;
+            }
+
         }
 
         public override void ClickEnGrid(DataGridViewCellEventArgs e)
@@ -145,5 +176,56 @@ namespace FormUsers
             string g = "";
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string valor = textBox5.Text;
+
+            if (valor == "")
+            {
+                return;
+            }
+
+            Enabled = false;
+
+            try
+            {
+                clsModeloDatos dm = new clsModeloDatos();
+
+                string query = @"
+                    select UserName,c.DescCategory,r.DescRank,s.DescSpecie,p.DescPlanet,CodeUser,Photo
+                    from Users as u left join UserRanks as r on u.idUserRank=r.idUserRank
+                    left join UserCategories as c on u.idUserCategory=c.idUserCategory
+                    left join Species as s on u.idSpecie=s.idSpecie
+                    left join Planets as p on u.idPlanet=p.idPlanet
+                    where idUser=@idUser
+                ";
+
+                int idUser = Convert.ToInt32(valor);
+
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@idUser", idUser));
+
+                DataSet ds = dm.PortarPerConsulta(query, parametros);
+
+                //ds.WriteXmlSchema(@"C:\dataset.xsd");
+
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"Reports\RptUsuario.rpt");
+                cryRpt.SetDataSource(ds);
+                cryRpt.Refresh();
+                cryRpt.PrintToPrinter(1, false, 0, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!!!");
+            }
+            finally
+            {
+                Enabled = true;
+            }
+
+
+
+        }
     }
 }

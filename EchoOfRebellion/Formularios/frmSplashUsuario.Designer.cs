@@ -78,6 +78,7 @@
             this.ptbFotoUsuario.Location = new System.Drawing.Point(84, 123);
             this.ptbFotoUsuario.Name = "ptbFotoUsuario";
             this.ptbFotoUsuario.Size = new System.Drawing.Size(116, 113);
+            this.ptbFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbFotoUsuario.TabIndex = 3;
             this.ptbFotoUsuario.TabStop = false;
             // 

@@ -49,6 +49,15 @@ namespace MisControles
             InitializeComponent();
         }
 
+        public delegate void ValidacioFallidaEventHandler(object sender, EventArgs e);
+
+        // Declarar el evento
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Se dispara cuando la validación falla.")]
+        public event ValidacioFallidaEventHandler ValidacioFallida;
+
+
         private void InitializeComponent()
         {
             this.SuspendLayout();
@@ -175,6 +184,7 @@ namespace MisControles
 
             if (hayError)
             {
+                ValidacioFallida?.Invoke(this, EventArgs.Empty);
                 Text = "";
             }
 
