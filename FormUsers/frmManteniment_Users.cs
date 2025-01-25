@@ -12,6 +12,8 @@ using BiblioModeloDatos;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Data.SqlClient;
+using Utils;
+using System.IO;
 
 namespace FormUsers
 {
@@ -78,7 +80,22 @@ namespace FormUsers
             swCodi4.ViewDataColumns = new List<int> { 2, 1 };
 
             InicializarFormulario(this);
+
+            pictureBox1.Click += PictureBox_Click;
         }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            string ruta = Funcions.RutaImagen("Seleccionar Imatge");
+
+            if (ruta != "")
+            {
+                byte[] imagenBytes = File.ReadAllBytes(ruta);
+                ActualizarImagen(imagenBytes);
+            }
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             cryRpt = new ReportDocument();
@@ -91,6 +108,14 @@ namespace FormUsers
 
             crystalReportViewer1.ReportSource = cryRpt;
             crystalReportViewer1.Refresh();
+
+            panel1.Visible = true;
+        }
+
+        public override void ClickEnGrid(DataGridViewCellEventArgs e)
+        {
+            base.ClickEnGrid(e);
+            panel1.Visible = false;
         }
 
         private void SetCredentials()

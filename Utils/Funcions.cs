@@ -5,11 +5,44 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Utils
 {
     public static class Funcions
     {
+        public static PictureBox ObtenerPicturesBox(Control.ControlCollection controls, string nombre)
+        {
+            foreach(Control c in controls)
+            {
+                if (c.Tag != null && c.Tag.ToString() == nombre) 
+                {
+                    return (PictureBox)c;
+                }
+            }
+
+            return null;
+        }
+
+        public static string RutaImagen(string titol) //  Seleccionar Imatge
+        {
+            string ruta = "";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = titol;
+                openFileDialog.Filter = "Imatges JPG i PNG|*.jpg;*.png";
+                openFileDialog.Multiselect = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ruta = openFileDialog.FileName;
+                }
+            }
+
+            return ruta;
+        }
+
         public static string CreateSalt()
         {
             DateTime today = DateTime.Today;

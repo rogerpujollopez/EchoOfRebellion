@@ -78,6 +78,64 @@ namespace FormBaseBBDD
             set { llistes = value; }
         }
 
+        public virtual void ActualizarImagen(byte[] imagenBytes)
+        {
+            if (!(nomsCampsPhoto == null || nomsCampsPhoto.Count == 0))
+            {
+                string campoFoto = nomsCampsPhoto[0];
+
+                // Obtener el contexto de binding
+                var bindingManager = this.BindingContext[_ds.Tables[0]];
+
+                if (bindingManager.Position >= 0) // Verificar que haya una fila activa
+                {
+                    // Obtener la fila actual
+                    DataRowView currentRowView = (DataRowView)bindingManager.Current;
+                    // Actualizar la columna de la foto
+                    currentRowView[campoFoto] = imagenBytes;
+                    // Notificar al sistema de binding que la fila ha cambiado
+                    currentRowView.EndEdit();
+                }
+
+                // Asegurar que el DataGridView refleje los cambios
+                dataGridView1.Refresh();
+
+                // Actualizar el PictureBox
+                var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+                PictureBox pb = Funcions.ObtenerPicturesBox(grupo.Controls, campoFoto);
+                if (pb != null)
+                {
+                    using (var ms = new MemoryStream(imagenBytes))
+                    {
+                        pb.Image = Image.FromStream(ms); // Convertir los bytes en una imagen y asignarla al PictureBox
+                    }
+                }
+            }
+
+            //if (!(nomsCampsPhoto == null || nomsCampsPhoto.Count == 0)) 
+            //{
+            //    string campoFoto = nomsCampsPhoto[0];
+
+            //    var grupo = Controls.OfType<Control>().FirstOrDefault(c => c.Name == "GrupCamps");
+
+            //    var bindingManager = this.BindingContext[_ds.Tables[0]];
+
+            //    if (bindingManager.Position >= 0) // Verificar que haya una fila activa
+            //    {
+            //        DataRowView currentRowView = (DataRowView)bindingManager.Current;
+
+            //        // Actualizar el valor en la columna correspondiente
+            //        currentRowView[campoFoto] = imagenBytes;
+            //    }
+
+            //    PictureBox pb = Funcions.ObtenerPicturesBox(grupo.Controls, campoFoto);
+            //    using (var ms = new MemoryStream(imagenBytes))
+            //    {
+            //        pb.Image = Image.FromStream(ms); // Convertir los bytes en una imagen y asignarla al PictureBox
+            //    }
+            //}
+        }
+
         private void FormatoGrid()
         {
             Formats.Grids.FormatoGrid(dataGridView1);
@@ -86,6 +144,11 @@ namespace FormBaseBBDD
         #region "Evento"
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ClickEnGrid(e);
+        }
+
+        public virtual void ClickEnGrid(DataGridViewCellEventArgs e)
         {
             if (_esNou)
             {
@@ -315,8 +378,27 @@ namespace FormBaseBBDD
                 else if (control is PictureBox pb)
                 {
                     pb.DataBindings.Clear();
-                    pb.DataBindings.Add("Image", _ds.Tables[0], pb.Tag.ToString(), true, DataSourceUpdateMode.Never);
-                    pb.DataBindings[pb.DataBindings.Count - 1].Format += (s, e) =>
+                    //pb.DataBindings.Add("Image", _ds.Tables[0], pb.Tag.ToString(), true, DataSourceUpdateMode.Never);
+                    //pb.DataBindings[pb.DataBindings.Count - 1].Format += (s, e) =>
+                    //{
+                    //    // Convertir el byte[] en una imagen
+                    //    if (e.Value is byte[] byteArray)
+                    //    {
+                    //        using (var ms = new MemoryStream(byteArray))
+                    //        {
+                    //            e.Value = Image.FromStream(ms);
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        //e.Value = null; // Si el valor no es byte[], no se muestra nada
+                    //        e.Value = Properties.Resources.SinFoto;
+                    //    }
+                    //};
+
+                    var binding = new Binding("Image", _ds.Tables[0], pb.Tag.ToString(), true, DataSourceUpdateMode.Never);
+
+                    binding.Format += (s, e) =>
                     {
                         // Convertir el byte[] en una imagen
                         if (e.Value is byte[] byteArray)
@@ -328,10 +410,15 @@ namespace FormBaseBBDD
                         }
                         else
                         {
-                            //e.Value = null; // Si el valor no es byte[], no se muestra nada
+                            // Si no hay imagen, establece una predeterminada
                             e.Value = Properties.Resources.SinFoto;
                         }
                     };
+
+                    pb.DataBindings.Add(binding);
+
+                    // Forzar que el binding lea el valor inicial
+                    binding.ReadValue();
                 }
             }
         }
@@ -559,6 +646,8 @@ namespace FormBaseBBDD
                 _ds.Tables[0].Rows.Add(row);
             }
 
+            BindingContext[_ds.Tables[0]].EndCurrentEdit();
+
             btnUpdate.Enabled = false;
 
             int selectedColumnIndex = dataGridView1.CurrentCell?.ColumnIndex ?? -1;
@@ -588,9 +677,11 @@ namespace FormBaseBBDD
 
             btnUpdate.Enabled = true;
 
-
-            RemoverBinding(false);
-            EstablecerBinding();
+            if (_esNou)
+            {
+                RemoverBinding(false);
+                EstablecerBinding();
+            }
 
             _esNou = false;
 
