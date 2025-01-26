@@ -26,6 +26,7 @@ namespace MisControles
         public SWBotons()
         {
             InitializeComponent();
+            InitializePictureBox();
 
             this.DoubleBuffered = true;
             this.Resize += (s, e) => this.Invalidate();
@@ -328,6 +329,9 @@ namespace MisControles
                     g.FillRectangle(brush, rect);
                 }
             }
+
+            pictureBox.Location = new Point(40, 16);
+
         }
 
         public new event MouseEventHandler MouseClick;
@@ -366,5 +370,69 @@ namespace MisControles
                 e.Handled = true; // Evita que se propague el evento.
             }
         }
+
+        #region "PictureBox"
+
+        private PictureBox pictureBox;
+
+        private void InitializePictureBox()
+        {
+            pictureBox = new PictureBox
+            {
+                Image = Properties.Resources.star3, // La imagen que quieres usar
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BackColor = Color.Transparent,
+                Size = new Size(20, 20),
+                Cursor = Cursors.Hand // Indicar visualmente que es interactivo
+            };
+
+            // Evento para iniciar el drag and drop
+            pictureBox.MouseDown += PictureBox_MouseDown;
+
+            // Añadir el PictureBox al control
+            this.Controls.Add(pictureBox);
+            pictureBox.BringToFront(); // Asegurar que esté encima de otros elementos
+        }
+
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // Crear un cursor visual basado en la imagen `star3`
+                Cursor dragCursor = CreateDragCursor(Properties.Resources.star3);
+
+                // Cambiar el cursor por el personalizado durante el arrastre
+                Cursor.Current = dragCursor;
+
+                // Iniciar el drag and drop con el botón completo (SWBotons)
+                DoDragDrop(this, DragDropEffects.Move);
+            }
+        }
+
+        private Cursor CreateDragCursor(Image dragImage)
+        {
+            // Ajustar el tamaño de la imagen (por ejemplo, 32x32)
+            int cursorSize = 32; // Cambia este valor según el tamaño que prefieras
+            Bitmap bitmap = new Bitmap(cursorSize, cursorSize);
+
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(Color.Transparent);
+
+                // Dibujar la imagen escalada al nuevo tamaño
+                g.DrawImage(dragImage, new Rectangle(0, 0, cursorSize, cursorSize));
+
+                // Opcional: Agregar un contorno para mayor visibilidad
+                using (Pen pen = new Pen(Color.Gray, 2))
+                {
+                    g.DrawRectangle(pen, 0, 0, cursorSize - 1, cursorSize - 1);
+                }
+            }
+
+            // Crear el cursor a partir del bitmap redimensionado
+            return new Cursor(bitmap.GetHicon());
+        }
+
+        #endregion
     }
 }

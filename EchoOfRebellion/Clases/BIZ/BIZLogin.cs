@@ -9,6 +9,8 @@ using EchoOfRebellion;
 using static BiblioModeloDatos.DM.DMModel;
 using System.Windows.Forms;
 using Utils;
+using BiblioModeloDatos;
+using UsuariActiuNameSpace;
 
 
 namespace EchoOfRebellion.Clases.BIZ
@@ -73,5 +75,14 @@ namespace EchoOfRebellion.Clases.BIZ
                 );
             return code;
         }
+
+        public static void ActualizarOrdenMenu(List<int> ops)
+        {
+            int idUser = UsuariActiu.usuari.IdUser;
+
+            DMLogin.ActualizarOrdenMenu(idUser, ops);
+
+        }
+
     }
 }

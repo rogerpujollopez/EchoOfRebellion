@@ -81,12 +81,13 @@ namespace EchoOfRebellion.Clases.DM
                     }
 
                     int AccessLevel = r.IsNull("AccessLevel") ? 0 : (int)r["AccessLevel"];
+                    int idUser = (int)r["idUser"];
 
                     List<Permis> permisos = new List<Permis>();
 
                     UsuariActiu.usuari = new UsuariComplet()
                     {
-                        IdUser = (int)r["idUser"],
+                        IdUser = idUser,
                         SiSalt = (bool)r["SiSalt"],
                         CodeUser = r["CodeUser"].ToString(),
                         UserName = r["UserName"].ToString(),
@@ -136,10 +137,14 @@ namespace EchoOfRebellion.Clases.DM
                     parametros = new Dictionary<string, object>()
                     {
                         { "@AccessLevel", AccessLevel },
+                        { "@idUser", idUser },
                     };
 
                     consulta = @"
-                        select ID_Op,Dll,Tipus,Nom,Icona,DescForm from UserOptions where AccessLevel<=@AccessLevel and EsManteniment=1 order by Ordre,Nom
+                        select o.ID_Op,Dll,Tipus,Nom,Icona,DescForm 
+                        from UserOptions as o left join UsersMenu as m on o.ID_Op=m.ID_Op and m.idUser=@idUser
+                        where AccessLevel<=@AccessLevel and EsManteniment=1 
+                        order by case when m.Orden is null then 1 else 0 end,m.Orden,Ordre,Nom
                     ";
                     ds = m.GeneraConsultaCerca(consulta, parametros);
 
@@ -251,6 +256,42 @@ namespace EchoOfRebellion.Clases.DM
             int registrosAfectados = m.ExecutaConParametros(consulta, parametros);
 
             return registrosAfectados > 0;
+        }
+
+
+        public static void ActualizarOrdenMenu(int idUser, List<int> ops)
+        {
+
+            string consulta = "delete from UsersMenu where idUser=@idUser";
+
+            var parametros = new Dictionary<string, object>
+            {
+                { "@idUser", idUser },
+            };
+
+            clsModeloDatos m = new clsModeloDatos();
+            int registrosAfectados = m.ExecutaConParametros(consulta, parametros);
+
+
+            StringBuilder queryBuilder = new StringBuilder();
+            queryBuilder.Append("INSERT INTO UsersMenu (idUser, ID_Op, Orden) VALUES ");
+
+            int orden = 1;
+
+            foreach (int idOp in ops)
+            {
+                queryBuilder.AppendFormat("({0}, {1}, {2}),", idUser, idOp, orden);
+                orden++;
+            }
+
+            // Quitar la última coma
+            queryBuilder.Length--;
+
+            parametros = new Dictionary<string, object>();
+            consulta = queryBuilder.ToString();
+
+            m.ExecutaConParametros(consulta, parametros);
+
         }
 
     }
