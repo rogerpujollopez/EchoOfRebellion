@@ -128,8 +128,8 @@ namespace FormUsers
             this.swCodi2.Size = new System.Drawing.Size(342, 21);
             this.swCodi2.TabIndex = 5;
             this.swCodi2.Tag = "idUserCategory";
-            this.swCodi2.Tag2 = "DescCategory";
-            this.swCodi2.Tag3 = "";
+            this.swCodi2.Tag2 = "";
+            this.swCodi2.Tag3 = "DescCategory";
             this.swCodi2.TextDesc = "";
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
@@ -148,6 +148,7 @@ namespace FormUsers
             this.swCodi3.TextDesc = "";
             this.swCodi3.TextId = "";
             this.swCodi3.TextValue = "";
+            this.swCodi3.VerFormularioSelect = true;
             // 
             // swCodi4
             // 

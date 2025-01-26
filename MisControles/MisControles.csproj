@@ -94,6 +94,10 @@
       <Project>{5a1ca935-053e-490d-a9eb-3eea151ab007}</Project>
       <Name>Configuracio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{abe79258-d83c-4ae1-80ef-6c47cc71d1fc}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

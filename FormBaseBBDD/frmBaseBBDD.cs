@@ -148,6 +148,12 @@ namespace FormBaseBBDD
 
         #region "Evento"
 
+        public delegate void DatosActualizadosEventHandler(object sender, EventArgs e);
+
+        // Evento que se lanza al actualizar los datos
+        public event DatosActualizadosEventHandler DatosActualizados;
+
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ClickEnGrid(e);
@@ -282,8 +288,6 @@ namespace FormBaseBBDD
             }
         }
 
-
-
         private void DibujarGrid()
         {
             if (caselles == null || caselles.Count == 0)
@@ -380,7 +384,7 @@ namespace FormBaseBBDD
                     }
                     cd.Validating += Evento;
                 }
-                else if (control is PictureBox pb)
+                else if (control is PictureBox pb && pb.Tag != null) 
                 {
                     pb.DataBindings.Clear();
                     //pb.DataBindings.Add("Image", _ds.Tables[0], pb.Tag.ToString(), true, DataSourceUpdateMode.Never);
@@ -681,7 +685,11 @@ namespace FormBaseBBDD
                                 }
                                 else
                                 {
-                                    throw new InvalidOperationException("El formato de la imagen no es válido. Solo se permiten JPG y PNG.");
+                                    //throw new InvalidOperationException("El formato de la imagen no es válido. Solo se permiten JPG y PNG."); 
+                                    SetLogColor = Color.Red;
+                                    SetLogActivarTimer = true;
+                                    SetLog = "El formato de la imagen no es válido. Solo se permiten JPG y PNG.";
+                                    return;
                                 }
 
                                 row[pic.Tag.ToString()] = ms.ToArray();
@@ -734,6 +742,8 @@ namespace FormBaseBBDD
                 SetLogActivarTimer = true;
                 SetLog = "Dades actualitzades";
             }
+
+            DatosActualizados?.Invoke(this, EventArgs.Empty);
         }
 
         private bool RevisarCamposOK(Control grupo)
@@ -780,7 +790,10 @@ namespace FormBaseBBDD
 
             if (!estado)
             {
-                MessageBox.Show("Hay campos sin datos", "Atención!!!");
+                SetLogColor = Color.Red;
+                SetLogActivarTimer = true;
+                SetLog = "Hay campos sin datos";
+                //MessageBox.Show("Hay campos sin datos", "Atención!!!");
             }
 
             return estado;

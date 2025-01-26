@@ -32,24 +32,36 @@ namespace EchoOfRebellion
                 splash.ShowDialog(); 
             }
 
-            using (var login = new frmLogin())
-            {
-                login.ShowDialog();
-            }
+            bool haEntrado;
 
-            if (UsuariActiu.usuari != null)
+            do
             {
-                using (var frmsplashusu = new frmSplashUsuario())
+                haEntrado = false;
+
+                using (var login = new frmLogin())
                 {
-                    frmsplashusu.ShowDialog();
+                    login.ShowDialog();
                 }
 
-
-                using (frmMenuPrincipal frmain = new frmMenuPrincipal())
+                if (UsuariActiu.usuari != null)
                 {
-                    frmain.ShowDialog();
+                    haEntrado = true;
+
+                    using (var frmsplashusu = new frmSplashUsuario())
+                    {
+                        frmsplashusu.ShowDialog();
+                    }
+
+                    using (frmMenuPrincipal frmain = new frmMenuPrincipal())
+                    {
+                        frmain.ShowDialog();
+                    }
+
+                    UsuariActiu.usuari = null;
                 }
-            }
+            } 
+            while (haEntrado);
+
 
 
         }

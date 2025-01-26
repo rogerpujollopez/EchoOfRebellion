@@ -32,15 +32,6 @@ namespace EchoOfRebellion
             InicializarTimerDesplazamiento();
             InicializarListaLeds();
 
-            //swTextbox1.BackColorGetFocus = Color.Cyan;
-            //swTextbox1.BackColorLostFocus = Color.Gray;
-            //swTextbox1.BackColorError = Color.IndianRed;
-
-            //swLabelWithTimer1.ColorFons = Color.Black;
-            //swLabelWithTimer1.ColorText = Color.Red;
-            //swLabelWithTimer1.ColorTextParpelleig = Color.FromArgb(255, 102, 102);
-            //swLabelWithTimer1.IntervalDurada = 5000;
-
             swCuentaAtras1.Top -= swCuentaAtras1.Height;
             swCuentaAtras1.CuentaFinalizada += Crash;
         }
@@ -91,17 +82,12 @@ namespace EchoOfRebellion
 
         private void lblExit_Click(object sender, EventArgs e)
         {
-            //swLabelWithTimer1.TextLabel = "abcdefghijklmn";
-            //swLabelWithTimer1.Activar();
             Salir();
         }
 
         private void Salir()
         {
-            if (Missatgeria.Sortir())
-            {
-                Cerrar();
-            }
+            Cerrar();
         }
 
         private void lblSubmit_Click(object sender, EventArgs e)

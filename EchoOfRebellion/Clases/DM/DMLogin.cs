@@ -11,6 +11,8 @@ using System.Security.Cryptography;
 using static BiblioModeloDatos.DM.DMModel;
 using EchoOfRebellion.Clases.Utils;
 using Utils;
+using System.IO;
+using System.Drawing;
 
 namespace EchoOfRebellion.Clases.DM
 {
@@ -114,6 +116,18 @@ namespace EchoOfRebellion.Clases.DM
                         Mail = r["Mail"].ToString(),
                         Permisos = permisos
                     };
+
+                    if (UsuariActiu.usuari.Photo == null)
+                    {
+                        Image imagen = FormBaseBBDD.Util.Recursos.ObtenerImagenSinFoto();
+
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Cambia a JPEG si es necesario
+                            UsuariActiu.usuari.Photo = ms.ToArray();
+                        }
+                    }
+
 
                     result = 1;
 

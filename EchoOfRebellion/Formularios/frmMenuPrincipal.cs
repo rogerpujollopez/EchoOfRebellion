@@ -27,14 +27,16 @@ namespace EchoOfRebellion.Formularios
             BackColor = Color.FromArgb(32, 32, 32);
 
             Titulo = "Menú principal";
-            
+
+            base.ActualizarInformacion(); // Para que la foto se reajuste
+
             DibuixarMenu();
         }
 
         private void DibuixarMenu()
         {
-            int _x = 10;
-            int _y = 120;
+            int _x = 0;
+            int _y = 80;
             int _h = 80;
             int _w = 260;
             int offset = 10;
@@ -78,14 +80,16 @@ namespace EchoOfRebellion.Formularios
 
         private void Cerrar()
         {
-            if (Missatgeria.Sortir())
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         protected override void HandleKeyDown(KeyEventArgs e)
         {
+            foreach (SWBotons boton in this.Controls.OfType<SWBotons>())
+            {
+                boton.ProcessKey(e); 
+            }
+
             switch (e.KeyCode)
             {
                 case Keys.Escape:

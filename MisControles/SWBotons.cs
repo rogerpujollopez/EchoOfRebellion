@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utils;
 
 namespace MisControles
 {
@@ -19,6 +20,8 @@ namespace MisControles
         private Brush _colorFuente;
         private string _texto = "";
         private bool _isPressed = false;
+        private bool _haytecla = false;
+        private string _quetecla = "";
 
         public SWBotons()
         {
@@ -263,23 +266,68 @@ namespace MisControles
 
             #endregion
 
+            string copiaText = _texto;
+
+
+            SizeF textSizeSub = new SizeF();
+            SizeF textSizeIni = new SizeF();
+
+            int possub = copiaText.IndexOf("&");
+            bool siSub = possub >= 0;
+
+
+            if (siSub)
+            {
+                textSizeSub = g.MeasureString(copiaText, _font);
+                textSizeIni = g.MeasureString(copiaText.Left(possub), _font);
+                copiaText = copiaText.Replace("&", "");
+
+                if (!_haytecla)
+                {
+                    _quetecla = copiaText[possub].ToString().ToLower();
+                    string gg = "";
+                }
+
+                _haytecla = true;
+            }
+
             int centerX = this.Width / 2;
             int centerY = this.Height / 2;
 
+            int inc = 0;
+
             if (_isPressed) {
-                int inc = ((int)(this.Height / 100.0) * 2);
+                inc = ((int)(this.Height / 100.0) * 2);
                 if (inc <= 0) {
                     inc = 1;
                 }
                 centerY += inc;
             }
 
-            SizeF textSize = g.MeasureString(_texto, _font);
+            SizeF textSize = g.MeasureString(copiaText, _font);
             PointF textPosition = new PointF(
                 centerX - textSize.Width / 2,
                 centerY - textSize.Height / 2
             );
-            g.DrawString(_texto, _font, _colorFuente, textPosition);
+            g.DrawString(copiaText, _font, _colorFuente, textPosition);
+
+
+            // Crear el rectángulo donde se aplicará el gradiente
+
+            if (siSub)
+            {
+                Size sizeSub = new Size((int)(textSizeSub.Width - textSize.Width), 2);
+                Point textPositionInt = new Point((int)textPosition.X + (int)textSizeIni.Width, (int)(textPosition.Y + textSize.Height + inc)); // 10 offset vertical
+
+                Rectangle rect = new Rectangle(textPositionInt, sizeSub);
+
+                // Crear un LinearGradientBrush de izquierda a derecha
+                using (LinearGradientBrush brush = new LinearGradientBrush(rect, Color.Yellow, Color.Red, LinearGradientMode.Horizontal))
+                {
+                    // Dibujar el rectángulo con el degradado
+                    g.FillRectangle(brush, rect);
+                }
+            }
         }
 
         public new event MouseEventHandler MouseClick;
@@ -290,6 +338,33 @@ namespace MisControles
 
             // Invocar el evento MouseClick personalizado
             MouseClick?.Invoke(this, e);
+        }
+
+        protected override bool IsInputKey(Keys keyData)
+        {
+            // Permitir que el control procese todas las teclas, incluidas flechas, Enter, etc.
+            return true;
+        }
+
+        public void ProcessKey(KeyEventArgs e)
+        {
+            string teclaPulsada = e.KeyCode.ToString().ToLower();
+
+            if (_haytecla && teclaPulsada == _quetecla)
+            {
+                MouseEventArgs mouseEventArgs = new MouseEventArgs(
+                    MouseButtons.Left, // Botón izquierdo
+                    1,                 // Número de clics
+                    0,                 // Coordenada X
+                    0,                 // Coordenada Y
+                    0                  // Delta de la rueda del ratón
+                );
+
+                // Invocar el evento MouseClick personalizado
+                MouseClick?.Invoke(this, mouseEventArgs);
+
+                e.Handled = true; // Evita que se propague el evento.
+            }
         }
     }
 }

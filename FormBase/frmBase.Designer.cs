@@ -29,17 +29,20 @@
         private void InitializeComponent()
         {
             this.PanelTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lineTitulo = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pbu = new System.Windows.Forms.PictureBox();
             this.PanelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbu)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTop
             // 
             this.PanelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.PanelTop.Controls.Add(this.pbu);
             this.PanelTop.Controls.Add(this.label1);
             this.PanelTop.Controls.Add(this.lineTitulo);
             this.PanelTop.Controls.Add(this.lblUsuario);
@@ -52,10 +55,21 @@
             this.PanelTop.Size = new System.Drawing.Size(741, 64);
             this.PanelTop.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(378, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(346, 21);
+            this.label1.TabIndex = 3;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // lineTitulo
             // 
             this.lineTitulo.BackColor = System.Drawing.Color.White;
-            this.lineTitulo.Location = new System.Drawing.Point(24, 37);
+            this.lineTitulo.Location = new System.Drawing.Point(65, 37);
             this.lineTitulo.Margin = new System.Windows.Forms.Padding(0);
             this.lineTitulo.Name = "lineTitulo";
             this.lineTitulo.Size = new System.Drawing.Size(50, 1);
@@ -66,7 +80,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(21, 39);
+            this.lblUsuario.Location = new System.Drawing.Point(62, 39);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(50, 15);
             this.lblUsuario.TabIndex = 2;
@@ -90,22 +104,20 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(19, 12);
+            this.lblTitulo.Location = new System.Drawing.Point(60, 12);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(71, 25);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Titulo";
             // 
-            // label1
+            // pbu
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(378, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(346, 21);
-            this.label1.TabIndex = 3;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.pbu.Location = new System.Drawing.Point(10, 10);
+            this.pbu.Name = "pbu";
+            this.pbu.Size = new System.Drawing.Size(43, 43);
+            this.pbu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbu.TabIndex = 4;
+            this.pbu.TabStop = false;
             // 
             // frmBase
             // 
@@ -125,6 +137,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBase_KeyDown);
             this.PanelTop.ResumeLayout(false);
             this.PanelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,6 +150,7 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel lineTitulo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbu;
     }
 }
 

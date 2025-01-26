@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using Utils;
 using System.IO;
 using System.Xml.Schema;
+using UsuariActiuNameSpace;
 
 namespace FormUsers
 {
@@ -26,6 +27,7 @@ namespace FormUsers
             InitializeComponent();
 
             this.NuevoRegistroCreado += FrmHijo_NuevoRegistroCreado;
+            this.DatosActualizados += FrmHerencia_DatosActualizados;
 
             string tabla = "Users";
 
@@ -89,7 +91,9 @@ namespace FormUsers
         private void ValidacioFallidaMail(object sender, EventArgs e)
         {
             ((TextBox)sender).BackColor = Color.Red;
-            MessageBox.Show("Correu electrònic no vàlid.", "Error de mail");
+            SetLogColor = Color.Red;
+            SetLogActivarTimer = true;
+            SetLog = "Correu electrònic no vàlid.";
         }
 
         private void PictureBox_Click(object sender, EventArgs e)
@@ -134,7 +138,9 @@ namespace FormUsers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error!!!");
+                SetLogColor = Color.Red;
+                SetLogActivarTimer = true;
+                SetLog = ex.Message;
             }
             finally
             {
@@ -174,6 +180,32 @@ namespace FormUsers
         private void FrmHijo_NuevoRegistroCreado(object sender, NuevoRegistroEventArgs e)
         {
             string g = "";
+        }
+
+        private void FrmHerencia_DatosActualizados(object sender, EventArgs e)
+        {
+            clsModeloDatos dm = new clsModeloDatos();
+
+            string query = @"
+                    select UserName,Photo
+                    from Users as u left join UserRanks as r on u.idUserRank=r.idUserRank
+                    left join UserCategories as c on u.idUserCategory=c.idUserCategory
+                    left join Species as s on u.idSpecie=s.idSpecie
+                    left join Planets as p on u.idPlanet=p.idPlanet
+                    where idUser=@idUser
+                ";
+
+            int idUser = UsuariActiu.usuari.IdUser;
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@idUser", idUser));
+
+            DataSet ds = dm.PortarPerConsulta(query, parametros);
+            DataRow row = ds.Tables[0].Rows[0];
+
+            UsuariActiu.usuari.UserName = (string)row["UserName"];
+            UsuariActiu.usuari.Photo = (byte[])row["Photo"];
+            UsuariActiu.ActualizarInformacion();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -217,15 +249,14 @@ namespace FormUsers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error!!!");
+                SetLogColor = Color.Red;
+                SetLogActivarTimer = true;
+                SetLog = ex.Message;
             }
             finally
             {
                 Enabled = true;
             }
-
-
-
         }
     }
 }

@@ -10,40 +10,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace FormSectors
+namespace FormPlanetes
 {
-    public partial class frmSelector_Sectors : frmBaseBBDDSelect
+    public partial class frmSelector_Planetes : frmBaseBBDDSelect
     {
-        public frmSelector_Sectors()
+        public frmSelector_Planetes()
         {
             InitializeComponent();
-
-
 
             Data data = new Data()
             {
                 autoLabel = true,
                 querySelect = @"
-                    select idSector,CodeSector,DescSector,s.Remarks,r.DescRegion 
-                    from Sectors as s left join Regions as r on s.idRegion=r.idRegion
+                    select idPlanet,DescPlanet,CodePlanet
+                    from Planets
                 ",
-                queryOrder = "order by CodeSector",
-                titol = $"Selector"
+                queryOrder = "order by DescPlanet",
+                titol = $"Selector Planetes",
             };
             SetData = data;
 
             SetCaselles = new List<casella>() {
-                new casella(){ nom="id", ample=100 , visible=true, alineacio=CasellaAlineacio.Centrat},
-                new casella() { nom ="name", ample=200, visible = true, alineacio = CasellaAlineacio.Dreta},
-                new casella() { nom="name2", ample=300, visible = true},
+                new casella() { visible = false},
+                new casella() { ample = 200, visible = true, alineacio = CasellaAlineacio.Esquerra},
+                new casella() { ample = 100, visible = true, alineacio = CasellaAlineacio.Centrat},
             };
-
-            // ds Combo
-            //SetLlistes = new List<llista>()
-            //{
-            //    new llista() { id="idRegion", query="select idRegion,CodeRegion,DescRegion as Region from Regions order by Region"}
-            //};
-
         }
 
         private void frmSelector_Sectors_Load(object sender, EventArgs e)

@@ -14,12 +14,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using Utils;
+using static MisControles.SWCodi;
 
 namespace FormBaseBBDD
 {
     public partial class frmBaseBBDDSelect : frmBase
     {
         private Timer timer;
+
+        public Devolucion Resultado { get; private set; }
 
         protected class Data
         {
@@ -44,6 +47,7 @@ namespace FormBaseBBDD
         {
             InitializeComponent();
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.KeyDown += DataGridView1_KeyDown;
 
             timer = new Timer();
             timer.Interval = 500;
@@ -284,13 +288,21 @@ namespace FormBaseBBDD
             }
         }
 
-        public void InicializarFormulario(int offset_top = 0, int offset_left = 0)
+        public void InicializarFormulario(Form frm, int offset_top = 0, int offset_left = 0)
         {
+            frm.SuspendLayout();
+
+            frm.Top = 200;
+
             _SituarCamposEnFormulario(offset_top, offset_left);
             if (_autoLabel)
             {
                 _DibujarLabels();
             }
+
+            frm.ResumeLayout(false);
+            frm.PerformLayout();
+
         }
 
         private void _DibujarLabels()
@@ -345,6 +357,27 @@ namespace FormBaseBBDD
             }
         }
 
+        private void DataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
 
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    var selectedRow = dataGridView1.SelectedRows[0];
+
+                    Resultado = new Devolucion
+                    {
+                        id = Convert.ToInt32(selectedRow.Cells[0].Value ?? 0),
+                        code = selectedRow.Cells[2].Value?.ToString() ?? string.Empty,
+                        desc = selectedRow.Cells[1].Value?.ToString() ?? string.Empty
+                    };
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+        }
     }
 }

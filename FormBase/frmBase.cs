@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,11 @@ namespace FormBase
         {
             InitializeComponent();
 
+            UsuariActiu.InformacionActualizada += ClaseEstatica_InformacionActualizada;
+
             this.KeyPreview = true;
 
-            if (UsuariActiu.usuari != null)
-            {
-                Usuario(UsuariActiu.usuari.UserName);
-            }
+            ActualizarUsuari();
         }
 
         private void frmBase_Load(object sender, EventArgs e)
@@ -62,10 +62,36 @@ namespace FormBase
             logTimer.Tick += LogTimer_Tick;
         }
 
-        //public void TituloBorrar(string titulo)
-        //{
-        //    lblTitulo.Text = titulo;
-        //}
+        protected void ActualizarUsuari()
+        {
+            if (UsuariActiu.usuari != null)
+            {
+                Usuario(UsuariActiu.usuari.UserName);
+                using (var ms = new MemoryStream(UsuariActiu.usuari.Photo))
+                {
+                    pbu.Image = Image.FromStream(ms); // Convertir los bytes en una imagen y asignarla al PictureBox
+                }
+                int height = PanelTop.Height - (pbu.Top * 2);
+
+                pbu.Width = pbu.Height = height;
+            }
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            UsuariActiu.InformacionActualizada -= ClaseEstatica_InformacionActualizada;
+            base.OnFormClosed(e);
+        }
+
+        private void ClaseEstatica_InformacionActualizada(object sender, EventArgs e)
+        {
+            ActualizarInformacion();
+        }
+
+        protected virtual void ActualizarInformacion()
+        {
+            ActualizarUsuari();
+        }
 
         protected string Titulo
         {
@@ -76,12 +102,12 @@ namespace FormBase
             }
         }
 
-        protected void AjustarLinea()
+        private void AjustarLinea()
         {
             lineTitulo.Width = Math.Max(lblTitulo.Width, lblUsuario.Width);
         }
 
-        protected void Usuario(string usuario)
+        private void Usuario(string usuario)
         {
             lblUsuario.Text = usuario;
             AjustarLinea();

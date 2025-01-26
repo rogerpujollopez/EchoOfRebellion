@@ -4,19 +4,31 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Configuracio.Config.Colores;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MisControles
 {
     public partial class SWCodi : UserControl
     {
+        public class Devolucion
+        {
+            public int id { get; set; }
+            public string code { get; set; }
+            public string desc { get; set; }
+        }
+
         private DataSet ds = null;
         private Color colorLeave = Color.White;
         private Color colorEnter = Color.Green;
         private int numCols;
         private List<int> _viewDataColumns;
+        private bool verFormSelect = false;
+
         public SWCodi()
         {
             InitializeComponent();
@@ -75,6 +87,21 @@ namespace MisControles
             {
                 txtId.Text = value;
                 ActualitzarLabelDesdeTextId();
+            }
+        }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Ver formulario select o combo")]
+        public bool VerFormularioSelect
+        {
+            get
+            {
+                return verFormSelect;
+            }
+            set
+            {
+                verFormSelect = value;
             }
         }
 
@@ -188,83 +215,119 @@ namespace MisControles
 
         private void txtLabel_MouseClick(object sender, MouseEventArgs e)
         {
-            int ample, x = 0, y = 0;
-
-            TextBox control = sender as TextBox;
-            ample = control.Width;
-
-            ObtenerValorParent(control, ref x, ref y);
-            x += 60;
-
-            Point p = new Point(x, y);
-
-            Form frm = new Form()
+            if (!verFormSelect)
             {
-                Size = new Size(ample, 100),
-                FormBorderStyle = FormBorderStyle.None,
-                StartPosition= FormStartPosition.Manual,
-                Location = p
-            };
-            ListBox listBox = new ListBox();
-            listBox.Location = new Point(0, 0);
-            listBox.Size = new Size(ample, 100);
+                int ample, x = 0, y = 0;
 
-            foreach (DataRow row in ds.Tables[0].Rows) 
-            {
-                int id = (int)row[0];
-                string texto = "";
+                TextBox control = sender as TextBox;
+                ample = control.Width;
 
-                if (_viewDataColumns != null && _viewDataColumns.Count > 0)
+                ObtenerValorParent(control, ref x, ref y);
+                x += 60;
+
+                Point p = new Point(x, y);
+
+                Form frm = new Form()
                 {
-                    string cadena = "";
+                    Size = new Size(ample, 100),
+                    FormBorderStyle = FormBorderStyle.None,
+                    StartPosition = FormStartPosition.Manual,
+                    Location = p
+                };
 
-                    for (int i = 0; i < _viewDataColumns.Count; i++)
+                frm.KeyPreview = true; // Permite capturar eventos de teclado antes que los controles hijos
+                frm.KeyDown += (s, _e) =>
+                {
+                    if (_e.KeyCode == Keys.Escape)
                     {
-                        if (cadena != "")
-                        {
-                            cadena += " - ";
-                        }
-                        cadena += row[_viewDataColumns[i]].ToString();
+                        frm.Close();
                     }
-                    texto = cadena;
-                }
-                else
-                {
-                    texto = row[1].ToString();
-                }
+                };
 
-                listBox.Items.Add(new KeyValuePair<int, string>(id, texto));
+                ListBox listBox = new ListBox();
+                listBox.Location = new Point(0, 0);
+                listBox.Size = new Size(ample, 100);
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    int id = (int)row[0];
+                    string texto = "";
+
+                    if (_viewDataColumns != null && _viewDataColumns.Count > 0)
+                    {
+                        string cadena = "";
+
+                        for (int i = 0; i < _viewDataColumns.Count; i++)
+                        {
+                            if (cadena != "")
+                            {
+                                cadena += " - ";
+                            }
+                            cadena += row[_viewDataColumns[i]].ToString();
+                        }
+                        texto = cadena;
+                    }
+                    else
+                    {
+                        texto = row[1].ToString();
+                    }
+
+                    listBox.Items.Add(new KeyValuePair<int, string>(id, texto));
+                }
+                listBox.DisplayMember = "Value";
+                listBox.ValueMember = "Key";
+
+                //listBox.Click += (_sender, _e) =>
+                //{
+                //    frm.Close();
+                //};
+
+                listBox.SelectedIndexChanged += (_sender, _e) =>
+                {
+                    if (listBox.SelectedItem is KeyValuePair<int, string> selectedPair)
+                    {
+                        int id = selectedPair.Key;
+                        txtId.Text = id.ToString();
+
+                        foreach (DataRow row in ds.Tables[0].Rows)
+                        {
+                            if (id == (int)row[0])
+                            {
+                                txtcodi.Text = row[1].ToString();
+                                txtLabel.Text = row[2].ToString();
+                            }
+                        }
+                        frm.Close();
+                    }
+                };
+
+                frm.Controls.Add(listBox);
+
+                frm.ShowDialog();
             }
-            listBox.DisplayMember = "Value";
-            listBox.ValueMember = "Key";
-
-            //listBox.Click += (_sender, _e) =>
-            //{
-            //    frm.Close();
-            //};
-
-            listBox.SelectedIndexChanged += (_sender, _e) =>
+            else
             {
-                if (listBox.SelectedItem is KeyValuePair<int, string> selectedPair)
-                {
-                    int id = selectedPair.Key;
-                    txtId.Text = id.ToString();
+                Assembly _ensamblat = Assembly.LoadFrom("FormPlanetes.dll"); // @"FormRegions.dll"
+                Type _tipus = _ensamblat.GetType("FormPlanetes.frmSelector_Planetes"); // "FormRegions.frmManteniment_Regions"
+                Form _frm = (Form)Activator.CreateInstance(_tipus);
 
-                    foreach (DataRow row in ds.Tables[0].Rows)
+                if (_frm.ShowDialog() == DialogResult.OK)
+                {
+                    // Acceder a la propiedad "Resultado" usando Reflection
+                    var resultadoProperty = _tipus.GetProperty("Resultado");
+                    if (resultadoProperty != null)
                     {
-                        if (id == (int)row[0])
+                        var resultado = resultadoProperty.GetValue(_frm) as Devolucion;
+                        if (resultado != null)
                         {
-                            txtcodi.Text = row[1].ToString();
-                            txtLabel.Text=row[2].ToString();   
+                            txtId.Text = resultado.id.ToString();
+                            txtcodi.Text = resultado.code;
+                            txtLabel.Text = resultado.desc;
                         }
                     }
-                    frm.Close();
                 }
-            };
 
-            frm.Controls.Add(listBox);
-
-            frm.ShowDialog();
+            }
         }
 
         private void txtcodi_Validating(object sender, CancelEventArgs e)

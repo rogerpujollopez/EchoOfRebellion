@@ -11,6 +11,14 @@ namespace UsuariActiuNameSpace
     {
         public static UsuariComplet usuari { get; set; }
 
+        
+        public static event EventHandler InformacionActualizada;
+
+        public static void ActualizarInformacion()
+        {
+            InformacionActualizada?.Invoke(null, EventArgs.Empty);
+        }
+
     }
 
 }

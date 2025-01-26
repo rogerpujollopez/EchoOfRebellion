@@ -46,16 +46,17 @@ namespace EchoOfRebellion.Formularios
             labCategory.Text = UsuariActiu.usuari.DescCategory;
             labRank.Text = UsuariActiu.usuari.DescRank;
 
+
             if (UsuariActiu.usuari.Photo != null) {
                 using (var ms = new MemoryStream(UsuariActiu.usuari.Photo))
                 {
                     ptbFotoUsuario.Image = Image.FromStream(ms);
                 }
             }
-            else
-            {
-                ptbFotoUsuario.Image = FormBaseBBDD.Util.Recursos.ObtenerImagenSinFoto();
-            }
+            //else
+            //{
+            //    ptbFotoUsuario.Image = FormBaseBBDD.Util.Recursos.ObtenerImagenSinFoto();
+            //}
         }
         private void EllipseImatgeUsuari()
         {

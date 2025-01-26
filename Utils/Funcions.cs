@@ -11,6 +11,14 @@ namespace Utils
 {
     public static class Funcions
     {
+        public static string Left(this string texto, int length)
+        {
+            if (string.IsNullOrEmpty(texto) || length <= 0)
+                return string.Empty;
+
+            return texto.Length <= length ? texto : texto.Substring(0, length);
+        }
+
         public static PictureBox ObtenerPicturesBox(Control.ControlCollection controls, string nombre)
         {
             foreach(Control c in controls)
