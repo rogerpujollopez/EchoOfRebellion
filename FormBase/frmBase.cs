@@ -22,6 +22,7 @@ namespace FormBase
             InitializeComponent();
 
             UsuariActiu.InformacionActualizada += ClaseEstatica_InformacionActualizada;
+            pbu.Click += Pbu_Click;
 
             this.KeyPreview = true;
 
@@ -188,5 +189,9 @@ namespace FormBase
             logTimer.Stop();
         }
 
+        private void Pbu_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
