@@ -11,6 +11,35 @@ namespace Utils
 {
     public static class Funcions
     {
+        public static void Impresoras(ComboBox combo)
+        {
+            List<string> impresoras = Impresoras();
+
+            combo.Items.Clear();
+
+            foreach (string item in impresoras)
+            {
+                combo.Items.Add(item);
+            }
+
+            if (combo.Items.Count > 0)
+            {
+                combo.SelectedIndex = 0; 
+            }
+        }
+
+
+        public static List<string> Impresoras()
+        {
+            List<string> impresoras = new List<string>();
+
+            foreach (string printerName in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                impresoras.Add(printerName);
+            }
+            return impresoras;
+        }
+
         public static string Left(this string texto, int length)
         {
             if (string.IsNullOrEmpty(texto) || length <= 0)

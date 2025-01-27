@@ -22,11 +22,12 @@ namespace MisControles
         private bool _isPressed = false;
         private bool _haytecla = false;
         private string _quetecla = "";
+        private bool _noDragDrop = false;
 
         public SWBotons()
         {
             InitializeComponent();
-            InitializePictureBox();
+            //InitializePictureBox();
 
             this.DoubleBuffered = true;
             this.Resize += (s, e) => this.Invalidate();
@@ -36,6 +37,26 @@ namespace MisControles
             _fontSize = 14f; // Tamaño de fuente por defecto
             _font = new Font("Agency FB", _fontSize, FontStyle.Bold);
             _colorFuente = Config.Colores.Botones.FontColor;
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+
+            InitializePictureBox();
+        }
+
+        [Browsable(true)]
+        [Category("Personalizació")]
+        [Description("Desactivar Drag & Drop")]
+        public bool DesactivarDragAndDrop
+        {
+            get => _noDragDrop;
+            set
+            {
+                _noDragDrop = value;
+                Invalidate(); // Redibuja el control para reflejar el cambio de texto
+            }
         }
 
         [Browsable(true)]
@@ -330,8 +351,10 @@ namespace MisControles
                 }
             }
 
-            pictureBox.Location = new Point(40, 16);
-
+            if (!_noDragDrop)
+            {
+                pictureBox.Location = new Point(40, 16);
+            }
         }
 
         public new event MouseEventHandler MouseClick;
@@ -377,35 +400,41 @@ namespace MisControles
 
         private void InitializePictureBox()
         {
-            pictureBox = new PictureBox
+            if (!_noDragDrop)
             {
-                Image = Properties.Resources.star3, // La imagen que quieres usar
-                SizeMode = PictureBoxSizeMode.Zoom,
-                BackColor = Color.Transparent,
-                Size = new Size(20, 20),
-                Cursor = Cursors.Hand // Indicar visualmente que es interactivo
-            };
+                pictureBox = new PictureBox
+                {
+                    Image = Properties.Resources.star3, // La imagen que quieres usar
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.Transparent,
+                    Size = new Size(20, 20),
+                    Cursor = Cursors.Hand // Indicar visualmente que es interactivo
+                };
 
-            // Evento para iniciar el drag and drop
-            pictureBox.MouseDown += PictureBox_MouseDown;
+                // Evento para iniciar el drag and drop
+                pictureBox.MouseDown += PictureBox_MouseDown;
 
-            // Añadir el PictureBox al control
-            this.Controls.Add(pictureBox);
-            pictureBox.BringToFront(); // Asegurar que esté encima de otros elementos
+                // Añadir el PictureBox al control
+                this.Controls.Add(pictureBox);
+                pictureBox.BringToFront(); // Asegurar que esté encima de otros elementos
+            }
         }
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (!_noDragDrop)
             {
-                // Crear un cursor visual basado en la imagen `star3`
-                Cursor dragCursor = CreateDragCursor(Properties.Resources.star3);
+                if (e.Button == MouseButtons.Left)
+                {
+                    // Crear un cursor visual basado en la imagen `star3`
+                    Cursor dragCursor = CreateDragCursor(Properties.Resources.star3);
 
-                // Cambiar el cursor por el personalizado durante el arrastre
-                Cursor.Current = dragCursor;
+                    // Cambiar el cursor por el personalizado durante el arrastre
+                    Cursor.Current = dragCursor;
 
-                // Iniciar el drag and drop con el botón completo (SWBotons)
-                DoDragDrop(this, DragDropEffects.Move);
+                    // Iniciar el drag and drop con el botón completo (SWBotons)
+                    DoDragDrop(this, DragDropEffects.Move);
+                }
             }
         }
 

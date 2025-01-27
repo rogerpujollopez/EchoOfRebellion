@@ -43,35 +43,37 @@ namespace FormPlanetes
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.GrupCamps = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.GrupCamps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(90, 19);
+            this.textBox1.Location = new System.Drawing.Point(165, 35);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(180, 29);
             this.textBox1.TabIndex = 0;
             this.textBox1.Tag = "CodePlanet";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(90, 49);
+            this.textBox2.Location = new System.Drawing.Point(165, 90);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(180, 29);
             this.textBox2.TabIndex = 0;
             this.textBox2.Tag = "DescPlanet";
             // 
             // swCodi1
             // 
-            this.swCodi1.Location = new System.Drawing.Point(90, 79);
-            this.swCodi1.Margin = new System.Windows.Forms.Padding(2);
+            this.swCodi1.Location = new System.Drawing.Point(165, 146);
+            this.swCodi1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.swCodi1.Name = "swCodi1";
             this.swCodi1.Origen = null;
-            this.swCodi1.Size = new System.Drawing.Size(342, 21);
+            this.swCodi1.Size = new System.Drawing.Size(627, 39);
             this.swCodi1.TabIndex = 0;
             this.swCodi1.Tag = "idSector";
             this.swCodi1.Tag2 = "";
@@ -83,35 +85,38 @@ namespace FormPlanetes
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(269, 19);
+            this.textBox3.Location = new System.Drawing.Point(493, 35);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(50, 20);
+            this.textBox3.Size = new System.Drawing.Size(88, 29);
             this.textBox3.TabIndex = 0;
             this.textBox3.Tag = "long";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(269, 49);
+            this.textBox4.Location = new System.Drawing.Point(493, 90);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(50, 20);
+            this.textBox4.Size = new System.Drawing.Size(88, 29);
             this.textBox4.TabIndex = 9;
             this.textBox4.Tag = "lat";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(382, 19);
+            this.textBox5.Location = new System.Drawing.Point(700, 35);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(50, 20);
+            this.textBox5.Size = new System.Drawing.Size(88, 29);
             this.textBox5.TabIndex = 10;
             this.textBox5.Tag = "parsecs";
             // 
             // swCodi2
             // 
-            this.swCodi2.Location = new System.Drawing.Point(90, 109);
-            this.swCodi2.Margin = new System.Windows.Forms.Padding(2);
+            this.swCodi2.Location = new System.Drawing.Point(165, 201);
+            this.swCodi2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.swCodi2.Name = "swCodi2";
             this.swCodi2.Origen = null;
-            this.swCodi2.Size = new System.Drawing.Size(342, 21);
+            this.swCodi2.Size = new System.Drawing.Size(627, 39);
             this.swCodi2.TabIndex = 0;
             this.swCodi2.Tag = "idNatives";
             this.swCodi2.Tag2 = "";
@@ -123,11 +128,11 @@ namespace FormPlanetes
             // 
             // swCodi3
             // 
-            this.swCodi3.Location = new System.Drawing.Point(90, 139);
-            this.swCodi3.Margin = new System.Windows.Forms.Padding(2);
+            this.swCodi3.Location = new System.Drawing.Point(165, 257);
+            this.swCodi3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.swCodi3.Name = "swCodi3";
             this.swCodi3.Origen = null;
-            this.swCodi3.Size = new System.Drawing.Size(342, 21);
+            this.swCodi3.Size = new System.Drawing.Size(627, 39);
             this.swCodi3.TabIndex = 0;
             this.swCodi3.Tag = "idFiliation";
             this.swCodi3.Tag2 = "";
@@ -139,33 +144,37 @@ namespace FormPlanetes
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(554, 19);
+            this.textBox6.Location = new System.Drawing.Point(1016, 35);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.Size = new System.Drawing.Size(180, 29);
             this.textBox6.TabIndex = 0;
             this.textBox6.Tag = "PlanetPicture";
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(554, 49);
+            this.textBox7.Location = new System.Drawing.Point(1016, 90);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.Size = new System.Drawing.Size(180, 29);
             this.textBox7.TabIndex = 1;
             this.textBox7.Tag = "IPPlanet";
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(554, 79);
+            this.textBox8.Location = new System.Drawing.Point(1016, 146);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.Size = new System.Drawing.Size(180, 29);
             this.textBox8.TabIndex = 2;
             this.textBox8.Tag = "PortPlanet";
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(554, 109);
+            this.textBox9.Location = new System.Drawing.Point(1016, 201);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.Size = new System.Drawing.Size(180, 29);
             this.textBox9.TabIndex = 3;
             this.textBox9.Tag = "PortPlanet1";
             // 
@@ -188,36 +197,42 @@ namespace FormPlanetes
             this.GrupCamps.Controls.Add(this.textBox9);
             this.GrupCamps.Controls.Add(this.textBox3);
             this.GrupCamps.ForeColor = System.Drawing.Color.White;
-            this.GrupCamps.Location = new System.Drawing.Point(12, 312);
+            this.GrupCamps.Location = new System.Drawing.Point(22, 576);
+            this.GrupCamps.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.GrupCamps.Name = "GrupCamps";
-            this.GrupCamps.Size = new System.Drawing.Size(776, 171);
+            this.GrupCamps.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.GrupCamps.Size = new System.Drawing.Size(1423, 316);
             this.GrupCamps.TabIndex = 11;
             this.GrupCamps.TabStop = false;
             this.GrupCamps.Text = "Camps";
             // 
-            // textBox10
-            // 
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(382, 49);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(50, 20);
-            this.textBox10.TabIndex = 11;
-            this.textBox10.Tag = "idPlanet";
-            // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(667, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(1223, 41);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 99);
+            this.pictureBox1.Size = new System.Drawing.Size(182, 183);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // textBox10
+            // 
+            this.textBox10.Enabled = false;
+            this.textBox10.Location = new System.Drawing.Point(700, 90);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(88, 29);
+            this.textBox10.TabIndex = 11;
+            this.textBox10.Tag = "idPlanet";
+            // 
             // frmManteniment_Planetes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 495);
+            this.ClientSize = new System.Drawing.Size(1467, 914);
             this.Controls.Add(this.GrupCamps);
+            this.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
             this.Name = "frmManteniment_Planetes";
             this.Load += new System.EventHandler(this.frmManteniment_Planetes_Load);
             this.Controls.SetChildIndex(this.GrupCamps, 0);

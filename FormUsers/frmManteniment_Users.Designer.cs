@@ -44,9 +44,9 @@ namespace FormUsers
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.GrupCamps = new System.Windows.Forms.GroupBox();
+            this.button2 = new MisControles.SWBotons();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new MisControles.SWBotons();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.GrupCamps.SuspendLayout();
@@ -118,6 +118,7 @@ namespace FormUsers
             this.swCodi1.TextDesc = "";
             this.swCodi1.TextId = "";
             this.swCodi1.TextValue = "";
+            this.swCodi1.VerFormularioSelect = false;
             // 
             // swCodi2
             // 
@@ -133,6 +134,7 @@ namespace FormUsers
             this.swCodi2.TextDesc = "";
             this.swCodi2.TextId = "";
             this.swCodi2.TextValue = "";
+            this.swCodi2.VerFormularioSelect = false;
             // 
             // swCodi3
             // 
@@ -164,6 +166,7 @@ namespace FormUsers
             this.swCodi4.TextDesc = "";
             this.swCodi4.TextId = "";
             this.swCodi4.TextValue = "";
+            this.swCodi4.VerFormularioSelect = false;
             // 
             // panel1
             // 
@@ -220,6 +223,19 @@ namespace FormUsers
             this.GrupCamps.TabStop = false;
             this.GrupCamps.Text = "Camps";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.DesactivarDragAndDrop = false;
+            this.button2.Formulari = null;
+            this.button2.Location = new System.Drawing.Point(9, 313);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(144, 46);
+            this.button2.TabIndex = 5;
+            this.button2.Texto = "Exportar";
+            this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_Click);
+            this.button2.DesactivarDragAndDrop = true;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(106, 23);
@@ -231,25 +247,16 @@ namespace FormUsers
             // 
             // button1
             // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(74, 388);
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.DesactivarDragAndDrop = false;
+            this.button1.Formulari = null;
+            this.button1.Location = new System.Drawing.Point(9, 365);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Mostrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(74, 340);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "PDF";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button1.Size = new System.Drawing.Size(144, 46);
+            this.button1.TabIndex = 5;
+            this.button1.Texto = "Veure fitxa";
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_Click);
+            this.button1.DesactivarDragAndDrop = true;
             // 
             // frmManteniment_Users
             // 
@@ -285,8 +292,8 @@ namespace FormUsers
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.GroupBox GrupCamps;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private SWBotons button1;
+        private SWBotons button2;
     }
 }
 

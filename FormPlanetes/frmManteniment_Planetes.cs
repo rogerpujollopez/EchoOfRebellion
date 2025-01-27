@@ -62,6 +62,60 @@ namespace FormPlanetes
         private void frmManteniment_Planetes_Load(object sender, EventArgs e)
         {
             InicializarFormulario(this);
+
+            // Suscribirse al evento TextChanged de textBox6
+            textBox6.TextChanged += TextBox6_TextChanged;
+
+            // Suscribirse al Binding.Format si el binding existe
+            var binding = textBox6.DataBindings["Text"];
+            if (binding != null)
+            {
+                binding.Format += Binding_Format;
+            }
+            ActualizarImagen();
+        }
+
+        private void TextBox6_TextChanged(object sender, EventArgs e)
+        {
+            // Cargar la imagen desde la URL en el PictureBox
+            ActualizarImagen();
+        }
+
+        private void Binding_Format(object sender, ConvertEventArgs e)
+        {
+            // Si el binding actualiza el valor, cargamos la imagen
+            ActualizarImagen();
+        }
+
+        private void ActualizarImagen()
+        {
+            try
+            {
+                string url = textBox6.Text;
+
+                if (Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                {
+                    // Cargar la imagen desde la URL
+                    using (var webClient = new System.Net.WebClient())
+                    {
+                        byte[] imageData = webClient.DownloadData(url);
+                        using (var ms = new System.IO.MemoryStream(imageData))
+                        {
+                            pictureBox1.Image = Image.FromStream(ms);
+                        }
+                    }
+                }
+                else
+                {
+                    // Si no es una URL válida, limpiamos el PictureBox
+                    pictureBox1.Image = null;
+                }
+            }
+            catch
+            {
+                // Si hay algún error (URL inválida o la imagen no se puede cargar), limpiar la imagen
+                pictureBox1.Image = null;
+            }
         }
     }
 }

@@ -219,44 +219,12 @@ namespace FormUsers
 
             Enabled = false;
 
-            try
-            {
-                clsModeloDatos dm = new clsModeloDatos();
+            int _idUser = Convert.ToInt32(valor);
 
-                string query = @"
-                    select UserName,c.DescCategory,r.DescRank,s.DescSpecie,p.DescPlanet,CodeUser,Photo
-                    from Users as u left join UserRanks as r on u.idUserRank=r.idUserRank
-                    left join UserCategories as c on u.idUserCategory=c.idUserCategory
-                    left join Species as s on u.idSpecie=s.idSpecie
-                    left join Planets as p on u.idPlanet=p.idPlanet
-                    where idUser=@idUser
-                ";
+            Form frm = new frmImprimir(_idUser);
+            frm.ShowDialog();
 
-                int idUser = Convert.ToInt32(valor);
-
-                List<SqlParameter> parametros = new List<SqlParameter>();
-                parametros.Add(new SqlParameter("@idUser", idUser));
-
-                DataSet ds = dm.PortarPerConsulta(query, parametros);
-
-                //ds.WriteXmlSchema(@"C:\dataset.xsd");
-
-                ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"Reports\RptUsuario.rpt");
-                cryRpt.SetDataSource(ds);
-                cryRpt.Refresh();
-                cryRpt.PrintToPrinter(1, false, 0, 0);
-            }
-            catch (Exception ex)
-            {
-                SetLogColor = Color.Red;
-                SetLogActivarTimer = true;
-                SetLog = ex.Message;
-            }
-            finally
-            {
-                Enabled = true;
-            }
+            Enabled = true;
         }
     }
 }

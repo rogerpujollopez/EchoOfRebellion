@@ -224,7 +224,7 @@ namespace EchoOfRebellion.Formularios
 
         protected override void HandleKeyDown(KeyEventArgs e)
         {
-            foreach (SWBotons boton in this.Controls.OfType<SWBotons>())
+            foreach (SWBotons boton in flow1.Controls.OfType<SWBotons>())
             {
                 boton.ProcessKey(e); 
             }

@@ -723,11 +723,11 @@ namespace FormBaseBBDD
 
             btnUpdate.Enabled = true;
 
-            if (_esNou)
+            if (!_esNou)
             {
                 RemoverBinding(false);
-                EstablecerBinding();
             }
+            EstablecerBinding();
 
             _esNou = false;
 
