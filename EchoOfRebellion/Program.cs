@@ -19,8 +19,8 @@ namespace EchoOfRebellion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            ShowSplashThenLogin();
-            //Application.Run(new frmSupaBase());
+            //ShowSplashThenLogin();
+            Application.Run(new frmTemp());
         }
 
         private static void ShowSplashThenLogin()

@@ -325,6 +325,26 @@ namespace BiblioModeloDatos
             return scopeIdentity;
         }
 
+        public int ExecutaConParametrosScope(string consulta, Dictionary<string, object> parametros)
+        {
+            Conectar();
+
+            SqlCommand cmd = new SqlCommand(consulta, conn);
+            cmd.CommandType = CommandType.Text;
+
+            foreach (var param in parametros)
+            {
+                cmd.Parameters.AddWithValue(param.Key, param.Value);
+            }
+
+            int scopeIdentity = Convert.ToInt32(cmd.ExecuteScalar());
+
+            Desconectar();
+
+            return scopeIdentity;
+        }
+
+
         /// <summary>
         /// Método para ejecutar una consulta Insert con Scope, con parámetros
         /// </summary>

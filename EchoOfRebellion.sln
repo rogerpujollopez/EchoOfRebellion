@@ -33,6 +33,8 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentacio", "Documentaci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiFtp", "MiFtp\MiFtp.csproj", "{6D0A8211-BB21-4EFA-92B7-E42D1BFC7210}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDILibrary", "EDILibrary\EDILibrary.csproj", "{8E38E0DB-DA13-4AE1-A343-44EA445B9A10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{6D0A8211-BB21-4EFA-92B7-E42D1BFC7210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D0A8211-BB21-4EFA-92B7-E42D1BFC7210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D0A8211-BB21-4EFA-92B7-E42D1BFC7210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E38E0DB-DA13-4AE1-A343-44EA445B9A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E38E0DB-DA13-4AE1-A343-44EA445B9A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E38E0DB-DA13-4AE1-A343-44EA445B9A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E38E0DB-DA13-4AE1-A343-44EA445B9A10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

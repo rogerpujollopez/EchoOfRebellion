@@ -190,6 +190,10 @@
       <Project>{5a1ca935-053e-490d-a9eb-3eea151ab007}</Project>
       <Name>Configuracio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EDILibrary\EDILibrary.csproj">
+      <Project>{8e38e0db-da13-4ae1-a343-44ea445b9a10}</Project>
+      <Name>EDILibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormBaseBBDD\FormBaseBBDD.csproj">
       <Project>{836ae73e-3ee2-4a7c-9aad-54081d82f899}</Project>
       <Name>FormBaseBBDD</Name>
