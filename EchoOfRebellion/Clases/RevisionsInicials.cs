@@ -69,6 +69,12 @@ namespace EchoOfRebellion.Clases
             
             XmlNode nodoFtpPass = nodoFtp["ftppass"];
             UsuariActiu.ftppass = nodoFtpPass.InnerText;
+
+            XmlNode nodoFtpLocalPath = nodoFtp["ftplocalpath"];
+            UsuariActiu.ftplocalpath = nodoFtpLocalPath.InnerText;
+
+            XmlNode nodoFtpRemotePath = nodoFtp["ftpremotepath"];
+            UsuariActiu.ftpremotepath = nodoFtpRemotePath.InnerText;
         }
 
 
@@ -78,8 +84,7 @@ namespace EchoOfRebellion.Clases
             XmlElement root = doc.DocumentElement;
 
             bool errornodo = true;
-            string server, user, pass;
-
+            //string server, user, pass, ftplocalpath, ftpremotepath;
 
             do
             {
@@ -93,21 +98,33 @@ namespace EchoOfRebellion.Clases
                 {
                     break;
                 }
-                server = nodoFtpServer.InnerText;
+                //server = nodoFtpServer.InnerText;
                 XmlNode nodoFtpUser = nodoFtp["ftpuser"];
                 if (nodoFtpUser == null)
                 {
                     break;
                 }
-                user = nodoFtpUser.InnerText;
+                //user = nodoFtpUser.InnerText;
                 XmlNode nodoFtpPass = nodoFtp["ftppass"];
                 if (nodoFtpPass == null)
                 {
                     break;
                 }
-                pass = nodoFtpPass.InnerText;
+                //pass = nodoFtpPass.InnerText;
 
-                string g = "";
+                XmlNode nodoFtplocalpath = nodoFtp["ftplocalpath"];
+                if (nodoFtplocalpath == null)
+                {
+                    break;
+                }
+                //ftplocalpath = nodoFtplocalpath.InnerText;
+
+                XmlNode nodoFtpremotepath = nodoFtp["ftpremotepath"];
+                if (nodoFtpremotepath == null)
+                {
+                    break;
+                }
+                //ftpremotepath = nodoFtpremotepath.InnerText;
 
             }
             while (false);
@@ -147,7 +164,12 @@ namespace EchoOfRebellion.Clases
             XmlNode ftppass = doc.CreateElement("ftppass");
             ftppass.InnerText = "12345aA";
             ftp.AppendChild(ftppass);
-
+            XmlNode ftplocalpath = doc.CreateElement("ftplocalpath");
+            ftplocalpath.InnerText = "";
+            ftp.AppendChild(ftplocalpath);
+            XmlNode ftpremotepath = doc.CreateElement("ftpremotepath");
+            ftpremotepath.InnerText = "";
+            ftp.AppendChild(ftpremotepath);
         }
 
 
