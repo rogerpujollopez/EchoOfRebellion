@@ -67,7 +67,6 @@
   <ItemGroup>
     <Compile Include="Clases\BIZ\BIZLogin.cs" />
     <Compile Include="Clases\DM\DMLogin.cs" />
-    <Compile Include="Clases\RevisionsInicials.cs" />
     <Compile Include="Clases\Utils\Comunicacio.cs" />
     <Compile Include="Clases\Utils\Missatgeria.cs" />
     <Compile Include="Clases\Utils\Reflexio.cs" />
@@ -214,10 +213,6 @@
     <ProjectReference Include="..\FormBase\FormBase.csproj">
       <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
       <Name>FormBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FormFactories\FormFactories.csproj">
-      <Project>{c46592c7-df81-42a5-aad8-7d23311b4207}</Project>
-      <Name>FormFactories</Name>
     </ProjectReference>
     <ProjectReference Include="..\MisControles\MisControles.csproj">
       <Project>{bb4afc56-429b-4bd1-9e00-fbce966d30f4}</Project>

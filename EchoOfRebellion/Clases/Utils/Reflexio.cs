@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UsuariActiuNameSpace;
-using static BiblioModeloDatos.DM.DMModel;
 
 namespace EchoOfRebellion.Clases.Utils
 {
@@ -17,8 +16,8 @@ namespace EchoOfRebellion.Clases.Utils
         public static Form GetFormulari(string formulari)
         {
             Form _frm = null;
-            
-            Permis permis = UsuariActiu.usuari.Permisos.FirstOrDefault(p => p.Nom == formulari);
+
+            UsuariActiu.Permis permis = UsuariActiu.usuari.Permisos.FirstOrDefault(p => p.Nom == formulari);
 
             if (permis != null)
             {

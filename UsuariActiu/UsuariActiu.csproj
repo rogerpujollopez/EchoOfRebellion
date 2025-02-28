@@ -44,11 +44,5 @@
     <Compile Include="UsuariActiu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BiblioModeloDatos\BiblioModeloDatos.csproj">
-      <Project>{4ecf29a6-9446-46b4-afb1-0ae046f52c60}</Project>
-      <Name>BiblioModeloDatos</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

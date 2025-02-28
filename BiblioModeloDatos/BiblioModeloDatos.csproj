@@ -45,8 +45,17 @@
   <ItemGroup>
     <Compile Include="clsModeloDatos.cs" />
     <Compile Include="clsSqlParameters.cs" />
-    <Compile Include="DM\DMModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Configuracio\Configuracio.csproj">
+      <Project>{5a1ca935-053e-490d-a9eb-3eea151ab007}</Project>
+      <Name>Configuracio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsuariActiu\UsuariActiu.csproj">
+      <Project>{E0F60624-4212-414F-B657-9FE98A668871}</Project>
+      <Name>UsuariActiu</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,12 +7,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UsuariActiuNameSpace;
-using static BiblioModeloDatos.DM.DMModel;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -41,18 +41,22 @@ namespace EchoOfRebellion.Formularios
 
         private void Flow()
         {
+            int margen = 20; 
+            int anchoDisponible = this.ClientSize.Width - (2 * margen);
+            int altoDisponible = this.ClientSize.Height - (2 * margen) - 200;
+
             flow1 = new FlowLayoutPanel
             {
                 Name = "flow1",
                 //BackColor = Color.Red, // Fondo rojo para visualizarlo
-                AutoSize = true,       // Ajusta su tamaño automáticamente al contenido
+                AutoSize = false,       // Ajusta su tamaño automáticamente al contenido
                 AutoSizeMode = AutoSizeMode.GrowAndShrink, // Permite expandir o contraer según sea necesario
                 FlowDirection = FlowDirection.TopDown, // Los controles fluyen de izquierda a derecha
                 WrapContents = true,   // Habilita que los elementos se muevan a la siguiente fila si no hay espacio
                 //Dock = DockStyle.Top   // Anclarlo en la parte superior del formulario
                 Location = new Point(20, 100), // Establecer la posición (Left = 20, Top = 100)
-                Width = 300,           // Ancho inicial del FlowLayoutPanel
-                Height = 400,          // Altura inicial del FlowLayoutPanel
+                Width = anchoDisponible,           // Ancho inicial del FlowLayoutPanel
+                Height = altoDisponible,          // Altura inicial del FlowLayoutPanel
                 AllowDrop = true // Permitir Drag & Drop
             };
 
@@ -67,7 +71,7 @@ namespace EchoOfRebellion.Formularios
             int _w = 260;
 
             // Supongamos que UsuariActiu.usuari.Permisos contiene una lista de permisos.
-            foreach (Permis permis in UsuariActiu.usuari.Permisos)
+            foreach (UsuariActiu.Permis permis in UsuariActiu.usuari.Permisos)
             {
                 // Crear una instancia de SWBotons para cada permiso
                 SWBotons btn = new SWBotons
@@ -180,7 +184,7 @@ namespace EchoOfRebellion.Formularios
             int _w = 260;
             int offset = 10;
 
-            foreach (Permis permis in UsuariActiu.usuari.Permisos)
+            foreach (UsuariActiu.Permis permis in UsuariActiu.usuari.Permisos)
             {
                 SWBotons btn = new SWBotons()
                 {

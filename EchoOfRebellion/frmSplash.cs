@@ -1,4 +1,5 @@
-﻿using EchoOfRebellion.Clases;
+﻿using Configuracio;
+using EchoOfRebellion.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace EchoOfRebellion
 
         private void frmSplash_Load(object sender, EventArgs e)
         {
-            RevisionsInicials.RevisionsAFer();
+            Config.RevisionsAFer();
         }
     }
 }

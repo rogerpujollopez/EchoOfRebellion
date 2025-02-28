@@ -7,19 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using BiblioModeloDatos;
 using CrystalDecisions.CrystalReports.Engine;
 using EchoOfRebellion.Reports;
 using Utils;
 using System.Reflection;
-using static EchoOfRebellion.Clases.Utils.Reflexio;
-using EchoOfRebellion.Clases.Utils;
 using System.IO;
-using System.Globalization;
-using System.IO.Ports;
 using EDILibrary;
-using FormFactories;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -71,6 +65,7 @@ namespace EchoOfRebellion.Formularios
         private void frmTemp_Load(object sender, EventArgs e)
         {
             //rf = new Reflexio(new DataSet());
+            //configxml.RevisionsAFer();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,8 +82,10 @@ namespace EchoOfRebellion.Formularios
 
         private void btnFactories_Click(object sender, EventArgs e)
         {
-            Form frm = new frmFactories();
-            frm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
         }
     }
 }

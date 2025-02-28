@@ -12,6 +12,26 @@ namespace Utils
 {
     public static class Funcions
     {
+        public static string SeleccionarCarpeta(string rutaInicial = "")
+        {
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "Selecciona una carpeta";
+                folderDialog.ShowNewFolderButton = true;
+
+                if (!string.IsNullOrWhiteSpace(rutaInicial))
+                {
+                    folderDialog.SelectedPath = rutaInicial;
+                }
+
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    return folderDialog.SelectedPath;
+                }
+            }
+            return string.Empty;
+        }
+
         public static string ObtindreCarpetaPrograma()
         {
             return Application.StartupPath;

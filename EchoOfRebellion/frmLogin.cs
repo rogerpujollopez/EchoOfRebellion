@@ -10,7 +10,6 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Schema;
 using UsuariActiuNameSpace;
-using static BiblioModeloDatos.DM.DMModel;
 
 namespace EchoOfRebellion
 {

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using EchoOfRebellion.Clases.Utils;
 using EchoOfRebellion;
-using static BiblioModeloDatos.DM.DMModel;
 using System.Windows.Forms;
 using Utils;
 using BiblioModeloDatos;

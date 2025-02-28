@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UsuariActiuNameSpace;
 using System.Security.Cryptography;
-using static BiblioModeloDatos.DM.DMModel;
 using EchoOfRebellion.Clases.Utils;
 using Utils;
 using System.IO;
@@ -83,9 +82,9 @@ namespace EchoOfRebellion.Clases.DM
                     int AccessLevel = r.IsNull("AccessLevel") ? 0 : (int)r["AccessLevel"];
                     int idUser = (int)r["idUser"];
 
-                    List<Permis> permisos = new List<Permis>();
+                    List<UsuariActiu.Permis> permisos = new List<UsuariActiu.Permis>();
 
-                    UsuariActiu.usuari = new UsuariComplet()
+                    UsuariActiu.usuari = new UsuariActiu.UsuariComplet()
                     {
                         IdUser = idUser,
                         SiSalt = (bool)r["SiSalt"],
@@ -161,7 +160,7 @@ namespace EchoOfRebellion.Clases.DM
                         icona = row.IsNull(4) ? null : (byte[])row[4];
                         desc = (string)row[5];
 
-                        permisos.Add(new Permis()
+                        permisos.Add(new UsuariActiu.Permis()
                         {
                             Dll = dll,
                             Icona = icona,

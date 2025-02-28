@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Net;
 using System.Windows.Forms;
+using UsuariActiuNameSpace;
 
 namespace EchoOfRebellion.Clases.Utils
 {
@@ -14,9 +15,9 @@ namespace EchoOfRebellion.Clases.Utils
     {
         public static bool EnviarMail(string nomDestinatari, string mailDestinatari, string asumpte, string missatge)
         {
-            string usu = ConfigurationManager.AppSettings["MailUser"];
-            string pass = ConfigurationManager.AppSettings["MailPassword"];
-            string smtp = ConfigurationManager.AppSettings["SmtpServer"];
+            string usu = UsuariActiu.mailuser; // ConfigurationManager.AppSettings["MailUser"];
+            string pass = UsuariActiu.mailpass; // ConfigurationManager.AppSettings["MailPassword"];
+            string smtp = UsuariActiu.mailserver; // ConfigurationManager.AppSettings["SmtpServer"];
 
             bool enviat = false;
 
