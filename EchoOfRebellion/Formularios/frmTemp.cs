@@ -19,6 +19,7 @@ using System.IO;
 using System.Globalization;
 using System.IO.Ports;
 using EDILibrary;
+using FormFactories;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -82,6 +83,12 @@ namespace EchoOfRebellion.Formularios
 
 
             MessageBox.Show($"Pedido {idOrder} ok");
+        }
+
+        private void btnFactories_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmFactories();
+            frm.ShowDialog();
         }
     }
 }
