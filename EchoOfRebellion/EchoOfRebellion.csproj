@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Clases\BIZ\BIZLogin.cs" />
     <Compile Include="Clases\DM\DMLogin.cs" />
+    <Compile Include="Clases\RevisionsInicials.cs" />
     <Compile Include="Clases\Utils\Comunicacio.cs" />
     <Compile Include="Clases\Utils\Missatgeria.cs" />
     <Compile Include="Clases\Utils\Reflexio.cs" />

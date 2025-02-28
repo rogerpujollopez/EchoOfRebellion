@@ -43,7 +43,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(540, 624);
+            this.pictureBox1.Size = new System.Drawing.Size(990, 1152);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -51,10 +51,10 @@
             // pictureLaser
             // 
             this.pictureLaser.Image = ((System.Drawing.Image)(resources.GetObject("pictureLaser.Image")));
-            this.pictureLaser.Location = new System.Drawing.Point(147, 540);
+            this.pictureLaser.Location = new System.Drawing.Point(270, 997);
             this.pictureLaser.Margin = new System.Windows.Forms.Padding(0);
             this.pictureLaser.Name = "pictureLaser";
-            this.pictureLaser.Size = new System.Drawing.Size(403, 46);
+            this.pictureLaser.Size = new System.Drawing.Size(739, 85);
             this.pictureLaser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureLaser.TabIndex = 1;
             this.pictureLaser.TabStop = false;
@@ -65,15 +65,17 @@
             // 
             // frmSplash
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 624);
+            this.ClientSize = new System.Drawing.Size(990, 1152);
             this.Controls.Add(this.pictureLaser);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmSplash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSplash";
+            this.Load += new System.EventHandler(this.frmSplash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLaser)).EndInit();
             this.ResumeLayout(false);
