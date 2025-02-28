@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,6 +12,16 @@ namespace Utils
 {
     public static class Funcions
     {
+        public static string ObtindreCarpetaPrograma()
+        {
+            return Application.StartupPath;
+        }
+
+        public static string ObtindreCarpetaPrograma(string fitxer)
+        {
+            return Path.Combine(ObtindreCarpetaPrograma(), fitxer);
+        }
+
         public static void Impresoras(ComboBox combo)
         {
             List<string> impresoras = Impresoras();

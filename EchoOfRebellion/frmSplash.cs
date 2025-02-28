@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EchoOfRebellion.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,11 @@ namespace EchoOfRebellion
                 timerLaser.Enabled = false;
                 this.Close();
             }
+        }
+
+        private void frmSplash_Load(object sender, EventArgs e)
+        {
+            RevisionsInicials.RevisionsAFer();
         }
     }
 }

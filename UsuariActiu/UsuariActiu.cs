@@ -19,6 +19,9 @@ namespace UsuariActiuNameSpace
             InformacionActualizada?.Invoke(null, EventArgs.Empty);
         }
 
+        public static string ftpserver { get; set; }
+        public static string ftpuser { get; set; }
+        public static string ftppass { get; set; }
     }
 
 }
