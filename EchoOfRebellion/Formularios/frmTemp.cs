@@ -1,4 +1,5 @@
 ﻿using System;
+using FormVisualizacionListado;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -92,6 +93,12 @@ namespace EchoOfRebellion.Formularios
         private void button3_Click(object sender, EventArgs e)
         {
             frmMantenimentFKSpaceShips frm = new frmMantenimentFKSpaceShips();
+            frm.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmListado_Factory frm = new frmListado_Factory();
             frm.ShowDialog();
         }
     }

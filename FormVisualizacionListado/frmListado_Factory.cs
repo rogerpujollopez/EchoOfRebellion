@@ -1,8 +1,12 @@
-﻿using FormBase;
+﻿using BiblioModeloDatos;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using FormBase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,9 +17,31 @@ namespace FormVisualizacionListado
 {
     public partial class frmListado_Factory : frmBase
     {
+        private ReportDocument cryRpt;
         public frmListado_Factory()
         {
             InitializeComponent();
+        }
+        private void SetCredentials()
+        {
+
+            SqlConnectionStringBuilder builder = clsModeloDatos.GetConnectionStringBuilder();
+
+            ConnectionInfo crConnectionInfo = new ConnectionInfo();
+            crConnectionInfo.ServerName = builder.DataSource;
+            crConnectionInfo.DatabaseName = builder.InitialCatalog;
+            crConnectionInfo.UserID = builder.UserID;
+            crConnectionInfo.Password = builder.Password;
+
+            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
+            Tables CrTables = cryRpt.Database.Tables;
+
+            foreach (Table CrTable in CrTables)
+            {
+                crtableLogoninfo = CrTable.LogOnInfo;
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                CrTable.ApplyLogOnInfo(crtableLogoninfo);
+            }
         }
     }
 }
