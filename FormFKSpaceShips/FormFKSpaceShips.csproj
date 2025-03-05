@@ -6,7 +6,6 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{18B03289-0FC4-4790-8996-FF4D37C15DE0}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
     <OutputType>Library</OutputType>
     <RootNamespace>FormFKSpaceShips</RootNamespace>
     <AssemblyName>FormFKSpaceShips</AssemblyName>
