@@ -14,6 +14,7 @@ using Utils;
 using System.Reflection;
 using System.IO;
 using EDILibrary;
+using FormFKSpaceShips;
 
 namespace EchoOfRebellion.Formularios
 {
@@ -86,6 +87,12 @@ namespace EchoOfRebellion.Formularios
 
         private void button2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmMantenimentFKSpaceShips frm = new frmMantenimentFKSpaceShips();
+            frm.ShowDialog();
         }
     }
 }
