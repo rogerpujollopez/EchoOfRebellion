@@ -141,6 +141,7 @@
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.Size = new System.Drawing.Size(869, 185);
             this.dgvDatos.TabIndex = 11;
+            this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged);
             // 
             // frmMantenimentFKSpaceShips
             // 
@@ -161,6 +162,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "frmMantenimentFKSpaceShips";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Load += new System.EventHandler(this.frmMantenimentFKSpaceShips_Load);
             this.Controls.SetChildIndex(this.txtBoxCodeType, 0);
             this.Controls.SetChildIndex(this.label2, 0);
