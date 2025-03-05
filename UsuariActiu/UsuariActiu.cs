@@ -68,6 +68,7 @@ namespace UsuariActiuNameSpace
         public static string ftppass { get; set; }
         public static string ftplocalpath { get; set; }
         public static string ftpremotepath { get; set; }
+        public static string ftpprocessedpath { get; set; }
 
         public static string mailserver { get; set; }
         public static string mailuser { get; set; }

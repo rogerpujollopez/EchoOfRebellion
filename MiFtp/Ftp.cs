@@ -168,11 +168,24 @@ namespace MiFtp
             return contenido;
         }
 
+        private string GetCarpetas()
+        {
+            return string.Join("/", carpetas.Reverse());
+        }
+
         private string GetRutaCarpeta()
         {
-            string rutaCarpeta = string.Join("/", carpetas.Reverse());
+            string rutaCarpeta = GetCarpetas();
 
             rutaCarpeta = string.IsNullOrEmpty(rutaCarpeta) ? url : $"{url}/{rutaCarpeta}";
+
+            return rutaCarpeta;
+        }
+
+        public string GetCarpetaActual()
+        {
+            string rutaCarpeta = GetCarpetas();
+            rutaCarpeta = string.IsNullOrEmpty(rutaCarpeta) ? "/" : $"/{rutaCarpeta}";
 
             return rutaCarpeta;
         }

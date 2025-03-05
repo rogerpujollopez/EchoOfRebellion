@@ -29,6 +29,7 @@ namespace FormConfiguracio
             txtPass.Text= UsuariActiu.ftppass;
             txtlocal.Text = UsuariActiu.ftplocalpath;
             txtremote.Text = UsuariActiu.ftpremotepath;
+            txtprocessat.Text = UsuariActiu.ftpprocessedpath;
 
             txtmailserver.Text = UsuariActiu.mailserver;
             txtmailuser.Text = UsuariActiu.mailuser;
@@ -47,6 +48,7 @@ namespace FormConfiguracio
             UsuariActiu.ftppass = txtPass.Text;
             UsuariActiu.ftplocalpath = txtlocal.Text;
             UsuariActiu.ftpremotepath = txtremote.Text;
+            UsuariActiu.ftpprocessedpath = txtprocessat.Text;
 
             Config.GuardarCarregarConfigXmlFtp();
 
@@ -92,10 +94,12 @@ namespace FormConfiguracio
 
         private void btnremote_Click(object sender, EventArgs e)
         {
-            string carpetaSeleccionada = Funcions.SeleccionarCarpeta(txtlocal.Text);
-            if (!string.IsNullOrEmpty(carpetaSeleccionada))
+            using (MiFtp.frmFtpDirectori frm = new MiFtp.frmFtpDirectori(txtremote.Text))
             {
-                txtlocal.Text = carpetaSeleccionada;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    txtremote.Text = frm.RetornRuta;
+                }
             }
         }
     }

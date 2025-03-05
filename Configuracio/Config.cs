@@ -183,6 +183,9 @@ namespace Configuracio
 
             XmlNode nodoFtpRemotePath = nodoFtp["ftpremotepath"];
             UsuariActiu.ftpremotepath = nodoFtpRemotePath.InnerText;
+
+            XmlNode nodoFtpProcessedPath = nodoFtp["ftpprocessedpath"];
+            UsuariActiu.ftpprocessedpath = nodoFtpProcessedPath == null ? "" : nodoFtpProcessedPath.InnerText;
         }
 
         public static void GuardarCarregarConfigXmlFtp()
@@ -205,6 +208,9 @@ namespace Configuracio
             XmlNode nodoFtpRemotePath = nodoFtp["ftpremotepath"];
             nodoFtpRemotePath.InnerText = UsuariActiu.ftpremotepath;
 
+            XmlNode nodoFtpProcessedPath = nodoFtp["ftpprocessedpath"];
+            nodoFtpProcessedPath.InnerText = UsuariActiu.ftpprocessedpath;
+
             GuardarConfiguracio();
         }
 
@@ -226,6 +232,14 @@ namespace Configuracio
                 XmlNode nodoFtpPass = nodo["ftppass"];
                 XmlNode nodoFtplocalpath = nodo["ftplocalpath"];
                 XmlNode nodoFtpremotepath = nodo["ftpremotepath"];
+                XmlNode nodoFtpprocessedpath = nodo["ftpprocessedpath"];
+
+                if (nodoFtpprocessedpath == null)
+                {
+                    XmlNode newNode = doc.CreateElement("ftpprocessedpath");
+                    newNode.InnerText = "";
+                    nodo.AppendChild(newNode);
+                }
 
                 errornodo = (nodoFtpServer == null || nodoFtpUser == null || nodoFtpPass == null || nodoFtplocalpath == null || nodoFtpremotepath == null);
             }
@@ -261,6 +275,9 @@ namespace Configuracio
             XmlNode ftpremotepath = doc.CreateElement("ftpremotepath");
             ftpremotepath.InnerText = "";
             ftp.AppendChild(ftpremotepath);
+            XmlNode ftpprocessedpath = doc.CreateElement("ftpprocessedpath");
+            ftpprocessedpath.InnerText = "";
+            ftp.AppendChild(ftpprocessedpath);
         }
 
         #endregion

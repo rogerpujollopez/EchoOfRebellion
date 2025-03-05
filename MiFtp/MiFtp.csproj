@@ -31,8 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +44,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmFtpDirectori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFtpDirectori.Designer.cs">
+      <DependentUpon>frmFtpDirectori.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ftp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmFtpDirectori.resx">
+      <DependentUpon>frmFtpDirectori.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FormBase\FormBase.csproj">
+      <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
+      <Name>FormBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsuariActiu\UsuariActiu.csproj">
+      <Project>{E0F60624-4212-414F-B657-9FE98A668871}</Project>
+      <Name>UsuariActiu</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
