@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormConfiguracio", "FormCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormFKSpaceShips", "FormFKSpaceShips\FormFKSpaceShips.csproj", "{18B03289-0FC4-4790-8996-FF4D37C15DE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormProcessarComanda", "FormProcessarComanda\FormProcessarComanda.csproj", "{EAF87D49-C89D-4C26-A3D2-63FC5A5EA98C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{18B03289-0FC4-4790-8996-FF4D37C15DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18B03289-0FC4-4790-8996-FF4D37C15DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18B03289-0FC4-4790-8996-FF4D37C15DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF87D49-C89D-4C26-A3D2-63FC5A5EA98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF87D49-C89D-4C26-A3D2-63FC5A5EA98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF87D49-C89D-4C26-A3D2-63FC5A5EA98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF87D49-C89D-4C26-A3D2-63FC5A5EA98C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
