@@ -12,6 +12,25 @@ namespace Utils
 {
     public static class Funcions
     {
+        public static void MoverArchivo(string rutaBase, string nombreArchivo, string carpetaDestino)
+        {
+            string rutaActual = Path.Combine(rutaBase, nombreArchivo);
+            string nuevaCarpeta = Path.Combine(rutaBase, carpetaDestino);
+            string nuevaRuta = Path.Combine(nuevaCarpeta, nombreArchivo);
+
+            if (!Directory.Exists(nuevaCarpeta))
+            {
+                Directory.CreateDirectory(nuevaCarpeta);
+            }
+
+            File.Move(rutaActual, nuevaRuta);
+        }
+
+        public static void SaveFile(byte[] arrBytes, string FileName)
+        {
+            File.WriteAllBytes(FileName, arrBytes);
+        }
+
         public static string SeleccionarCarpeta(string rutaInicial = "")
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())

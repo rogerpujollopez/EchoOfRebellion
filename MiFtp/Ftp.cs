@@ -10,9 +10,9 @@ namespace MiFtp
 {
     public class Ftp
     {
-        private string url; // ftp://sqlserver.S2AM.sdslab.cat
-        private string username; // g01
-        private string password; // 12345aA
+        private string url;
+        private string username;
+        private string password;
 
         public Ftp(string url, string username, string password)
         {
@@ -27,7 +27,6 @@ namespace MiFtp
         public byte[] DownloadFile(string ftpfile)
         {
             string rutaCarpeta = GetRutaCarpeta();
-
             rutaCarpeta = string.IsNullOrEmpty(rutaCarpeta) ? ftpfile : $"{rutaCarpeta}/{ftpfile}";
 
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(rutaCarpeta);
@@ -190,24 +189,59 @@ namespace MiFtp
             return rutaCarpeta;
         }
 
-        public void NuevaCarpeta(string nombreCarpeta)
+        public void NuevaCarpeta(string nombreCarpeta, bool entrarencarpeta = true)
         {
             string rutaCarpeta = GetRutaCarpeta();
             rutaCarpeta = $"{rutaCarpeta}/{nombreCarpeta}";
 
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(rutaCarpeta);
-            request.Method = WebRequestMethods.Ftp.MakeDirectory;
-            request.Credentials = new NetworkCredential(username, password);
-            request.UsePassive = true;
-            request.UseBinary = true;
-            request.KeepAlive = false;
-
-            using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+            if (!ExisteCarpeta(nombreCarpeta))
             {
-                carpetas.Push(nombreCarpeta);
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(rutaCarpeta);
+                request.Method = WebRequestMethods.Ftp.MakeDirectory;
+                request.Credentials = new NetworkCredential(username, password);
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = false;
+
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                {
+                }
             }
 
-            ObtenerDir();
+            if (entrarencarpeta)
+            {
+                carpetas.Push(nombreCarpeta);
+                ObtenerDir();
+            }
+        }
+
+        private bool ExisteCarpeta(string nombreCarpeta)
+        {
+            string rutaCarpeta = $"{GetRutaCarpeta()}/{nombreCarpeta}";
+
+            try
+            {
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(rutaCarpeta);
+                request.Method = WebRequestMethods.Ftp.ListDirectory; // Verifica si la carpeta existe
+                request.Credentials = new NetworkCredential(username, password);
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = false;
+
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                {
+                    return true; // La carpeta existe
+                }
+            }
+            catch (WebException ex)
+            {
+                FtpWebResponse response = (FtpWebResponse)ex.Response;
+                if (response != null && response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    return false; // La carpeta no existe
+                }
+                throw;
+            }
         }
 
         public void EliminarDirectorio(string nombreCarpeta)
@@ -276,5 +310,29 @@ namespace MiFtp
 
             ObtenerDir();
         }
+
+        public void MoverFichero(string nombreArchivo, string pathmover)
+        {
+            string rutaActual = $"{GetRutaCarpeta()}/{nombreArchivo}";
+            string nuevaRuta = $"./{pathmover}/{nombreArchivo}";
+
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(rutaActual);
+            request.Method = WebRequestMethods.Ftp.Rename;
+            request.Credentials = new NetworkCredential(username, password);
+            request.UsePassive = true;
+            request.UseBinary = true;
+            request.KeepAlive = false;
+
+            // Indicar la nueva ubicación del archivo
+            request.RenameTo = nuevaRuta;
+
+            using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+            {
+                // Archivo movido con éxito
+            }
+
+            ObtenerDir(); // Actualizar lista de archivos
+        }
+
     }
 }
