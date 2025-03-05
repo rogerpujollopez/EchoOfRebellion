@@ -214,6 +214,10 @@
       <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
       <Name>FormBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormFKSpaceShips\FormFKSpaceShips.csproj">
+      <Project>{18B03289-0FC4-4790-8996-FF4D37C15DE0}</Project>
+      <Name>FormFKSpaceShips</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MisControles\MisControles.csproj">
       <Project>{bb4afc56-429b-4bd1-9e00-fbce966d30f4}</Project>
       <Name>MisControles</Name>
