@@ -77,11 +77,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FactoriesModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="frmFactories.cs">
+    <Compile Include="frmManteniment_Factories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFactories.Designer.cs">
-      <DependentUpon>frmFactories.cs</DependentUpon>
+    <Compile Include="frmManteniment_Factories.Designer.cs">
+      <DependentUpon>frmManteniment_Factories.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,8 +95,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmFactories.resx">
-      <DependentUpon>frmFactories.cs</DependentUpon>
+    <EmbeddedResource Include="frmManteniment_Factories.resx">
+      <DependentUpon>frmManteniment_Factories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

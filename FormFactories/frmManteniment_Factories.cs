@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace FormFactories
 {
-    public partial class frmFactories : frmBase
+    public partial class frmManteniment_Factories : frmBase
     {
         FactoriesEntities db;
         List<Factories> factorieList;
         bool EsNou = false;
-        public frmFactories()
+        public frmManteniment_Factories()
         {
             InitializeComponent();
         }
@@ -42,6 +42,7 @@ namespace FormFactories
                 }
             }
             dtgFactories.DataSource = factorieList;
+            dtgFactories.Columns["idFactory"].Visible = false;
         }
         private void ValidarTextBox(object sender, EventArgs e)
         {
