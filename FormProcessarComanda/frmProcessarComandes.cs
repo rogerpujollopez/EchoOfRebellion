@@ -1,5 +1,6 @@
 ﻿using EDILibrary;
 using FormBase;
+using FormVisualizacionListado;
 using MiFtp;
 using System;
 using System.Collections.Generic;
@@ -340,6 +341,14 @@ namespace FormProcessarComanda
                 ediEnCurso = false;
                 timerDelayEdi.Start();
             }
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            frmListado_Factory frm = new frmListado_Factory();
+
+            frm.IdOrder = (short)1;
+            frm.ShowDialog();
         }
     }
 }

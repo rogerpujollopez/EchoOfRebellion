@@ -87,6 +87,10 @@
       <Project>{5874d33b-9fc3-49de-a3de-83df212230b2}</Project>
       <Name>FormBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormVisualizacionListado\FormVisualizacionListado.csproj">
+      <Project>{6bf5d203-059a-4f8c-a062-89c70ec11f36}</Project>
+      <Name>FormVisualizacionListado</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MiFtp\MiFtp.csproj">
       <Project>{6d0a8211-bb21-4efa-92b7-e42d1bfc7210}</Project>
       <Name>MiFtp</Name>

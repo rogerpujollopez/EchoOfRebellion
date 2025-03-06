@@ -18,6 +18,12 @@ namespace FormVisualizacionListado
     public partial class frmListado_Factory : frmBase
     {
         private ReportDocument cryRpt;
+        private short idOrder;
+        public short IdOrder
+        {
+            get { return idOrder;  }
+            set { idOrder = value; }
+        }
         public frmListado_Factory()
         {
             InitializeComponent();
@@ -42,6 +48,22 @@ namespace FormVisualizacionListado
                 crtableLogoninfo.ConnectionInfo = crConnectionInfo;
                 CrTable.ApplyLogOnInfo(crtableLogoninfo);
             }
+        }
+        private void GenerarCystalReport()
+        {
+            cryRpt = new ReportDocument();
+            cryRpt.Load("ListadoFactories.rpt");
+
+            SetCredentials();
+
+            cryRpt.RecordSelectionFormula = "{Orders.idOrder} = " + Convert.ToInt32(idOrder);
+
+            crystalReportViewer1.ReportSource = cryRpt;
+            crystalReportViewer1.Refresh();
+        }
+        private void frmListado_Factory_Load(object sender, EventArgs e)
+        {
+            GenerarCystalReport();
         }
     }
 }

@@ -38,6 +38,8 @@
             this.lblLocal = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtOrderCode = new System.Windows.Forms.TextBox();
+            this.btnMostrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -155,6 +157,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtOrderCode);
+            this.groupBox4.Controls.Add(this.btnMostrar);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
             this.groupBox4.Location = new System.Drawing.Point(384, 531);
@@ -163,6 +167,24 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Acciones";
+            // 
+            // txtOrderCode
+            // 
+            this.txtOrderCode.Location = new System.Drawing.Point(226, 28);
+            this.txtOrderCode.Name = "txtOrderCode";
+            this.txtOrderCode.Size = new System.Drawing.Size(145, 20);
+            this.txtOrderCode.TabIndex = 12;
+            // 
+            // btnMostrar
+            // 
+            this.btnMostrar.ForeColor = System.Drawing.Color.Black;
+            this.btnMostrar.Location = new System.Drawing.Point(125, 21);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(95, 33);
+            this.btnMostrar.TabIndex = 11;
+            this.btnMostrar.Text = "Mostrar";
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // frmProcessarComandes
             // 
@@ -189,6 +211,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -205,6 +228,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label txtLog;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtOrderCode;
+        private System.Windows.Forms.Button btnMostrar;
     }
 }
 
