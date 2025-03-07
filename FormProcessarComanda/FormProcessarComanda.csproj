@@ -79,6 +79,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BiblioModeloDatos\BiblioModeloDatos.csproj">
+      <Project>{4ecf29a6-9446-46b4-afb1-0ae046f52c60}</Project>
+      <Name>BiblioModeloDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EDILibrary\EDILibrary.csproj">
       <Project>{8e38e0db-da13-4ae1-a343-44ea445b9a10}</Project>
       <Name>EDILibrary</Name>

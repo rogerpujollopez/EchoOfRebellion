@@ -4,6 +4,7 @@ using FormVisualizacionListado;
 using MiFtp;
 using System;
 using System.Collections.Generic;
+using BiblioModeloDatos;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -15,6 +16,7 @@ using System.Windows.Forms;
 using UsuariActiuNameSpace;
 using Utils;
 using static MiFtp.Ftp;
+using System.Data.SqlClient;
 
 namespace FormProcessarComanda
 {
@@ -345,9 +347,24 @@ namespace FormProcessarComanda
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            clsModeloDatos dm = new clsModeloDatos();
             frmListado_Factory frm = new frmListado_Factory();
 
-            frm.IdOrder = (short)1;
+            string codeOrder = txtOrderCode.Text;
+
+            string query = @"
+                    select idOrder
+                    from Orders 
+                    where codeOrder = @codeOrder
+                ";
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@codeOrder", codeOrder));
+
+            DataSet ds = dm.PortarPerConsulta(query, parametros);
+            DataRow row = ds.Tables[0].Rows[0];
+
+            frm.IdOrder = (short)row["idOrder"];
             frm.ShowDialog();
         }
     }
