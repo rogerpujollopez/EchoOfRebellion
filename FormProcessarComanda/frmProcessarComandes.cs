@@ -368,7 +368,7 @@ namespace FormProcessarComanda
 
             if (ds.Tables[0].Rows.Count == 0)
             {
-                // No hay datos a mostrar
+                MessageBox.Show("Error: Código no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DataRow row = ds.Tables[0].Rows[0];

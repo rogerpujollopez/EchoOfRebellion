@@ -68,7 +68,7 @@ namespace FormVisualizacionListado
             this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmListado_Factory";
-            this.Text = "Form1";
+            this.Text = "Orden";
             this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Load += new System.EventHandler(this.frmListado_Factory_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);

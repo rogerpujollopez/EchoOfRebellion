@@ -26,7 +26,7 @@ namespace FormVisualizacionListado
         }
         public frmListado_Factory()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         private void SetCredentials()
         {
@@ -63,6 +63,7 @@ namespace FormVisualizacionListado
         }
         private void frmListado_Factory_Load(object sender, EventArgs e)
         {
+            Titulo = "Comanda";
             GenerarCystalReport();
         }
     }
