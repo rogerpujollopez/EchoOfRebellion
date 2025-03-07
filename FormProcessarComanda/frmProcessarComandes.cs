@@ -54,6 +54,8 @@ namespace FormProcessarComanda
             listView2.Columns.Add("Tamaño", 100);
             listView2.Columns.Add("Fecha Modificación", 100);
 
+            Titulo = "Processar comandes";
+
             SubLog("Inicializando ftp ...");
             ftp = new Ftp(UsuariActiu.ftpserver, UsuariActiu.ftpuser, UsuariActiu.ftppass);
 
@@ -362,6 +364,13 @@ namespace FormProcessarComanda
             parametros.Add(new SqlParameter("@codeOrder", codeOrder));
 
             DataSet ds = dm.PortarPerConsulta(query, parametros);
+
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                // No hay datos a mostrar
+                return;
+            }
             DataRow row = ds.Tables[0].Rows[0];
 
             frm.IdOrder = (short)row["idOrder"];
